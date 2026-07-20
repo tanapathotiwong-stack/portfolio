@@ -1625,6 +1625,98 @@
       transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
+    /* Video Player in Modal */
+    .video-badge-icon {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(7, 7, 8, 0.75);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 2;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
+    .modal-video-player {
+      width: 100%;
+      height: 100%;
+      max-height: 440px;
+      object-fit: contain;
+      background: #000;
+    }
+
+    .modal-video-bar {
+      position: absolute;
+      bottom: 0;
+      inset-x: 0;
+      padding: 16px 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .modal-video-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      font-family: var(--font-body);
+    }
+
+    .modal-video-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .modal-vid-tab {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      font-family: var(--font-body);
+    }
+
+    .modal-vid-tab:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .modal-vid-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.6);
+    }
+
     .modal-details {
       padding: 48px;
       display: flex;
@@ -1872,7 +1964,8 @@
           <span class="label">Graphic Design — 01</span>
         </div>
         <div class="portrait reveal reveal-scale" role="button" tabindex="0">
-          <img src="assets/project_motion.png" alt="Futuristic abstract colorful motion wave graphic design">
+          <img src="assets/project_motion.png" alt="Motion Graphics & Video Showcase">
+          <span class="video-badge-icon">▶ 3 Videos</span>
           <span class="label">Motion Graphics — 02</span>
         </div>
         <div class="portrait reveal reveal-scale" role="button" tabindex="0">
@@ -2346,11 +2439,16 @@
       {
         image: 'assets/project_motion.png',
         tag: 'MOTION GRAPHICS',
-        title: 'Futuristic Abstract Motion Wave',
-        desc: 'Experimental 3D fluid dynamics motion graphic video designed for high-resolution digital displays and ambient installation screens.',
-        client: 'Nexa Labs',
-        role: 'Motion Designer',
-        year: '2026'
+        title: 'Motion Graphics & Promotional Videos',
+        desc: 'คอลเลกชันผลงานวิดีโอ Motion Graphics และสื่อโฆษณาเคลื่อนไหวสำหรับแคมเปญการตลาด การเปิดตัวสินค้า และโปรโมชันพิเศษ (ประกอบด้วย Mayday Sale, Xiaomi 15T Pro, และกระบอกพ่นยา)',
+        client: 'Xiaomi / SolventPro / Mayday Campaign',
+        role: 'Motion Graphic Designer & Editor',
+        year: '2026',
+        videos: [
+          { src: 'assets/Motion Graphics/A1.mp4', title: 'Mayday Sale 50% Motion' },
+          { src: 'assets/Motion Graphics/A2.mp4', title: 'Xiaomi 15T Pro Product Commercial' },
+          { src: 'assets/Motion Graphics/A3.mp4', title: 'Bottle Sprayer Product Motion' }
+        ]
       },
       {
         image: 'assets/project_display.png',
@@ -2424,8 +2522,44 @@
       const data = projectData[index];
       if (!data) return;
 
-      modalImg.src = data.image;
-      modalImg.alt = data.title;
+      const modalMedia = projectModal.querySelector('.modal-media');
+
+      if (data.videos && data.videos.length > 0) {
+        let currentVidIndex = 0;
+
+        function renderVideoPlayer(vIdx) {
+          const vid = data.videos[vIdx];
+          modalMedia.innerHTML = `
+            <div class="modal-video-container">
+              <video src="${vid.src}" controls autoplay loop muted playsinline class="modal-video-player"></video>
+              <div class="modal-video-bar">
+                <div class="modal-video-title">🎥 ${vid.title} (${vIdx + 1}/${data.videos.length})</div>
+                <div class="modal-video-tabs">
+                  ${data.videos.map((v, i) => `
+                    <button class="modal-vid-tab ${i === vIdx ? 'active' : ''}" data-index="${i}">
+                      Motion ${i + 1}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+
+          const tabs = modalMedia.querySelectorAll('.modal-vid-tab');
+          tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const idx = parseInt(tab.getAttribute('data-index'));
+              renderVideoPlayer(idx);
+            });
+          });
+        }
+
+        renderVideoPlayer(currentVidIndex);
+      } else {
+        modalMedia.innerHTML = `<img id="modalImg" src="${data.image}" alt="${data.title}">`;
+      }
+
       modalTag.textContent = data.tag;
       modalTitle.textContent = data.title;
       modalDesc.textContent = data.desc;
@@ -2444,10 +2578,19 @@
       projectModal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = ''; // Restore background scrolling
 
-      // Clear image src after transition to avoid flash on reopen
+      // Stop and clear video playback
+      const videos = projectModal.querySelectorAll('video');
+      videos.forEach(v => {
+        v.pause();
+        v.src = '';
+        v.load();
+      });
+
+      // Clear media after transition to avoid flash on reopen
       setTimeout(() => {
         if (!projectModal.classList.contains('is-open')) {
-          modalImg.src = '';
+          const modalMedia = projectModal.querySelector('.modal-media');
+          modalMedia.innerHTML = '<img id="modalImg" src="" alt="">';
         }
       }, 400);
     }
