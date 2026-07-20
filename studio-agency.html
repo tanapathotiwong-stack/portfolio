@@ -1646,6 +1646,188 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
+    /* Multi-Screen Video Showcase Grid */
+    .video-grid-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      background: #09090b;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      box-sizing: border-box;
+    }
+
+    .video-grid-heading {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 14px;
+      width: 100%;
+    }
+
+    .video-screen-card {
+      position: relative;
+      background: #141417;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-screen-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(var(--accent-rgb), 0.3);
+    }
+
+    .video-screen-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-screen-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .video-screen-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 7, 8, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .video-screen-card:hover .video-screen-overlay {
+      background: rgba(7, 7, 8, 0.25);
+    }
+
+    .play-btn-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      padding-left: 3px;
+      box-shadow: 0 4px 16px rgba(var(--accent-rgb), 0.5);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .video-screen-card:hover .play-btn-circle {
+      transform: scale(1.15);
+    }
+
+    .play-btn-text {
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+      font-family: var(--font-body);
+    }
+
+    .video-screen-info {
+      padding: 10px 12px;
+      background: rgba(18, 18, 20, 0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .video-screen-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: var(--font-body);
+    }
+
+    .video-screen-tag {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Single Video Player View */
+    .single-video-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .single-video-topbar {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 10;
+    }
+
+    .back-grid-btn {
+      background: rgba(7, 7, 8, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: var(--font-body);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .back-grid-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
     .modal-video-container {
       position: relative;
       width: 100%;
@@ -2525,19 +2707,56 @@
       const modalMedia = projectModal.querySelector('.modal-media');
 
       if (data.videos && data.videos.length > 0) {
-        let currentVidIndex = 0;
 
-        function renderVideoPlayer(vIdx) {
+        function renderMultiScreenGrid() {
+          modalMedia.innerHTML = `
+            <div class="video-grid-wrapper">
+              <div class="video-grid-heading">
+                <span>📺 เลือกหน้าจอวิดีโอเพื่อรับชม (${data.videos.length} Screens)</span>
+              </div>
+              <div class="video-grid-container">
+                ${data.videos.map((vid, i) => `
+                  <div class="video-screen-card" data-index="${i}">
+                    <div class="video-screen-thumb">
+                      <video src="${vid.src}#t=0.5" preload="metadata" muted playsinline></video>
+                      <div class="video-screen-overlay">
+                        <div class="play-btn-circle">▶</div>
+                        <span class="play-btn-text">กดเพื่อเล่น</span>
+                      </div>
+                    </div>
+                    <div class="video-screen-info">
+                      <span class="video-screen-title">${vid.title}</span>
+                      <span class="video-screen-tag">Screen 0${i + 1}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+
+          const cards = modalMedia.querySelectorAll('.video-screen-card');
+          cards.forEach(card => {
+            card.addEventListener('click', () => {
+              const idx = parseInt(card.getAttribute('data-index'));
+              renderActiveVideo(idx);
+            });
+          });
+        }
+
+        function renderActiveVideo(vIdx) {
           const vid = data.videos[vIdx];
           modalMedia.innerHTML = `
-            <div class="modal-video-container">
-              <video src="${vid.src}" controls autoplay loop muted playsinline class="modal-video-player"></video>
+            <div class="single-video-wrapper">
+              <div class="single-video-topbar">
+                <button class="back-grid-btn">← เลือกจออื่น (All Screens)</button>
+              </div>
+              <video src="${vid.src}" controls autoplay playsinline class="modal-video-player"></video>
               <div class="modal-video-bar">
                 <div class="modal-video-title">🎥 ${vid.title} (${vIdx + 1}/${data.videos.length})</div>
                 <div class="modal-video-tabs">
                   ${data.videos.map((v, i) => `
                     <button class="modal-vid-tab ${i === vIdx ? 'active' : ''}" data-index="${i}">
-                      Motion ${i + 1}
+                      Screen ${i + 1}
                     </button>
                   `).join('')}
                 </div>
@@ -2545,17 +2764,25 @@
             </div>
           `;
 
+          const backBtn = modalMedia.querySelector('.back-grid-btn');
+          if (backBtn) {
+            backBtn.addEventListener('click', () => {
+              renderMultiScreenGrid();
+            });
+          }
+
           const tabs = modalMedia.querySelectorAll('.modal-vid-tab');
           tabs.forEach(tab => {
             tab.addEventListener('click', (e) => {
               e.stopPropagation();
               const idx = parseInt(tab.getAttribute('data-index'));
-              renderVideoPlayer(idx);
+              renderActiveVideo(idx);
             });
           });
         }
 
-        renderVideoPlayer(currentVidIndex);
+        // Initially render multi-screen grid (videos do NOT play until clicked)
+        renderMultiScreenGrid();
       } else {
         modalMedia.innerHTML = `<img id="modalImg" src="${data.image}" alt="${data.title}">`;
       }
