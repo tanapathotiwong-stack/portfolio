@@ -943,7 +943,8 @@
       background: var(--bg-soft);
     }
 
-    .portrait img {
+    .portrait img,
+    .portrait video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -954,7 +955,8 @@
       z-index: 1;
     }
 
-    .portrait:hover img {
+    .portrait:hover img,
+    .portrait:hover video {
       transform: scale(1.08);
       filter: grayscale(0) brightness(1);
     }
@@ -2146,7 +2148,7 @@
           <span class="label">Graphic Design — 01</span>
         </div>
         <div class="portrait reveal reveal-scale" role="button" tabindex="0">
-          <img src="assets/project_motion.png" alt="Motion Graphics & Video Showcase">
+          <video src="assets/Motion Graphics/A1.mp4" autoplay loop muted playsinline poster="assets/project_motion.png"></video>
           <span class="video-badge-icon">▶ 3 Videos</span>
           <span class="label">Motion Graphics — 02</span>
         </div>
