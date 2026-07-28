@@ -829,23 +829,22 @@
       overflow: hidden;
       display: flex;
       user-select: none;
-      gap: 40px;
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      gap: 36px;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
 
     .marquee-content {
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      gap: 60px;
+      justify-content: flex-start;
+      gap: 36px;
       flex-shrink: 0;
-      min-width: 100%;
       animation: marquee 25s linear infinite;
     }
 
     .marquee-icon {
-      height: 52px;
+      height: 46px;
       width: auto;
       object-fit: contain;
       opacity: 1;
@@ -855,7 +854,7 @@
     }
 
     .marquee-icon-wide {
-      height: 72px;
+      height: 58px;
     }
 
     .marquee-icon:hover {
@@ -1711,6 +1710,24 @@
         justify-content: center;
       }
 
+      /* Compact icon spacing & sizing for mobile marquee */
+      .marquee-container {
+        gap: 20px;
+        width: 100%;
+      }
+
+      .marquee-content {
+        gap: 22px;
+      }
+
+      .marquee-icon {
+        height: 36px;
+      }
+
+      .marquee-icon-wide {
+        height: 44px;
+      }
+
       .section {
         padding: 60px 0;
       }
@@ -1822,6 +1839,23 @@
       .switcher-toggle {
         width: 42px;
         height: 42px;
+      }
+
+      /* Extra compact icon spacing for smaller mobile screens */
+      .marquee-container {
+        gap: 16px;
+      }
+
+      .marquee-content {
+        gap: 18px;
+      }
+
+      .marquee-icon {
+        height: 32px;
+      }
+
+      .marquee-icon-wide {
+        height: 38px;
       }
     }
 
