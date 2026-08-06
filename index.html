@@ -159,8 +159,7 @@
       font-family: var(--font-body);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      padding-top: 110px;
-      /* Space for floating nav */
+      padding-top: 0;
       transition: background-color 0.4s ease, color 0.4s ease;
     }
 
@@ -268,6 +267,26 @@
       transform: translateZ(0);
     }
 
+    /* ---------- TOP HEADER GRADIENT PROGRESSIVE BLUR ---------- */
+    .top-header-blur {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 140px;
+      z-index: 98;
+      pointer-events: none;
+      background: linear-gradient(to bottom, var(--bg) 0%, rgba(7, 7, 8, 0.7) 45%, transparent 100%);
+      backdrop-filter: blur(16px);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0) 100%);
+      transition: background-color 0.4s ease;
+    }
+
+    .light-theme .top-header-blur {
+      background: linear-gradient(to bottom, var(--bg) 0%, rgba(245, 244, 240, 0.7) 45%, transparent 100%);
+    }
+
     /* ---------- NAV (FLOATING GLASSMORPHISM) ---------- */
     header {
       position: fixed;
@@ -275,7 +294,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 80px);
-      max-width: 1200px;
+      max-width: 960px;
       z-index: 100;
       background: var(--header-bg);
       backdrop-filter: blur(20px) saturate(180%);
@@ -291,6 +310,7 @@
     }
 
     nav {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -317,6 +337,9 @@
     }
 
     .nav-links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       gap: 34px;
       font-size: 14px;
@@ -332,7 +355,8 @@
       transition: color .2s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.is-active {
       color: var(--ink);
     }
 
@@ -342,12 +366,23 @@
       left: 50%;
       bottom: -6px;
       transform: translateX(-50%);
-      width: 4px;
-      height: 4px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 6px var(--accent);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 8px var(--accent);
+      animation: dotPop 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes dotPop {
+      0% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+      }
     }
 
     .nav-cta {
@@ -424,6 +459,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding-top: 150px;
       padding-bottom: 64px;
       isolation: isolate;
       background-image: var(--hero-bg-overlay), url('assets/hero_visual.jpg');
@@ -965,6 +1001,7 @@
       transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
       opacity: 0.9;
       z-index: 1;
+      pointer-events: none;
     }
 
     .portrait:hover img,
@@ -979,6 +1016,7 @@
       inset: 0;
       background: linear-gradient(to top, rgba(7, 7, 8, 0.95) 0%, rgba(7, 7, 8, 0.3) 50%, transparent 100%);
       z-index: 2;
+      pointer-events: none;
     }
 
     .portrait .label {
@@ -995,6 +1033,7 @@
       border-radius: 100px;
       backdrop-filter: blur(8px);
       transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
     }
 
     .portrait:hover .label {
@@ -1210,6 +1249,10 @@
       flex-shrink: 0;
     }
 
+    .modal-image-gallery.full-size-gallery .modal-image-item:hover {
+      transform: none !important;
+    }
+
     .modal-image-gallery.full-size-gallery .modal-image-item img {
       width: 100% !important;
       height: auto !important;
@@ -1230,30 +1273,32 @@
       justify-content: center;
       padding: 40px 32px;
       box-sizing: border-box;
-      background: #050506;
+      background: transparent;
     }
 
     .modal-single-item {
-      max-width: 680px;
-      width: 100%;
-      max-height: 75vh;
+      max-width: 100%;
+      max-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #0c0c0e;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
     }
 
     .modal-single-item img {
       max-width: 100%;
-      max-height: 75vh;
+      max-height: 78vh;
       width: auto;
       height: auto;
       object-fit: contain;
       display: block;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);
     }
 
     /* ---------- THE STUDIO METHOD ---------- */
@@ -1676,7 +1721,11 @@
 
     @media (max-width: 768px) {
       body {
-        padding-top: 86px;
+        padding-top: 0;
+      }
+
+      .hero {
+        padding-top: 110px;
       }
 
       .wrap {
@@ -1690,6 +1739,8 @@
       }
 
       .nav-links {
+        position: static;
+        transform: none;
         gap: 16px;
         font-size: 13px;
       }
@@ -2152,6 +2203,9 @@
   <div class="grid-overlay"></div>
   <div class="spotlight"></div>
 
+  <!-- TOP HEADER PROGRESSIVE BLUR OVERLAY -->
+  <div class="top-header-blur" aria-hidden="true"></div>
+
   <!-- HEADER / FLOATING NAV -->
   <header>
     <nav>
@@ -2377,18 +2431,17 @@
           </div>
           <div class="grid-portraits">
             <div class="portrait reveal reveal-scale" data-index="11" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A1.mp4" loop muted playsinline preload="metadata"
-                poster="assets/project_motion.png"></video>
+              <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">Mayday Sale — 02-A</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A2.mp4" loop muted playsinline preload="metadata"></video>
+              <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Xiaomi 15T Pro — 02-B</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A3.mp4" loop muted playsinline preload="metadata"></video>
+              <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Bottle Sprayer — 02-C</span>
             </div>
@@ -2793,7 +2846,7 @@
       const parent = video.closest('.portrait');
       if (parent) {
         parent.addEventListener('mouseenter', () => {
-          video.play().catch(() => {});
+          video.play().catch(() => { });
         });
         parent.addEventListener('mouseleave', () => {
           video.pause();
@@ -2816,71 +2869,94 @@
       });
     }
 
+    // Nav links instant active click handler & scroll spy lock
+    let isClickScrolling = false;
+    let clickScrollTimer = null;
+    const navLinkEls = document.querySelectorAll('.nav-links a');
+
+    navLinkEls.forEach(link => {
+      link.addEventListener('click', () => {
+        // Immediately set active state on clicked link
+        navLinkEls.forEach(l => l.classList.remove('is-active'));
+        link.classList.add('is-active');
+
+        // Lock scroll spy updates during smooth scrolling
+        isClickScrolling = true;
+        clearTimeout(clickScrollTimer);
+        clickScrollTimer = setTimeout(() => {
+          isClickScrolling = false;
+        }, 800);
+      });
+    });
+
     // Scroll-Spy Navigation Updates
-    const spySections = document.querySelectorAll('section[id], #work');
+    const spySections = document.querySelectorAll('#home, #about, #work, #contact');
     const spyCallback = (entries) => {
+      if (isClickScrolling) return;
+
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
-          if (id === 'work') {
-            document.querySelectorAll('.nav-links a').forEach(link => {
-              link.classList.toggle('is-active', link.getAttribute('href') === '#work');
-            });
-          } else {
-            // Ignore about if work is currently viewport dominant
-            const workRect = document.getElementById('work').getBoundingClientRect();
-            if (id === 'about' && workRect.top < window.innerHeight / 2 && workRect.bottom > 0) {
-              return;
-            }
-            document.querySelectorAll('.nav-links a').forEach(link => {
-              link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
-            });
-          }
+          navLinkEls.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.toggle('is-active', href === `#${id}`);
+          });
         }
       });
     };
 
     const spyObserver = new IntersectionObserver(spyCallback, {
       root: null,
-      threshold: 0.25
+      threshold: 0.3
     });
 
-    spySections.forEach(section => spyObserver.observe(section));
+    spySections.forEach(section => {
+      if (section) spyObserver.observe(section);
+    });
 
     // Magnetic CTA Button Pull Hover Effect
     const magneticElements = document.querySelectorAll('.btn, .nav-cta, .switcher-toggle');
     magneticElements.forEach(el => {
       let isMoving = false;
+      let rect = null;
+
+      el.addEventListener('mouseenter', () => {
+        rect = el.getBoundingClientRect();
+        el.style.transition = 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        const arrow = el.querySelector('.btn-arrow, .arrow');
+        if (arrow) arrow.style.transition = 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      });
+
       el.addEventListener('mousemove', (e) => {
+        if (!rect) rect = el.getBoundingClientRect();
         if (isMoving) return;
         isMoving = true;
         const clientX = e.clientX;
         const clientY = e.clientY;
 
         requestAnimationFrame(() => {
-          const rect = el.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          const deltaX = clientX - centerX;
-          const deltaY = clientY - centerY;
+          if (rect && rect.width > 0 && rect.height > 0) {
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = clientX - centerX;
+            const deltaY = clientY - centerY;
 
-          el.style.transform = `translate3d(${deltaX * 0.3}px, ${deltaY * 0.3}px, 0)`;
+            const shiftX = (deltaX * 0.25).toFixed(2);
+            const shiftY = (deltaY * 0.25).toFixed(2);
 
-          const arrow = el.querySelector('.btn-arrow, .arrow');
-          if (arrow) {
-            arrow.style.transform = `translate3d(${deltaX * 0.1}px, ${deltaY * 0.1}px, 0)`;
+            el.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0)`;
+
+            const arrow = el.querySelector('.btn-arrow, .arrow');
+            if (arrow) {
+              arrow.style.transform = `translate3d(${(deltaX * 0.1).toFixed(2)}px, ${(deltaY * 0.1).toFixed(2)}px, 0)`;
+            }
           }
           isMoving = false;
         });
       }, { passive: true });
 
-      el.addEventListener('mouseenter', () => {
-        el.style.transition = 'none';
-        const arrow = el.querySelector('.btn-arrow, .arrow');
-        if (arrow) arrow.style.transition = 'none';
-      });
-
       el.addEventListener('mouseleave', () => {
+        rect = null;
         el.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
         el.style.transform = 'translate3d(0px, 0px, 0px)';
         const arrow = el.querySelector('.btn-arrow, .arrow');
@@ -2895,33 +2971,39 @@
     const tiltElements = Array.from(document.querySelectorAll('.portrait, .method-card, .hero-workbench')).filter(el => !el.querySelector('video'));
     tiltElements.forEach(el => {
       let isTilting = false;
+      let rect = null;
+
+      el.addEventListener('mouseenter', () => {
+        rect = el.getBoundingClientRect();
+        el.style.transition = 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      });
+
       el.addEventListener('mousemove', (e) => {
+        if (!rect) rect = el.getBoundingClientRect();
         if (isTilting) return;
         isTilting = true;
         const clientX = e.clientX;
         const clientY = e.clientY;
 
         requestAnimationFrame(() => {
-          const rect = el.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          const deltaX = clientX - centerX;
-          const deltaY = clientY - centerY;
+          if (rect && rect.width > 0 && rect.height > 0) {
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = clientX - centerX;
+            const deltaY = clientY - centerY;
 
-          // Limit tilt to max 8 degrees
-          const rotY = (deltaX / (rect.width / 2)) * 8;
-          const rotX = -(deltaY / (rect.height / 2)) * 8;
+            // Limit tilt to max 6 degrees with smooth, stable bounds
+            const rotY = Math.max(-6, Math.min(6, (deltaX / (rect.width / 2)) * 6));
+            const rotX = Math.max(-6, Math.min(6, -(deltaY / (rect.height / 2)) * 6));
 
-          el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
+            el.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+          }
           isTilting = false;
         });
       }, { passive: true });
 
-      el.addEventListener('mouseenter', () => {
-        el.style.transition = 'none';
-      });
-
       el.addEventListener('mouseleave', () => {
+        rect = null;
         el.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
         el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
       });
@@ -3157,8 +3239,8 @@
       } else if (data.videoSrc) {
         modalMedia.innerHTML = `
           <div class="modal-single-stage">
-            <div class="modal-single-item" style="max-height: 80vh; background: #000; padding: 16px;">
-              <video src="${data.videoSrc}" controls loop playsinline autoplay style="width: 100%; max-height: 75vh; border-radius: 8px; object-fit: contain;"></video>
+            <div class="modal-single-item">
+              <video src="${data.videoSrc}" controls loop playsinline autoplay style="max-width: 100%; max-height: 78vh; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75); object-fit: contain;"></video>
             </div>
           </div>
         `;
