@@ -379,6 +379,7 @@
         transform: translateX(-50%) scale(0);
         opacity: 0;
       }
+
       100% {
         transform: translateX(-50%) scale(1);
         opacity: 1;
@@ -450,6 +451,55 @@
 
     .light-theme .icon-moon {
       display: block !important;
+    }
+
+    /* ---------- LANGUAGE TOGGLE BUTTON ---------- */
+    .lang-toggle-btn {
+      height: 38px;
+      padding: 3px 4px;
+      border-radius: 100px;
+      border: 1px solid var(--header-border);
+      background: rgba(var(--accent-rgb), 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      user-select: none;
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: rgba(var(--accent-rgb), 0.4);
+      background: rgba(var(--accent-rgb), 0.08);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .lang-toggle-btn .lang-opt {
+      padding: 4px 10px;
+      border-radius: 100px;
+      color: var(--muted);
+      opacity: 0.7;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .lang-toggle-btn .lang-opt:hover {
+      opacity: 1;
+      color: var(--ink);
+    }
+
+    .lang-toggle-btn .lang-opt.is-active {
+      opacity: 1;
+      background: var(--accent);
+      color: #ffffff !important;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(var(--accent-rgb), 0.45);
     }
 
     /* ---------- HERO SECTION ---------- */
@@ -940,10 +990,10 @@
     .who-statement {
       font-family: var(--font-display);
       font-weight: 600;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
+      letter-spacing: -0.015em;
+      line-height: 1.45;
       font-size: clamp(28px, 4vw, 48px);
-      max-width: 22ch;
+      max-width: 24ch;
     }
 
     .who-statement .dim {
@@ -2211,12 +2261,16 @@
     <nav>
       <div class="logo"><span class="dot"></span>PORTFOLIO</div>
       <div class="nav-links">
-        <a href="#home" class="is-active">Home</a>
-        <a href="#about">About</a>
-        <a href="#work">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#home" class="is-active" data-en="Home" data-th="หน้าแรก">Home</a>
+        <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="#work" data-en="Projects" data-th="ผลงาน">Projects</a>
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
       </div>
-      <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button type="button" class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch language TH EN">
+          <span class="lang-opt is-active" data-lang="en">EN</span>
+          <span class="lang-opt" data-lang="th">TH</span>
+        </button>
         <button class="theme-toggle-btn" aria-label="Toggle theme mode">
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
@@ -2235,11 +2289,6 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
         </button>
-        <a href="assets/resume.pdf" target="_blank" class="nav-cta">
-          <span class="avatar"></span>
-          Resume
-          <span class="arrow">↗</span>
-        </a>
       </div>
     </nav>
   </header>
@@ -2248,14 +2297,22 @@
   <section class="hero" id="home">
     <div class="wrap">
       <div class="hero-content">
-        <h1 class="hero-headline reveal">Designing Brands, Graphics & <span class="text-gradient">Digital
+        <h1 class="hero-headline reveal"
+          data-en="Designing Brands, Graphics & <span class='text-gradient'>Digital Experiences</span>."
+          data-th="สร้างสรรค์งานแบรนด์ กราฟิกดีไซน์ & <span class='text-gradient'>ประสบการณ์ดิจิทัล</span>.">Designing
+          Brands, Graphics & <span class="text-gradient">Digital
             Experiences</span>.</h1>
-        <p class="hero-sub reveal">Graphic Designer มีประสบการณ์กว่า 3 ปี ด้านการออกแบบสื่อการตลาด สื่อดิจิทัล Motion
+        <p class="hero-sub reveal"
+          data-en="Graphic Designer with over 3 years of experience specializing in marketing materials, digital media, Motion Graphics, photography, and video editing. Skilled in Adobe Photoshop, Illustrator, After Effects, Canva, and AI Tools to create compelling visual solutions."
+          data-th="Graphic Designer มีประสบการณ์กว่า 3 ปี ด้านการออกแบบสื่อการตลาด สื่อดิจิทัล Motion Graphics การถ่ายภาพ และการตัดต่อวิดีโอ เชี่ยวชาญการใช้งาน Adobe Photoshop, Illustrator, After Effects, Canva และ AI Tools พร้อมสร้างสรรค์ผลงานที่ตอบโจทย์การสื่อสารและภาพลักษณ์ของแบรนด์">
+          Graphic Designer มีประสบการณ์กว่า 3 ปี ด้านการออกแบบสื่อการตลาด สื่อดิจิทัล Motion
           Graphics การถ่ายภาพ และการตัดต่อวิดีโอ เชี่ยวชาญการใช้งาน Adobe Photoshop, Illustrator, After Effects, Canva
           และ AI Tools พร้อมสร้างสรรค์ผลงานที่ตอบโจทย์การสื่อสารและภาพลักษณ์ของแบรนด์</p>
         <div class="hero-actions reveal">
-          <a href="#work" class="btn btn-solid">View Projects <span class="btn-arrow">↗</span></a>
-          <a href="#contact" class="btn btn-ghost">Get In Touch <span class="btn-arrow">↗</span></a>
+          <a href="#work" class="btn btn-solid" data-en="View Projects" data-th="ชมผลงานทั้งหมด">View Projects <span
+              class="btn-arrow">↗</span></a>
+          <a href="#contact" class="btn btn-ghost" data-en="Get In Touch" data-th="ติดต่อร่วมงาน">Get In Touch <span
+              class="btn-arrow">↗</span></a>
         </div>
       </div>
 
@@ -2320,69 +2377,92 @@
         <span class="eyebrow"><span class="sq"></span>About me</span>
 
         <div class="who-top">
-          <h2 class="who-statement">
+          <h2 class="who-statement"
+            data-en="I craft striking visual designs and edit compelling video assets that elevate <span class='dim'>brand value</span> and <span class='dim'>audience engagement.</span>"
+            data-th="สร้างสรรค์งานออกแบบวิชวลและตัดต่อวิดีโอที่ช่วยยกระดับ <span class='dim'>คุณค่าแบรนด์</span> และ <span class='dim'>การมีส่วนร่วมของผู้ชม</span>">
             I craft striking visual designs and edit compelling video assets that elevate
             <span class="dim">brand value</span> and
             <span class="dim">audience engagement.</span>
           </h2>
-          <a href="#contact" class="who-link">→ Work With Me</a>
+          <a href="#contact" class="who-link" data-en="→ Work With Me" data-th="→ ร่วมงานกับผม">→ Work With Me</a>
         </div>
       </div>
 
       <!-- WORK EXPERIENCE -->
       <div style="margin-top: 96px;">
         <div class="who reveal" style="margin-bottom: 40px;">
-          <span class="eyebrow"><span class="sq"></span>Experience</span>
+          <span class="eyebrow" data-en="Experience" data-th="ประสบการณ์ทำงาน"><span class="sq"></span>Experience</span>
           <div class="who-top">
-            <h2 class="who-statement">Work Experience</h2>
+            <h2 class="who-statement" data-en="Work Experience" data-th="ประสบการณ์ทำงาน">Work Experience</h2>
           </div>
         </div>
 
         <div class="method-grid">
           <div class="method-card reveal">
             <div class="method-num">01</div>
-            <h3 class="method-name">Marketing Design</h3>
+            <h3 class="method-name" data-en="Marketing Design" data-th="การออกแบบสื่อการตลาด">Marketing Design</h3>
             <ul class="method-list">
-              <li>ออกแบบสื่อโฆษณา (Ads) และสื่อประชาสัมพันธ์สำหรับแคมเปญส่งเสริมการขาย</li>
+              <li data-en="Designing advertising ads and promotional media assets for sales campaigns."
+                data-th="ออกแบบสื่อโฆษณา (Ads) และสื่อประชาสัมพันธ์สำหรับแคมเปญส่งเสริมการขาย">ออกแบบสื่อโฆษณา (Ads)
+                และสื่อประชาสัมพันธ์สำหรับแคมเปญส่งเสริมการขาย</li>
             </ul>
           </div>
           <div class="method-card reveal">
             <div class="method-num">02</div>
-            <h3 class="method-name">Branding & Visual Identity</h3>
+            <h3 class="method-name" data-en="Branding & Visual Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์องค์กร">Branding
+              & Visual Identity</h3>
             <ul class="method-list">
-              <li>ออกแบบและประสานงานการผลิตป้ายไวนิลและสื่อสิ่งพิมพ์ของบริษัท</li>
-              <li>ออกแบบโลโก้ เสื้อยูนิฟอร์มบริษัท และกราฟิกคอนเซปต์เพื่อพัฒนาต้นแบบสำหรับการผลิต</li>
+              <li data-en="Designing and coordinating production of company vinyl banners and print media."
+                data-th="ออกแบบและประสานงานการผลิตป้ายไวนิลและสื่อสิ่งพิมพ์ของบริษัท">
+                ออกแบบและประสานงานการผลิตป้ายไวนิลและสื่อสิ่งพิมพ์ของบริษัท</li>
+              <li data-en="Designing logos, company uniforms, and graphic concepts for production prototypes."
+                data-th="ออกแบบโลโก้ เสื้อยูนิฟอร์มบริษัท และกราฟิกคอนเซปต์เพื่อพัฒนาต้นแบบสำหรับการผลิต">ออกแบบโลโก้
+                เสื้อยูนิฟอร์มบริษัท และกราฟิกคอนเซปต์เพื่อพัฒนาต้นแบบสำหรับการผลิต</li>
             </ul>
           </div>
           <div class="method-card reveal">
             <div class="method-num">03</div>
-            <h3 class="method-name">Display & Visual Merchandising</h3>
+            <h3 class="method-name" data-en="Display & Visual Merchandising" data-th="ดิสเพลย์ & วีซวลเมอร์แชนไดซิ่ง">
+              Display & Visual Merchandising</h3>
             <ul class="method-list">
-              <li>ออกแบบชั้นวางสินค้า (Shelf Display) เพื่อเพิ่มความน่าสนใจในการนำเสนอสินค้า</li>
-              <li>ออกแบบป้ายสื่อสารการขาย (POSM) เพื่อเพิ่มความโดดเด่นของสินค้า</li>
-              <li>จัด Display และตกแต่งพื้นที่แสดงสินค้าให้สอดคล้องกับแผนการตลาด</li>
+              <li data-en="Designing shelf displays to elevate product presentation."
+                data-th="ออกแบบชั้นวางสินค้า (Shelf Display) เพื่อเพิ่มความน่าสนใจในการนำเสนอสินค้า">ออกแบบชั้นวางสินค้า
+                (Shelf Display) เพื่อเพิ่มความน่าสนใจในการนำเสนอสินค้า</li>
+              <li data-en="Designing POSM sales communication signage for product highlights."
+                data-th="ออกแบบป้ายสื่อสารการขาย (POSM) เพื่อเพิ่มความโดดเด่นของสินค้า">ออกแบบป้ายสื่อสารการขาย (POSM)
+                เพื่อเพิ่มความโดดเด่นของสินค้า</li>
+              <li data-en="Arranging & styling display spaces aligned with marketing strategies."
+                data-th="จัด Display และตกแต่งพื้นที่แสดงสินค้าให้สอดคล้องกับแผนการตลาด">จัด Display
+                และตกแต่งพื้นที่แสดงสินค้าให้สอดคล้องกับแผนการตลาด</li>
             </ul>
           </div>
           <div class="method-card reveal">
             <div class="method-num">04</div>
-            <h3 class="method-name">Digital Content</h3>
+            <h3 class="method-name" data-en="Digital Content" data-th="ดิจิทัลคอนเทนต์ & โมชั่น">Digital Content</h3>
             <ul class="method-list">
-              <li>ผลิตวิดีโอ Motion Graphic สำหรับโปรโมชันและกิจกรรมส่งเสริมการขาย</li>
-              <li>รีทัชและปรับแต่งภาพที่มาจากการใช้ AI</li>
+              <li data-en="Producing Motion Graphic videos for promotions and marketing activities."
+                data-th="ผลิตวิดีโอ Motion Graphic สำหรับโปรโมชันและกิจกรรมส่งเสริมการขาย">ผลิตวิดีโอ Motion Graphic
+                สำหรับโปรโมชันและกิจกรรมส่งเสริมการขาย</li>
+              <li data-en="Retouching and enhancing AI-generated visual media."
+                data-th="รีทัชและปรับแต่งภาพที่มาจากการใช้ AI">รีทัชและปรับแต่งภาพที่มาจากการใช้ AI</li>
             </ul>
           </div>
           <div class="method-card reveal">
             <div class="method-num">05</div>
-            <h3 class="method-name">Photography</h3>
+            <h3 class="method-name" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
             <ul class="method-list">
-              <li>ถ่ายภาพสินค้า กิจกรรมบริษัท งานอีเวนต์ และบรรยากาศภายในโชว์รูม</li>
+              <li data-en="Photographing products, company events, trade shows, and showroom atmosphere."
+                data-th="ถ่ายภาพสินค้า กิจกรรมบริษัท งานอีเวนต์ และบรรยากาศภายในโชว์รูม">ถ่ายภาพสินค้า กิจกรรมบริษัท
+                งานอีเวนต์ และบรรยากาศภายในโชว์รูม</li>
             </ul>
           </div>
           <div class="method-card reveal">
             <div class="method-num">06</div>
-            <h3 class="method-name">Coordination</h3>
+            <h3 class="method-name" data-en="Coordination" data-th="การประสานงานอีเวนต์">Coordination</h3>
             <ul class="method-list">
-              <li>ประสานงานและบรีฟกับพิธีกร (MC) และผู้เกี่ยวข้องสำหรับงานอีเวนต์</li>
+              <li data-en="Coordinating briefs with MCs and stakeholders for corporate events."
+                data-th="ประสานงานและบรีฟกับพิธีกร (MC) และผู้เกี่ยวข้องสำหรับงานอีเวนต์">ประสานงานและบรีฟกับพิธีกร (MC)
+                และผู้เกี่ยวข้องสำหรับงานอีเวนต์</li>
             </ul>
           </div>
         </div>
@@ -2397,24 +2477,33 @@
       <div class="who reveal" style="margin-bottom: 24px;">
         <span class="eyebrow"><span class="sq"></span>Selected Works</span>
         <div class="who-top">
-          <h2 class="who-statement">
+          <h2 class="who-statement" data-en="Creative projects organized by <span class='dim'>category & medium</span>."
+            data-th="คอลเลกชันผลงานสร้างสรรค์แยกตาม <span class='dim'>หมวดหมู่ & ประเภทสื่อ</span>">
             Creative projects organized by <span class="dim">category & medium</span>.
           </h2>
-          <a href="#contact" class="who-link">→ Work With Me</a>
+          <a href="#contact" class="who-link" data-en="→ Work With Me" data-th="→ ร่วมงานกับผม">→ Work With Me</a>
         </div>
       </div>
 
       <!-- FILTER TABS -->
       <div class="portfolio-filter-tabs reveal">
-        <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
-        <button class="filter-btn" data-filter="motion">Motion Graphics</button>
-        <button class="filter-btn" data-filter="merchandising">Visual Merchandising</button>
-        <button class="filter-btn" data-filter="branding">Branding</button>
-        <button class="filter-btn" data-filter="web-ui">Web & UI Design</button>
-        <button class="filter-btn" data-filter="photography">Photography</button>
-        <button class="filter-btn" data-filter="event">Event & Coord</button>
-        <button class="filter-btn" data-filter="miscellaneous">Miscellaneous</button>
+        <button class="filter-btn active" data-filter="all" data-en="All Projects" data-th="ผลงานทั้งหมด">All
+          Projects</button>
+        <button class="filter-btn" data-filter="graphic" data-en="Graphic Design" data-th="กราฟิกดีไซน์">Graphic
+          Design</button>
+        <button class="filter-btn" data-filter="motion" data-en="Motion Graphics" data-th="โมชั่นกราฟิก">Motion
+          Graphics</button>
+        <button class="filter-btn" data-filter="merchandising" data-en="Visual Merchandising"
+          data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</button>
+        <button class="filter-btn" data-filter="branding" data-en="Branding" data-th="แบรนด์ดิ้ง">Branding</button>
+        <button class="filter-btn" data-filter="web-ui" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI
+          Design</button>
+        <button class="filter-btn" data-filter="photography" data-en="Photography"
+          data-th="งานถ่ายภาพ">Photography</button>
+        <button class="filter-btn" data-filter="event" data-en="Event & Coord" data-th="อีเวนต์ & คอร์ดิเนชั่น">Event &
+          Coord</button>
+        <button class="filter-btn" data-filter="miscellaneous" data-en="Miscellaneous"
+          data-th="ผลงานอื่นๆ">Miscellaneous</button>
       </div>
 
       <!-- CATEGORY BLOCKS CONTAINER -->
@@ -2425,9 +2514,12 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">01 / CATEGORY</span>
-              <h3 class="category-title">Graphic Design</h3>
+              <h3 class="category-title" data-en="Graphic Design" data-th="กราฟิกดีไซน์">Graphic Design</h3>
             </div>
-            <p class="category-desc">Advertising banners, promotional artwork, single posts, and product graphics.</p>
+            <p class="category-desc"
+              data-en="Advertising banners, promotional artwork, single posts, and product graphics."
+              data-th="แบนเนอร์โฆษณา สื่อชิ้นงานโปรโมชัน รูปภาพโพสต์ และกราฟิกดีไซน์สินค้า">Advertising banners,
+              promotional artwork, single posts, and product graphics.</p>
           </div>
           <div class="grid-portraits">
             <div class="portrait reveal reveal-scale" data-index="0" role="button" tabindex="0">
@@ -2483,26 +2575,39 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">02 / CATEGORY</span>
-              <h3 class="category-title">Motion Graphics</h3>
+              <h3 class="category-title" data-en="Motion Graphics" data-th="โมชั่นกราฟิก">Motion Graphics</h3>
             </div>
-            <p class="category-desc">Commercial video ads, motion graphics, and animated promotional campaign assets.
+            <p class="category-desc"
+              data-en="Commercial video ads, motion graphics, and animated promotional campaign assets."
+              data-th="วิดีโอโฆษณาเชิงพาณิชย์ โมชั่นกราฟิก และแอนิเมชันสำหรับแคมเปญการตลาด">Commercial video ads, motion
+              graphics, and animated promotional campaign assets.
             </p>
           </div>
           <div class="grid-portraits">
             <div class="portrait reveal reveal-scale" data-index="11" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+              <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
-              <span class="label">Mayday Sale — 02-A</span>
+              <span class="label">4990 Promo — 02-A</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+              <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
-              <span class="label">Xiaomi 15T Pro — 02-B</span>
+              <span class="label">Mayday Sale — 02-B</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+              <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
-              <span class="label">Bottle Sprayer — 02-C</span>
+              <span class="label">Xiaomi 15T Pro — 02-C</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+              <span class="video-badge-icon">▶ Motion 04</span>
+              <span class="label">Bottle Sprayer — 02-D</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+              <span class="video-badge-icon">▶ Motion 05</span>
+              <span class="label">DE370 Commercial — 02-E</span>
             </div>
           </div>
         </div>
@@ -2512,13 +2617,17 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">03 / CATEGORY</span>
-              <h3 class="category-title">Visual Merchandising</h3>
+              <h3 class="category-title" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual
+                Merchandising</h3>
             </div>
-            <p class="category-desc">Store window displays, retail shelf arrangements, and spatial product
+            <p class="category-desc"
+              data-en="Store window displays, retail shelf arrangements, and spatial product presentations."
+              data-th="การตกแต่งดิสเพลย์หน้าร้าน การจัดชั้นวางสินค้า และการนำเสนอพื้นที่โชว์สินค้า">Store window
+              displays, retail shelf arrangements, and spatial product
               presentations.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
               <img src="assets/project_display.png"
                 alt="Premium luxury retail fashion store window display presentation">
               <span class="label">Visual Merchandising — 03</span>
@@ -2531,13 +2640,17 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">04 / CATEGORY</span>
-              <h3 class="category-title">Branding & Visual Identity</h3>
+              <h3 class="category-title" data-en="Branding & Visual Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์องค์กร">
+                Branding & Visual Identity</h3>
             </div>
-            <p class="category-desc">Brand strategy, logo architecture, visual identity systems, and design guidelines.
+            <p class="category-desc"
+              data-en="Brand strategy, logo architecture, visual identity systems, and design guidelines."
+              data-th="กลยุทธ์แบรนด์ การออกแบบโลโก้ ระบบอัตลักษณ์วิชวล และคู่มือมาตรฐานดีไซน์">Brand strategy, logo
+              architecture, visual identity systems, and design guidelines.
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
               <img src="assets/project_brand.png" alt="Brand Concept Guidelines presentation sheet">
               <span class="label">Branding — 04</span>
             </div>
@@ -2549,13 +2662,16 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">05 / CATEGORY</span>
-              <h3 class="category-title">Web & UI Design</h3>
+              <h3 class="category-title" data-en="Web & UI Design" data-th="เว็บ & ดีไซน์ UI">Web & UI Design</h3>
             </div>
-            <p class="category-desc">Mobile app interface design, web user experience, and interactive digital
+            <p class="category-desc"
+              data-en="Mobile app interface design, web user experience, and interactive digital interfaces."
+              data-th="การออกแบบอินเทอร์เฟซแอปมือถือ ประสบการณ์ผู้ใช้เว็บ และสื่อดิจิทัลโต้ตอบ">Mobile app interface
+              design, web user experience, and interactive digital
               interfaces.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
               <img src="assets/project_product.png" alt="Mobile UI app interface design mockup">
               <span class="label">Web & UI Design — 05</span>
             </div>
@@ -2567,15 +2683,50 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">06 / CATEGORY</span>
-              <h3 class="category-title">Photography</h3>
+              <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
             </div>
-            <p class="category-desc">Cinematic architectural framing, fashion portraiture, and high-contrast
+            <p class="category-desc"
+              data-en="Cinematic architectural framing, fashion portraiture, and high-contrast photography."
+              data-th="งานถ่ายภาพสถาปัตยกรรม ภาพพอร์เทรตแฟชั่น และงานถ่ายภาพสไตล์ซีเนมาติก">Cinematic architectural
+              framing, fashion portraiture, and high-contrast
               photography.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
-              <img src="assets/project_photography.png" alt="Moody high fashion portrait photography presentation card">
+            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
+              <img src="assets/Photography/R0009094.jpg" alt="Portrait Photography 01">
+              <span class="label">Photography — 01</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
+              <img src="assets/Photography/R0009442.jpg" alt="Portrait Photography 02">
+              <span class="label">Photography — 02</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
+              <img src="assets/Photography/R0009444.jpg" alt="Portrait Photography 03">
+              <span class="label">Photography — 03</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
+              <img src="assets/Photography/R0009501.jpg" alt="Portrait Photography 04">
+              <span class="label">Photography — 04</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
+              <img src="assets/Photography/R0009641.jpg" alt="Portrait Photography 05">
+              <span class="label">Photography — 05</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
+              <img src="assets/Photography/R0009892.jpg" alt="Portrait Photography 06">
               <span class="label">Photography — 06</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
+              <img src="assets/Photography/R0002090.jpg" alt="Portrait Photography 07">
+              <span class="label">Photography — 07</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
+              <img src="assets/Photography/R0002465.jpg" alt="Portrait Photography 08">
+              <span class="label">Photography — 08</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
+              <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
+              <span class="label">Photography — 09</span>
             </div>
           </div>
         </div>
@@ -2585,12 +2736,16 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">07 / CATEGORY</span>
-              <h3 class="category-title">Event & Coordination</h3>
+              <h3 class="category-title" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event &
+                Coordination</h3>
             </div>
-            <p class="category-desc">Exhibition stage design, lighting layouts, and spatial event coordination.</p>
+            <p class="category-desc"
+              data-en="Exhibition stage design, lighting layouts, and spatial event coordination."
+              data-th="การออกแบบเวทีนิทรรศการ เลย์เอาต์ระบบแสง และการประสานงานจัดอีเวนต์">Exhibition stage design,
+              lighting layouts, and spatial event coordination.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
               <img src="assets/project_event.png"
                 alt="Premium art gallery or product launch exhibition event stage design">
               <span class="label">Event & Coord — 07</span>
@@ -2603,12 +2758,16 @@
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">08 / CATEGORY</span>
-              <h3 class="category-title">Miscellaneous Projects</h3>
+              <h3 class="category-title" data-en="Miscellaneous Projects" data-th="โปรเจกต์สร้างสรรค์อื่นๆ">
+                Miscellaneous Projects</h3>
             </div>
-            <p class="category-desc">Creative experiments, multi-medium assets, and independent design showcases.</p>
+            <p class="category-desc"
+              data-en="Creative experiments, multi-medium assets, and independent design showcases."
+              data-th="งานทดลองสร้างสรรค์ ชิ้นงานหลากหลายสื่อ และคอลเลกชันดีไซน์อิสระ">Creative experiments,
+              multi-medium assets, and independent design showcases.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
               <img src="assets/project_miscellaneous.png" alt="Miscellaneous design collection and creative projects">
               <span class="label">Miscellaneous — 08</span>
             </div>
@@ -2628,16 +2787,20 @@
         <div class="contact-info reveal">
           <span class="eyebrow"><span class="sq"></span>Get in touch</span>
           <h2 class="contact-title">Let's build something remarkable.</h2>
-          <p class="contact-subtitle">Have a design project, video brief, or role opening? Send me a message and I'll
+          <p class="contact-subtitle"
+            data-en="Have a design project, video brief, or role opening? Send me a message and I'll get back to you within 24 hours."
+            data-th="มีโปรเจกต์ดีไซน์ บรีฟงานวิดีโอ หรือข้อเสนอร่วมงาน? ส่งข้อความหาผม แล้วผมจะตอบกลับภายใน 24 ชั่วโมง">
+            Have a design project, video brief, or role opening? Send me a message and I'll
             get back to you within 24 hours.</p>
           <div class="contact-details">
             <div class="contact-item">
-              <span class="item-label">Direct Email</span>
-              <a href="mailto:hello@tanapat.dev" class="item-value">hello@tanapat.dev</a>
+              <span class="item-label" data-en="Direct Email" data-th="อีเมลติดต่อ">Direct Email</span>
+              <a href="mailto:tanapathotiwong@gmail.com" class="item-value">tanapathotiwong@gmail.com</a>
             </div>
             <div class="contact-item">
-              <span class="item-label">Location</span>
-              <span class="item-value">Bangkok, Thailand (Available for remote)</span>
+              <span class="item-label" data-en="Location" data-th="สถานที่">Location</span>
+              <span class="item-value" data-en="Nonthaburi, Thailand (Available for remote)"
+                data-th="นนทบุรี, ไทย (พร้อมรับงาน Remote)">Nonthaburi, Thailand (Available for remote)</span>
             </div>
           </div>
         </div>
@@ -2645,31 +2808,25 @@
         <form class="contact-form reveal" id="contactForm">
           <div class="form-row">
             <div class="form-group">
-              <label for="clientName">Your Name</label>
+              <label for="clientName" data-en="Your Name" data-th="ชื่อของคุณ">Your Name</label>
               <input type="text" id="clientName" required placeholder="e.g. John Doe">
             </div>
             <div class="form-group">
-              <label for="clientEmail">Your Email</label>
+              <label for="clientEmail" data-en="Your Email" data-th="อีเมลของคุณ">Your Email</label>
               <input type="email" id="clientEmail" required placeholder="e.g. john@company.com">
             </div>
           </div>
           <div class="form-group">
-            <label for="clientService">Project Type</label>
-            <select id="clientService">
-              <option value="branding">Brand Identity & Logo Design</option>
-              <option value="video">Video Editing & Post-Production</option>
-              <option value="motion">Motion Graphics & Animation</option>
-              <option value="graphic">Digital & Print Graphic Design</option>
-              <option value="miscellaneous">Miscellaneous & Other Designs</option>
-              <option value="all">Full-Scale Creative Collaboration</option>
-            </select>
+            <label for="clientCompany" data-en="Company / Organization" data-th="ชื่อบริษัท / องค์กร">Company /
+              Organization</label>
+            <input type="text" id="clientCompany" placeholder="e.g. Company Name / Organization">
           </div>
           <div class="form-group">
-            <label for="clientMsg">Message</label>
+            <label for="clientMsg" data-en="Message" data-th="ข้อความ">Message</label>
             <textarea id="clientMsg" rows="4" required
               placeholder="Tell me about your design brief, video project, or opportunities..."></textarea>
           </div>
-          <button type="submit" class="btn btn-solid submit-btn">
+          <button type="submit" class="btn btn-solid submit-btn" data-en="Send Message" data-th="ส่งข้อความ">
             Send Message
             <span class="btn-arrow">↗</span>
           </button>
@@ -2785,6 +2942,50 @@
       });
     }
 
+    // Language Switcher (TH / EN) Logic
+    const langToggleBtn = document.getElementById('langToggleBtn');
+
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('lang', lang);
+      localStorage.setItem('selected-lang', lang);
+
+      if (langToggleBtn) {
+        langToggleBtn.querySelectorAll('.lang-opt').forEach(opt => {
+          opt.classList.toggle('is-active', opt.getAttribute('data-lang') === lang);
+        });
+      }
+
+      document.querySelectorAll('[data-en][data-th]').forEach(el => {
+        const targetText = el.getAttribute(`data-${lang}`);
+        if (!targetText) return;
+
+        const hasArrow = el.querySelector('.btn-arrow');
+        const hasSq = el.querySelector('.sq');
+
+        if (hasArrow) {
+          el.innerHTML = `${targetText} <span class="btn-arrow">↗</span>`;
+        } else if (hasSq) {
+          el.innerHTML = `<span class="sq"></span>${targetText}`;
+        } else if (targetText.includes('<')) {
+          el.innerHTML = targetText;
+        } else {
+          el.textContent = targetText;
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem('selected-lang') || 'en';
+    setLanguage(savedLang);
+
+    if (langToggleBtn) {
+      langToggleBtn.addEventListener('click', () => {
+        const activeOpt = langToggleBtn.querySelector('.lang-opt.is-active');
+        const currentLang = activeOpt ? activeOpt.getAttribute('data-lang') : 'en';
+        const nextLang = currentLang === 'en' ? 'th' : 'en';
+        setLanguage(nextLang);
+      });
+    }
+
     // Floating Accent Color Switcher Logic
     const switcher = document.querySelector('.accent-switcher');
     const toggleBtn = document.querySelector('.switcher-toggle');
@@ -2886,8 +3087,18 @@
         clearTimeout(clickScrollTimer);
         clickScrollTimer = setTimeout(() => {
           isClickScrolling = false;
-        }, 800);
+          updateActiveNav();
+        }, 1500);
       });
+    });
+
+    // Also release lock when browser scrollend fires
+    window.addEventListener('scrollend', () => {
+      if (isClickScrolling) {
+        clearTimeout(clickScrollTimer);
+        isClickScrolling = false;
+        updateActiveNav();
+      }
     });
 
     // Scroll-Spy Navigation Updates
@@ -2897,23 +3108,28 @@
     const updateActiveNav = () => {
       if (isClickScrolling) return;
 
-      const headerOffset = 220; // Offset to account for floating navbar position
-      const scrollPos = window.scrollY + headerOffset;
       const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
 
       let currentId = 'home';
 
-      // If near the bottom of page, activate last section
-      if (window.scrollY + windowHeight >= documentHeight - 50) {
+      // 1. If scrolled near the bottom of page (within 200px), activate last section (contact)
+      if (scrollY + windowHeight >= docHeight - 200) {
         currentId = 'contact';
       } else {
+        // 2. Otherwise find section whose top is closest to upper viewport threshold (180px)
+        let minDistance = Infinity;
+
         spySections.forEach(section => {
           if (!section) return;
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            currentId = section.getAttribute('id');
+          const rect = section.getBoundingClientRect();
+          const distance = Math.abs(rect.top - 180);
+          if (rect.top <= windowHeight * 0.5 && rect.bottom >= 100) {
+            if (distance < minDistance) {
+              minDistance = distance;
+              currentId = section.getAttribute('id');
+            }
           }
         });
       }
@@ -3039,16 +3255,27 @@
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      const name = document.getElementById('clientName').value;
+      const email = document.getElementById('clientEmail').value;
+      const company = document.getElementById('clientCompany').value || '-';
+      const msg = document.getElementById('clientMsg').value;
+
+      const subject = encodeURIComponent(`[Portfolio Inquiry] ${company} - ${name}`);
+      const body = encodeURIComponent(`Hello Tanapat,\n\nI am interested in collaborating with you.\n\nName: ${name}\nEmail: ${email}\nCompany / Organization: ${company}\n\nMessage:\n${msg}`);
+
+      // Open mailto link directly to tanapathotiwong@gmail.com
+      window.location.href = `mailto:tanapathotiwong@gmail.com?subject=${subject}&body=${body}`;
+
       const submitBtn = contactForm.querySelector('.submit-btn');
       const originalText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
+      submitBtn.textContent = 'Sending to tanapathotiwong@gmail.com...';
 
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
 
-        formResponse.textContent = 'Thank you! Your message has been sent successfully.';
+        formResponse.textContent = 'Opening your email client to send message to tanapathotiwong@gmail.com...';
         formResponse.className = 'form-response success';
 
         contactForm.reset();
@@ -3183,6 +3410,11 @@
         title: 'Sale 50%'
       },
       {
+        videoSrc: 'assets/Motion Graphics/4990_1.mp4',
+        tag: 'MOTION GRAPHICS',
+        title: '4990 Promotional Motion Video'
+      },
+      {
         videoSrc: 'assets/Motion Graphics/A1.mp4',
         tag: 'MOTION GRAPHICS',
         title: 'Mayday Sale 50% Motion Commercial'
@@ -3196,6 +3428,11 @@
         videoSrc: 'assets/Motion Graphics/A3.mp4',
         tag: 'MOTION GRAPHICS',
         title: 'Bottle Sprayer Product Showcase'
+      },
+      {
+        videoSrc: 'assets/Motion Graphics/DE370.mp4',
+        tag: 'MOTION GRAPHICS',
+        title: 'DE370 Motion Commercial Showcase'
       },
       {
         image: 'assets/project_display.png',
@@ -3213,9 +3450,49 @@
         title: 'Mobile App Interface & Interaction Design'
       },
       {
-        image: 'assets/project_photography.png',
+        image: 'assets/Photography/R0009094.jpg',
         tag: 'PHOTOGRAPHY',
-        title: 'Cinematic Architectural & Portrait Series'
+        title: 'Photography — 01'
+      },
+      {
+        image: 'assets/Photography/R0009442.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 02'
+      },
+      {
+        image: 'assets/Photography/R0009444.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 03'
+      },
+      {
+        image: 'assets/Photography/R0009501.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 04'
+      },
+      {
+        image: 'assets/Photography/R0009641.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 05'
+      },
+      {
+        image: 'assets/Photography/R0009892.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 06'
+      },
+      {
+        image: 'assets/Photography/R0002090.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 07'
+      },
+      {
+        image: 'assets/Photography/R0002465.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 08'
+      },
+      {
+        image: 'assets/Photography/R0002585.jpg',
+        tag: 'PHOTOGRAPHY',
+        title: 'Photography — 09'
       },
       {
         image: 'assets/project_event.png',
