@@ -2806,10 +2806,10 @@
           </div>
         </div>
 
-        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/tanapathotiwong@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New Portfolio Inquiry from Tanapat Portfolio">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
+        <form class="contact-form reveal" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="3ef4df0c-5eb8-423e-8a93-86a2ad141fa2">
+          <input type="hidden" name="subject" value="New Portfolio Inquiry from Tanapat Portfolio">
+          <input type="hidden" name="from_name" value="Portfolio Contact Form">
           <div class="form-row">
             <div class="form-group">
               <label for="clientName" data-en="Your Name" data-th="ชื่อของคุณ">Your Name</label>
@@ -3252,24 +3252,15 @@
       });
     });
 
-    // Contact Form Submission (FormSubmit - Direct Email to tanapathotiwong@gmail.com)
+    // Contact Form Submission (Web3Forms API - Direct Email to tanapathotiwong@gmail.com)
     const contactForm = document.getElementById('contactForm');
     const formResponse = document.getElementById('formResponse');
 
     contactForm.addEventListener('submit', async (e) => {
-      // If browsing as a local file (file:///), use standard HTML form POST directly
-      if (window.location.protocol === 'file:') {
-        return; // Allow native browser submit to FormSubmit.co
-      }
-
       e.preventDefault();
 
       const submitBtn = contactForm.querySelector('.submit-btn');
       const originalText = submitBtn.innerHTML;
-
-      const name = document.getElementById('clientName').value;
-      const email = document.getElementById('clientEmail').value;
-      const company = document.getElementById('clientCompany').value || '-';
 
       const isThai = document.documentElement.lang === 'th' || document.querySelector('.lang-btn.active')?.dataset.lang === 'th';
 
@@ -3280,28 +3271,29 @@
 
       try {
         const formData = new FormData(contactForm);
-        formData.append('_subject', `[Portfolio Inquiry] ${company} - ${name}`);
 
-        const response = await fetch('https://formsubmit.co/ajax/tanapathotiwong@gmail.com', {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData
         });
 
-        const data = await response.json();
+        const result = await response.json();
 
-        if (response.ok && data.success === 'true') {
+        if (result.success) {
           formResponse.textContent = isThai 
-            ? '✓ ส่งข้อความเรียบร้อยแล้ว! ขอบคุณที่ติดต่อครับ (หากทดลองครั้งแรก กรุณาตรวจสอบ Gmail เพื่อกด Activate Form)' 
+            ? '✓ ส่งข้อความเรียบร้อยแล้ว! ขอบคุณที่ติดต่อครับ' 
             : '✓ Message sent successfully! Thank you for contacting me.';
           formResponse.className = 'form-response success';
           contactForm.reset();
         } else {
-          // Fallback to native form POST if AJAX response is blocked
-          contactForm.submit();
+          throw new Error(result.message || 'Web3Forms submit failed');
         }
       } catch (err) {
-        console.warn('FormSubmit AJAX fallback to native submit:', err);
-        contactForm.submit();
+        console.error('Web3Forms Error:', err);
+        formResponse.textContent = isThai
+          ? '❌ เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง'
+          : '❌ Failed to send message. Please try again.';
+        formResponse.className = 'form-response error';
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
