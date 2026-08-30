@@ -1030,7 +1030,7 @@
 
     .portrait {
       position: relative;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 1 / 1;
       border-radius: 18px;
       overflow: hidden;
       isolation: isolate;
@@ -1049,7 +1049,7 @@
       will-change: transform;
       transform: translateZ(0);
       transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
-      opacity: 0.9;
+      opacity: 1;
       z-index: 1;
       pointer-events: none;
     }
@@ -1064,9 +1064,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(7, 7, 8, 0.95) 0%, rgba(7, 7, 8, 0.3) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(7, 7, 8, 0.45) 0%, rgba(7, 7, 8, 0.08) 35%, transparent 65%);
       z-index: 2;
       pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .portrait:hover::before {
+      opacity: 0.5;
     }
 
     .portrait .label {
@@ -1916,7 +1921,7 @@
       }
 
       .portrait {
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 1 / 1;
       }
 
       .method-grid {
@@ -2498,12 +2503,12 @@
         <button class="filter-btn" data-filter="branding" data-en="Branding" data-th="แบรนด์ดิ้ง">Branding</button>
         <button class="filter-btn" data-filter="web-ui" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI
           Design</button>
-        <button class="filter-btn" data-filter="photography" data-en="Photography"
-          data-th="งานถ่ายภาพ">Photography</button>
         <button class="filter-btn" data-filter="event" data-en="Event & Coord" data-th="อีเวนต์ & คอร์ดิเนชั่น">Event &
           Coord</button>
         <button class="filter-btn" data-filter="miscellaneous" data-en="Miscellaneous"
           data-th="ผลงานอื่นๆ">Miscellaneous</button>
+        <button class="filter-btn" data-filter="photography" data-en="Photography"
+          data-th="งานถ่ายภาพ">Photography</button>
       </div>
 
       <!-- CATEGORY BLOCKS CONTAINER -->
@@ -2523,49 +2528,54 @@
           </div>
           <div class="grid-portraits">
             <div class="portrait reveal reveal-scale" data-index="0" role="button" tabindex="0">
-              <img src="assets/graphic designer/Ad single post/Cambro.png" alt="Ad Single Post">
-              <span class="label">Ad Single Post</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="1" role="button" tabindex="0">
-              <img src="assets/graphic designer/Bigrig/1.png" alt="Bigrig">
-              <span class="label">Bigrig</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="2" role="button" tabindex="0">
-              <img src="assets/graphic designer/Cambro 50/1.jpg" alt="Cambro 50%">
-              <span class="label">Cambro 50%</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
               <img src="assets/graphic designer/Dehydeator/1.png" alt="Dehydrator">
               <span class="label">Dehydrator</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="4" role="button" tabindex="0">
-              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.png" alt="EPP BOX 50%">
-              <span class="label">EPP BOX 50%</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
-              <img src="assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY @2x.png" alt="Fast Food Tray">
-              <span class="label">Fast Food Tray</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="6" role="button" tabindex="0">
-              <img src="assets/graphic designer/Meat Cutting/1.png" alt="Meat Cutting">
-              <span class="label">Meat Cutting</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="7" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="1" role="button" tabindex="0">
               <img src="assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png"
                 alt="Table Craft Ribbed Ramekin">
               <span class="label">Table Craft Ribbed Ramekin</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="8" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="2" role="button" tabindex="0">
+              <img src="assets/graphic designer/Bigrig/1.png" alt="Bigrig">
+              <span class="label">Bigrig</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
               <img src="assets/graphic designer/Winsor/Windsor series (1).png" alt="ช้อนส้อม Windsor Series">
               <span class="label">ช้อนส้อม Windsor Series</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="9" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="4" role="button" tabindex="0">
+              <img src="assets/graphic designer/Cambro 50/1.jpg" alt="Cambro 50%">
+              <span class="label">Cambro 50%</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
+              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.png" alt="EPP BOX 50%">
+              <span class="label">EPP BOX 50%</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="6" role="button" tabindex="0">
+              <img src="assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png" alt="Fast Food Tray">
+              <span class="label">Fast Food Tray</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="7" role="button" tabindex="0">
               <img src="assets/graphic designer/chef guarantee.png" alt="Chef Guarantee">
               <span class="label">Chef Guarantee</span>
             </div>
+            <div class="portrait reveal reveal-scale" data-index="8" role="button" tabindex="0">
+              <img src="assets/graphic designer/Meat Cutting/1.png" alt="Meat Cutting">
+              <span class="label">Meat Cutting</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="9" role="button" tabindex="0">
+              <img src="assets/graphic designer/Ad single post/Cambro.png" alt="Ad Single Post">
+              <span class="label">Ad Single Post</span>
+            </div>
             <div class="portrait reveal reveal-scale" data-index="10" role="button" tabindex="0">
-              <img src="assets/graphic designer/sale-50-1.png" alt="Sale 50%">
-              <span class="label">Sale 50%</span>
+              <img src="assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.png"
+                alt="Oblong Double Wall Bowl">
+              <span class="label">Oblong Double Wall Bowl</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="11" role="button" tabindex="0">
+              <img src="assets/graphic designer/Ad single post/cutlery-50-off.png" alt="Cutlery 50% Off">
+              <span class="label">Cutlery 50% Off</span>
             </div>
           </div>
         </div>
@@ -2585,27 +2595,27 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="11" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
               <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">4990 Promo — 02-A</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Mayday Sale — 02-B</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Xiaomi 15T Pro — 02-C</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 04</span>
               <span class="label">Bottle Sprayer — 02-D</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
               <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 05</span>
               <span class="label">DE370 Commercial — 02-E</span>
@@ -2628,7 +2638,7 @@
               presentations.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
               <img src="assets/project_display.png"
                 alt="Premium luxury retail fashion store window display presentation">
               <span class="label">Visual Merchandising — 03</span>
@@ -2651,7 +2661,7 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
               <img src="assets/project_brand.png" alt="Brand Concept Guidelines presentation sheet">
               <span class="label">Branding — 04</span>
             </div>
@@ -2672,71 +2682,18 @@
               interfaces.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
               <img src="assets/project_product.png" alt="Mobile UI app interface design mockup">
               <span class="label">Web & UI Design — 05</span>
             </div>
           </div>
         </div>
 
-        <!-- CATEGORY 06: PHOTOGRAPHY -->
-        <div class="portfolio-category-block reveal" data-category="photography">
-          <div class="category-header">
-            <div class="category-title-group">
-              <span class="category-num">06 / CATEGORY</span>
-              <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
-            </div>
-            <p class="category-desc"
-              data-en="Cinematic architectural framing, fashion portraiture, and high-contrast photography."
-              data-th="งานถ่ายภาพสถาปัตยกรรม ภาพพอร์เทรตแฟชั่น และงานถ่ายภาพสไตล์ซีเนมาติก">Cinematic architectural
-              framing, fashion portraiture, and high-contrast
-              photography.</p>
-          </div>
-          <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
-              <img src="assets/Photography/R0009094.jpg" alt="Portrait Photography 01">
-              <span class="label">Photography — 01</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
-              <img src="assets/Photography/R0009442.jpg" alt="Portrait Photography 02">
-              <span class="label">Photography — 02</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
-              <img src="assets/Photography/R0009444.jpg" alt="Portrait Photography 03">
-              <span class="label">Photography — 03</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
-              <img src="assets/Photography/R0009501.jpg" alt="Portrait Photography 04">
-              <span class="label">Photography — 04</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
-              <img src="assets/Photography/R0009641.jpg" alt="Portrait Photography 05">
-              <span class="label">Photography — 05</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
-              <img src="assets/Photography/R0009892.jpg" alt="Portrait Photography 06">
-              <span class="label">Photography — 06</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
-              <img src="assets/Photography/R0002090.jpg" alt="Portrait Photography 07">
-              <span class="label">Photography — 07</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
-              <img src="assets/Photography/R0002465.jpg" alt="Portrait Photography 08">
-              <span class="label">Photography — 08</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
-              <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
-              <span class="label">Photography — 09</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CATEGORY 07: EVENT & COORDINATION -->
+        <!-- CATEGORY 06: EVENT & COORDINATION -->
         <div class="portfolio-category-block reveal" data-category="event">
           <div class="category-header">
             <div class="category-title-group">
-              <span class="category-num">07 / CATEGORY</span>
+              <span class="category-num">06 / CATEGORY</span>
               <h3 class="category-title" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event &
                 Coordination</h3>
             </div>
@@ -2746,19 +2703,19 @@
               lighting layouts, and spatial event coordination.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
               <img src="assets/project_event.png"
                 alt="Premium art gallery or product launch exhibition event stage design">
-              <span class="label">Event & Coord — 07</span>
+              <span class="label">Event & Coord — 06</span>
             </div>
           </div>
         </div>
 
-        <!-- CATEGORY 08: MISCELLANEOUS -->
+        <!-- CATEGORY 07: MISCELLANEOUS -->
         <div class="portfolio-category-block reveal" data-category="miscellaneous">
           <div class="category-header">
             <div class="category-title-group">
-              <span class="category-num">08 / CATEGORY</span>
+              <span class="category-num">07 / CATEGORY</span>
               <h3 class="category-title" data-en="Miscellaneous Projects" data-th="โปรเจกต์สร้างสรรค์อื่นๆ">
                 Miscellaneous Projects</h3>
             </div>
@@ -2768,9 +2725,62 @@
               multi-medium assets, and independent design showcases.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
               <img src="assets/project_miscellaneous.png" alt="Miscellaneous design collection and creative projects">
-              <span class="label">Miscellaneous — 08</span>
+              <span class="label">Miscellaneous — 07</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 08: PHOTOGRAPHY -->
+        <div class="portfolio-category-block reveal" data-category="photography">
+          <div class="category-header">
+            <div class="category-title-group">
+              <span class="category-num">08 / CATEGORY</span>
+              <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
+            </div>
+            <p class="category-desc"
+              data-en="Cinematic architectural framing, fashion portraiture, and high-contrast photography."
+              data-th="งานถ่ายภาพสถาปัตยกรรม ภาพพอร์เทรตแฟชั่น และงานถ่ายภาพสไตล์ซีเนมาติก">Cinematic architectural
+              framing, fashion portraiture, and high-contrast
+              photography.</p>
+          </div>
+          <div class="grid-portraits">
+            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
+              <img src="assets/Photography/R0009094.jpg" alt="Portrait Photography 01">
+              <span class="label">Photography — 01</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
+              <img src="assets/Photography/R0009442.jpg" alt="Portrait Photography 02">
+              <span class="label">Photography — 02</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
+              <img src="assets/Photography/R0009444.jpg" alt="Portrait Photography 03">
+              <span class="label">Photography — 03</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
+              <img src="assets/Photography/R0009501.jpg" alt="Portrait Photography 04">
+              <span class="label">Photography — 04</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
+              <img src="assets/Photography/R0009641.jpg" alt="Portrait Photography 05">
+              <span class="label">Photography — 05</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
+              <img src="assets/Photography/R0009892.jpg" alt="Portrait Photography 06">
+              <span class="label">Photography — 06</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
+              <img src="assets/Photography/R0002090.jpg" alt="Portrait Photography 07">
+              <span class="label">Photography — 07</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
+              <img src="assets/Photography/R0002465.jpg" alt="Portrait Photography 08">
+              <span class="label">Photography — 08</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
+              <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
+              <span class="label">Photography — 09</span>
             </div>
           </div>
         </div>
@@ -3280,8 +3290,8 @@
         const result = await response.json();
 
         if (result.success) {
-          formResponse.textContent = isThai 
-            ? '✓ ส่งข้อความเรียบร้อยแล้ว! ขอบคุณที่ติดต่อครับ' 
+          formResponse.textContent = isThai
+            ? '✓ ส่งข้อความเรียบร้อยแล้ว! ขอบคุณที่ติดต่อครับ'
             : '✓ Message sent successfully! Thank you for contacting me.';
           formResponse.className = 'form-response success';
           contactForm.reset();
@@ -3308,14 +3318,27 @@
     // Project data details for the popup modal
     const projectData = [
       {
-        image: 'assets/graphic designer/Ad single post/Cambro.png',
+        image: 'assets/graphic designer/Dehydeator/1.png',
         images: [
-          'assets/graphic designer/Ad single post/Cambro.png',
-          'assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.png',
-          'assets/graphic designer/Ad single post/cutlery-50-off.png'
+          'assets/graphic designer/Dehydeator/1.png',
+          'assets/graphic designer/Dehydeator/2.png',
+          'assets/graphic designer/Dehydeator/3.png',
+          'assets/graphic designer/Dehydeator/4.png'
         ],
         tag: 'GRAPHIC DESIGN',
-        title: 'Ad Single Post'
+        title: 'Dehydrator'
+      },
+      {
+        image: 'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png',
+        images: [
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (2).png',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (3).png',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (4).png',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (5).png'
+        ],
+        tag: 'GRAPHIC DESIGN',
+        title: 'Table Craft Ribbed Ramekin'
       },
       {
         image: 'assets/graphic designer/Bigrig/1.png',
@@ -3329,6 +3352,18 @@
         title: 'Bigrig'
       },
       {
+        image: 'assets/graphic designer/Winsor/Windsor series (1).png',
+        images: [
+          'assets/graphic designer/Winsor/Windsor series (1).png',
+          'assets/graphic designer/Winsor/Windsor series (2).png',
+          'assets/graphic designer/Winsor/Windsor series (3).png',
+          'assets/graphic designer/Winsor/Windsor series (4).png',
+          'assets/graphic designer/Winsor/Windsor series (5).png'
+        ],
+        tag: 'GRAPHIC DESIGN',
+        title: 'ช้อนส้อม Windsor Series'
+      },
+      {
         image: 'assets/graphic designer/Cambro 50/1.jpg',
         images: [
           'assets/graphic designer/Cambro 50/1.jpg',
@@ -3338,17 +3373,6 @@
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Cambro 50%'
-      },
-      {
-        image: 'assets/graphic designer/Dehydeator/1.png',
-        images: [
-          'assets/graphic designer/Dehydeator/1.png',
-          'assets/graphic designer/Dehydeator/2.png',
-          'assets/graphic designer/Dehydeator/3.png',
-          'assets/graphic designer/Dehydeator/4.png'
-        ],
-        tag: 'GRAPHIC DESIGN',
-        title: 'Dehydrator'
       },
       {
         image: 'assets/graphic designer/EPP BOX/EPP-BOX-1.png',
@@ -3366,15 +3390,20 @@
         title: 'EPP BOX 50%'
       },
       {
-        image: 'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY @2x.png',
+        image: 'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png',
         images: [
+          'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png',
           'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY @2x.png',
           'assets/graphic designer/FAST FOOD TRAY/1014FF@2x.png',
-          'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png',
           'assets/graphic designer/FAST FOOD TRAY/1418FF@2x.png'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Fast Food Tray'
+      },
+      {
+        image: 'assets/graphic designer/chef guarantee.png',
+        tag: 'GRAPHIC DESIGN',
+        title: 'Chef Guarantee'
       },
       {
         image: 'assets/graphic designer/Meat Cutting/1.png',
@@ -3389,43 +3418,19 @@
         title: 'Meat Cutting'
       },
       {
-        image: 'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png',
-        images: [
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (2).png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (3).png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (4).png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (5).png'
-        ],
+        image: 'assets/graphic designer/Ad single post/Cambro.png',
         tag: 'GRAPHIC DESIGN',
-        title: 'Table Craft Ribbed Ramekin'
+        title: 'Ad Single Post'
       },
       {
-        image: 'assets/graphic designer/Winsor/Windsor series (1).png',
-        images: [
-          'assets/graphic designer/Winsor/Windsor series (1).png',
-          'assets/graphic designer/Winsor/Windsor series (2).png',
-          'assets/graphic designer/Winsor/Windsor series (3).png',
-          'assets/graphic designer/Winsor/Windsor series (4).png',
-          'assets/graphic designer/Winsor/Windsor series (5).png'
-        ],
+        image: 'assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.png',
         tag: 'GRAPHIC DESIGN',
-        title: 'ช้อนส้อม Windsor Series'
+        title: 'Oblong Double Wall Bowl'
       },
       {
-        image: 'assets/graphic designer/chef guarantee.png',
+        image: 'assets/graphic designer/Ad single post/cutlery-50-off.png',
         tag: 'GRAPHIC DESIGN',
-        title: 'Chef Guarantee'
-      },
-      {
-        image: 'assets/graphic designer/sale-50-1.png',
-        images: [
-          'assets/graphic designer/sale-50-1.png',
-          'assets/graphic designer/sale-50-2.png'
-        ],
-        fullSize: true,
-        tag: 'GRAPHIC DESIGN',
-        title: 'Sale 50%'
+        title: 'Cutlery 50% Off'
       },
       {
         videoSrc: 'assets/Motion Graphics/4990_1.mp4',
@@ -3466,6 +3471,16 @@
         image: 'assets/project_product.png',
         tag: 'WEB & UI DESIGN',
         title: 'Mobile App Interface & Interaction Design'
+      },
+      {
+        image: 'assets/project_event.png',
+        tag: 'EVENT DESIGN',
+        title: 'Creative Exhibition Stage & Coordination'
+      },
+      {
+        image: 'assets/project_miscellaneous.png',
+        tag: 'MISCELLANEOUS',
+        title: 'Miscellaneous Creative Projects'
       },
       {
         image: 'assets/Photography/R0009094.jpg',
@@ -3511,16 +3526,6 @@
         image: 'assets/Photography/R0002585.jpg',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 09'
-      },
-      {
-        image: 'assets/project_event.png',
-        tag: 'EVENT DESIGN',
-        title: 'Creative Exhibition Stage & Coordination'
-      },
-      {
-        image: 'assets/project_miscellaneous.png',
-        tag: 'MISCELLANEOUS',
-        title: 'Miscellaneous Creative Projects'
       }
     ];
 
