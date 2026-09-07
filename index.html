@@ -1212,6 +1212,197 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
+    /* ---------- GRAPHIC DESIGN SUB-DIVIDER (HAPPY METAL) ---------- */
+    .project-sub-divider {
+      margin: 52px 0 28px 0;
+      padding: clamp(24px, 3.2vw, 36px);
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+
+    .project-sub-divider::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, rgba(var(--accent-rgb), 0.45) 45%, transparent 100%);
+    }
+
+    .project-sub-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(24px, 3.5vw, 44px);
+      align-items: center;
+    }
+
+    .project-sub-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-sub-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sub-badge-featured {
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.35);
+    }
+
+    .sub-badge-tag {
+      background: rgba(var(--accent-rgb), 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+
+    .sub-badge-count {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border: 1px solid var(--line);
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 4px 11px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+    }
+
+    .light-theme .sub-badge-count {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .project-sub-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.3vw, 30px);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .project-sub-subtitle {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      margin: -2px 0 2px 0;
+    }
+
+    .project-sub-meta-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .project-sub-meta-tags .ui-tag-pill {
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .project-sub-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-left: 1px solid var(--line);
+      padding-left: clamp(20px, 3vw, 40px);
+    }
+
+    .project-sub-desc {
+      font-family: var(--font-body);
+      font-size: clamp(13px, 1.05vw, 14.5px);
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .project-sub-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sub-link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      color: #ffffff;
+      background: var(--accent);
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.25);
+      width: fit-content;
+    }
+
+    .sub-link-pill:hover {
+      background: rgba(var(--accent-rgb), 0.88);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(var(--accent-rgb), 0.4);
+    }
+
+    .sub-ref-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+    }
+
+    .light-theme .sub-ref-badge {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    @media (max-width: 900px) {
+      .project-sub-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .project-sub-right {
+        border-left: none;
+        border-top: 1px solid var(--line);
+        padding-left: 0;
+        padding-top: 18px;
+      }
+    }
+
     /* ---------- MODAL GRID GALLERY ---------- */
     .modal-image-gallery {
       display: grid;
@@ -1354,6 +1545,500 @@
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);
+    }
+
+    /* ---------- VISUAL MERCHANDISING SHOWCASE BOARD (MATCHING SPEC) ---------- */
+    .vm-showcase-board {
+      background: #FFFFFF;
+      color: #111827;
+      border-radius: 28px;
+      padding: clamp(24px, 4vw, 48px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: grid;
+      grid-template-columns: 35% 1fr;
+      grid-template-rows: auto auto;
+      gap: clamp(24px, 3.5vw, 44px) clamp(28px, 4vw, 56px);
+      align-items: center;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .vm-showcase-board:hover {
+      box-shadow: 0 28px 64px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Top-Left: 3D Render */
+    .vm-cell-render {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      border-radius: 16px;
+      padding: 8px;
+    }
+
+    .vm-cell-render img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Top-Right: Project Text */
+    .vm-cell-text {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .vm-project-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.3vw, 32px);
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.35;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .vm-project-desc {
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.1vw, 16.5px);
+      color: #374151;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+
+    /* Bottom-Left: Real Store Photo */
+    .vm-cell-store {
+      grid-column: 1;
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    }
+
+    .vm-cell-store img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      border-radius: 20px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Bottom-Right: 3 Options Render */
+    .vm-cell-variants {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      border-radius: 16px;
+      padding: 8px;
+    }
+
+    .vm-cell-variants img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Interactive Zoom Badges & Hover States */
+    .vm-clickable-item {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .vm-clickable-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .vm-cell-store:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .vm-zoom-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+
+    .vm-clickable-item:hover .vm-zoom-badge {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .vm-showcase-board {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 24px 20px;
+        gap: 28px;
+      }
+
+      .vm-cell-render {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .vm-cell-text {
+        grid-column: 1;
+        grid-row: 2;
+        padding-left: 0;
+      }
+
+      .vm-cell-store {
+        grid-column: 1;
+        grid-row: 3;
+        max-width: 340px;
+        margin: 0 auto;
+      }
+
+      .vm-cell-variants {
+        grid-column: 1;
+        grid-row: 4;
+      }
+    }
+
+    /* ---------- WEB & UI DESIGN SHOWCASE (HAPPY METAL) ---------- */
+    .ui-showcase-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .ui-project-intro {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      padding: clamp(24px, 3.5vw, 40px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+
+    .ui-project-intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #E52E2D, #FF6B4A, transparent);
+      opacity: 0.9;
+    }
+
+    .ui-project-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .ui-badge-featured {
+      background: #E52E2D;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 14px rgba(229, 46, 45, 0.4);
+    }
+
+    .ui-badge-tag {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      border: 1px solid var(--panel-border);
+    }
+
+    .ui-badge-type {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .ui-project-header-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ui-project-name {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .ui-project-summary {
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.1vw, 16px);
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .ui-project-meta-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .ui-tag-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--panel-border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink);
+      opacity: 0.85;
+      transition: all 0.25s ease;
+    }
+
+    .ui-tag-pill:hover {
+      border-color: #E52E2D;
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    /* 4-Item Browser Grid (2x2 on desktop, 1-col on mobile) */
+    .ui-browser-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(20px, 3vw, 32px);
+    }
+
+    .ui-browser-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .ui-browser-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(229, 46, 45, 0.5);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4), 0 0 24px rgba(229, 46, 45, 0.18);
+    }
+
+    .ui-browser-bar {
+      background: rgba(18, 18, 20, 0.85);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--panel-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .light-theme .ui-browser-bar {
+      background: rgba(240, 239, 235, 0.9);
+    }
+
+    .ui-browser-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .ui-browser-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .ui-browser-dots .dot.red {
+      background: #ff5f56;
+    }
+
+    .ui-browser-dots .dot.yellow {
+      background: #ffbd2e;
+    }
+
+    .ui-browser-dots .dot.green {
+      background: #27c93f;
+    }
+
+    .ui-browser-url {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      flex-grow: 1;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .light-theme .ui-browser-url {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .ui-browser-page-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #E52E2D;
+      font-weight: 600;
+      margin-left: auto;
+      letter-spacing: 0.05em;
+    }
+
+    .ui-browser-screen {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      background: #0B0B0C;
+    }
+
+    .ui-browser-screen img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .ui-browser-card:hover .ui-browser-screen img {
+      transform: translateY(-8%) scale(1.02);
+    }
+
+    .ui-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7, 7, 8, 0.75) 0%, rgba(7, 7, 8, 0.2) 40%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .ui-browser-card:hover .ui-card-overlay {
+      opacity: 1;
+    }
+
+    .ui-zoom-btn {
+      background: #E52E2D;
+      color: #ffffff;
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(229, 46, 45, 0.5);
+      transform: translateY(12px);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      letter-spacing: 0.03em;
+    }
+
+    .ui-browser-card:hover .ui-zoom-btn {
+      transform: translateY(0);
+    }
+
+    .ui-browser-footer {
+      padding: 16px 20px;
+      background: var(--panel-bg);
+      border-top: 1px solid var(--panel-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ui-screen-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .ui-screen-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px 9px;
+      border-radius: 6px;
+      border: 1px solid var(--panel-border);
+    }
+
+    @media (max-width: 900px) {
+      .ui-browser-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .ui-browser-screen {
+        height: 320px;
+      }
     }
 
     /* ---------- THE STUDIO METHOD ---------- */
@@ -2527,6 +3212,7 @@
               promotional artwork, single posts, and product graphics.</p>
           </div>
           <div class="grid-portraits">
+            <!-- GRAPHIC DESIGN PROJECTS (15 ITEMS) -->
             <div class="portrait reveal reveal-scale" data-index="0" role="button" tabindex="0">
               <img src="assets/graphic designer/Dehydeator/1.png" alt="Dehydrator">
               <span class="label">Dehydrator</span>
@@ -2577,6 +3263,137 @@
               <img src="assets/graphic designer/Ad single post/cutlery-50-off.png" alt="Cutlery 50% Off">
               <span class="label">Cutlery 50% Off</span>
             </div>
+            <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
+              <img src="assets/graphic designer/Monin.png" alt="Monin Syrup">
+              <span class="label">Monin Syrup</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
+              <img src="assets/graphic designer/HounoInvitationCard.jpg" alt="Houno Combi Day 2026 Invitation Card">
+              <span class="label">Houno Invitation Card</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+              <img src="assets/graphic designer/IMG_0480.png" alt="Lunch Promotion Pizza Poster">
+              <span class="label">Lunch Promotion</span>
+            </div>
+          </div>
+
+          <!-- SUB-PROJECT SECTION: HAPPY METAL -->
+          <div class="project-sub-divider reveal" id="project-happy-metal-kv">
+            <div class="project-sub-grid">
+              <div class="project-sub-left">
+                <div class="project-sub-badge-row">
+                  <span class="sub-badge-featured" data-en="★ KEY VISUAL SHOWCASE" data-th="★ KEY VISUAL SHOWCASE">★ KEY VISUAL SHOWCASE</span>
+                  <span class="sub-badge-tag">HAPPY METAL</span>
+                  <span class="sub-badge-count" data-en="18 Items" data-th="18 ชิ้นงาน">18 Items</span>
+                </div>
+                <h4 class="project-sub-title" data-en="Happy Metal — Key Visual (KV)"
+                  data-th="Happy Metal — Key Visual (KV)">Happy Metal — Key Visual (KV)</h4>
+                <p class="project-sub-subtitle" data-en="Industrial Tools & Hardware Website Graphics"
+                  data-th="ภาพกราฟิกเครื่องมือช่าง & งานเชื่อมสำหรับหน้าเว็บไซต์">Industrial Tools & Hardware Website Graphics</p>
+                <div class="project-sub-meta-tags">
+                  <span class="ui-tag-pill">Key Visual (KV)</span>
+                  <span class="ui-tag-pill">Website Creative</span>
+                  <span class="ui-tag-pill">E-Catalog Assets</span>
+                </div>
+              </div>
+              <div class="project-sub-right">
+                <p class="project-sub-desc"
+                  data-en="Key Visual (KV) creatives, commercial website banners, and e-commerce product showcase designs tailored for the Happy Metal official website and catalog."
+                  data-th="ชุดภาพ Key Visual (KV) แบนเนอร์หน้าเว็บไซต์ และภาพกราฟิกนำเสนอผลิตภัณฑ์สำหรับเว็บไซต์และระบบ E-Commerce แบรนด์ Happy Metal อุปกรณ์เครื่องมือช่างและงานเชื่อมครบวงจร">
+                  Key Visual (KV) creatives, commercial website banners, and e-commerce product showcase designs tailored for the Happy Metal official website and catalog.
+                </p>
+                <div class="project-sub-actions">
+                  <a href="#category-web-ui" class="sub-link-pill" data-en="View Website UI/UX Design ↗" data-th="ดูงานออกแบบเว็บไซต์ UI/UX ↗">View Website UI/UX Design ↗</a>
+                  <span class="sub-ref-badge" data-en="Category 05 Project" data-th="เชื่อมโยง หมวด 05">Category 05 Project</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HAPPY METAL PRODUCT GRAPHICS (18 ITEMS) -->
+          <div class="grid-portraits">
+            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg" alt="Corolla ใบตัด 4 นิ้ว">
+              <span class="label">Corolla ใบตัด 4"</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.jpg" alt="Keenness ใบตัดหญ้า 12 นิ้ว">
+              <span class="label">Keenness ใบตัดหญ้า 12"</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/solex 425ss .jpg" alt="Solex กุญแจประตูรั้ว 425SS">
+              <span class="label">Solex กุญแจประตูรั้ว</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).jpg" alt="Sumo ใบเจียรอ่อน 80J">
+              <span class="label">Sumo ใบเจียรอ่อน 80J</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).jpg"
+                alt="เกจ์ซีโอทู เรกกูเรเตอร์ 36V">
+              <span class="label">เกจ์ซีโอทู 36V</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ใบเจียร (1).jpg" alt="3M ใบเจียรกรีนคอร์ป 4 นิ้ว">
+              <span class="label">3M ใบเจียร 4"</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).jpg"
+                alt="3M ใบตัดเจียรแบบบาง 3.5mm">
+              <span class="label">3M ตัดเจียรบาง 3.5mm</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).jpg"
+                alt="ขายึดราวผ้าม่าน สแตนเลส 304">
+              <span class="label">ขายึดราวผ้าม่าน 304</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).jpg"
+                alt="ขาล้อเดี่ยว ตราปลาทอง 2 นิ้ว">
+              <span class="label">ขาล้อปลาทอง 2"</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.jpg"
+                alt="ชุดล้อคู่ สแตนเลส 304 2.5 นิ้ว">
+              <span class="label">ชุดล้อคู่ สแตนเลส 2.5"</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).jpg"
+                alt="น้ำมันครอบจักรวาล 450ml">
+              <span class="label">น้ำมันครอบจักรวาล 450ml</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.jpg" alt="SBC ปุ๊กเหล็ก SUG">
+              <span class="label">ปุ๊กเหล็ก SUG</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).jpg"
+                alt="Yawata ลวดเชื่อมฟลักซ์คอร์ 71T-1">
+              <span class="label">ลวดเชื่อม 71T-1</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).jpg"
+                alt="ลวดเชื่อมสแตนเลส E308LT0-3">
+              <span class="label">ลวดเชื่อมสแตนเลส E308L</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).jpg"
+                alt="Kovet ลวดเชื่อมไฟฟ้า Ni98">
+              <span class="label">ลวดเชื่อมไฟฟ้า Ni98</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).jpg"
+                alt="ลวดสแตนเลส 304 ม้วน 1.6mm">
+              <span class="label">ลวดสแตนเลสม้วน 1.6mm</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="31" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).jpg" alt="หัวเชื่อมแก๊ส 961">
+              <span class="label">หัวเชื่อมแก๊ส 961</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="32" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).jpg" alt="หินเจียรรูเกลียว">
+              <span class="label">หินเจียรรูเกลียว</span>
+            </div>
           </div>
         </div>
 
@@ -2595,27 +3412,27 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
               <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">4990 Promo — 02-A</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Mayday Sale — 02-B</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Xiaomi 15T Pro — 02-C</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 04</span>
               <span class="label">Bottle Sprayer — 02-D</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="37" role="button" tabindex="0">
               <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 05</span>
               <span class="label">DE370 Commercial — 02-E</span>
@@ -2637,11 +3454,40 @@
               displays, retail shelf arrangements, and spatial product
               presentations.</p>
           </div>
-          <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
-              <img src="assets/project_display.png"
-                alt="Premium luxury retail fashion store window display presentation">
-              <span class="label">Visual Merchandising — 03</span>
+          <div class="vm-showcase-board reveal reveal-scale">
+            <!-- Row 1, Col 1: 3D Render Model -->
+            <div class="vm-cell-render vm-clickable-item" data-index="38" role="button" tabindex="0"
+              title="Click to view full presentation">
+              <img src="assets/Visual Merchandising/mo2.png" alt="โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อม - 3D Render">
+              <span class="vm-zoom-badge">🔍 Zoom</span>
+            </div>
+
+            <!-- Row 1, Col 2: Project Title & Description -->
+            <div class="vm-cell-text">
+              <h4 class="vm-project-title" data-en="Cutlery Shelf Display Design Project"
+                data-th="โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อมให้น่าสนใจ">โปรเจค
+                ออกแบบสำหรับชั้นวางสินค้าช้อนส้อมให้น่าสนใจ</h4>
+              <p class="vm-project-desc"
+                data-en="Retail display design project for cutlery products. Engineered with a 4-tier shelving structure and a clear brand header (&quot;Chon Som&quot;) for distinct visual communication. Features promotional -50% discount signage and dedicated series divider tags (Windsor, Colton, Candy, etc.) allowing customers to browse and select products effortlessly, ready for actual on-site retail installation."
+                data-th="โปรเจคออกแบบ สำหรับชั้นวางสินค้าช้อนส้อม โดยออกแบบให้มีโครงสร้าง 4 ชั้นวาง พร้อมป้ายหัวชั้น (Header) ระบุชื่อแบรนด์ &quot;ช้อน ส้อม&quot; ที่สื่อสารได้ชัดเจน ออกแบบกราฟิกป้ายลดราคา (-50%) และป้ายแยกซีรีส์สินค้าแต่ละแถว (Windsor, Colton, Candy ฯลฯ) เพื่อให้ลูกค้าเลือกซื้อสินค้าได้ง่ายและรวดเร็ว พร้อมนำไปติดตั้งจริง ณ หน้าร้าน">
+                โปรเจคออกแบบ สำหรับชั้นวางสินค้าช้อนส้อม โดยออกแบบให้มีโครงสร้าง 4 ชั้นวาง พร้อมป้ายหัวชั้น (Header)
+                ระบุชื่อแบรนด์ "ช้อน ส้อม" ที่สื่อสารได้ชัดเจน ออกแบบกราฟิกป้ายลดราคา (-50%)
+                และป้ายแยกซีรีส์สินค้าแต่ละแถว (Windsor, Colton, Candy ฯลฯ)
+                เพื่อให้ลูกค้าเลือกซื้อสินค้าได้ง่ายและรวดเร็ว พร้อมนำไปติดตั้งจริง ณ หน้าร้าน</p>
+            </div>
+
+            <!-- Row 2, Col 1: Store Installation Photo -->
+            <div class="vm-cell-store vm-clickable-item" data-index="38" role="button" tabindex="0"
+              title="Click to view full presentation">
+              <img src="assets/Visual Merchandising/sddfdf1645.jpg" alt="ติดตั้งจริง ณ หน้าร้าน">
+              <span class="vm-zoom-badge">🔍 Zoom</span>
+            </div>
+
+            <!-- Row 2, Col 2: 3 Options Render Graphic -->
+            <div class="vm-cell-variants vm-clickable-item" data-index="38" role="button" tabindex="0"
+              title="Click to view full presentation">
+              <img src="assets/Visual Merchandising/mo1.jpg" alt="รูปแบบดีไซน์ชั้นวางสินค้า 1, 2, 3">
+              <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
           </div>
         </div>
@@ -2661,7 +3507,7 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="39" role="button" tabindex="0">
               <img src="assets/project_brand.png" alt="Brand Concept Guidelines presentation sheet">
               <span class="label">Branding — 04</span>
             </div>
@@ -2669,22 +3515,158 @@
         </div>
 
         <!-- CATEGORY 05: WEB & UI DESIGN -->
-        <div class="portfolio-category-block reveal" data-category="web-ui">
+        <div class="portfolio-category-block reveal" data-category="web-ui" id="category-web-ui">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">05 / CATEGORY</span>
               <h3 class="category-title" data-en="Web & UI Design" data-th="เว็บ & ดีไซน์ UI">Web & UI Design</h3>
             </div>
             <p class="category-desc"
-              data-en="Mobile app interface design, web user experience, and interactive digital interfaces."
-              data-th="การออกแบบอินเทอร์เฟซแอปมือถือ ประสบการณ์ผู้ใช้เว็บ และสื่อดิจิทัลโต้ตอบ">Mobile app interface
-              design, web user experience, and interactive digital
-              interfaces.</p>
+              data-en="Website UI/UX design, e-catalog architecture, and interactive digital web interfaces."
+              data-th="การออกแบบ UI/UX เว็บไซต์ โครงสร้างแคตตาล็อกสินค้า และอินเทอร์เฟซเว็บดิจิทัล">Website UI/UX
+              design, e-catalog architecture, and interactive digital web interfaces.</p>
           </div>
-          <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
-              <img src="assets/project_product.png" alt="Mobile UI app interface design mockup">
-              <span class="label">Web & UI Design — 05</span>
+
+          <!-- HAPPY METAL FEATURED PROJECT SHOWCASE -->
+          <div class="ui-showcase-container">
+            <div class="ui-project-intro reveal">
+              <div class="ui-project-badge-group">
+                <span class="ui-badge-featured">★ FEATURED UI/UX PROJECT</span>
+                <span class="ui-badge-tag">HAPPY METAL</span>
+                <a href="#project-happy-metal-kv" class="ui-badge-tag" style="border-color: rgba(229,46,45,0.4); color: #FF6B4A; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Happy Metal Key Visuals">KV WEBSITE & ASSETS ↗</a>
+                <span class="ui-badge-type" data-en="Industrial Hardware & Tools Website"
+                  data-th="เว็บไซต์อุปกรณ์เครื่องมือช่าง">เว็บไซต์อุปกรณ์เครื่องมือช่าง</span>
+              </div>
+              <div class="ui-project-header-flex">
+                <div class="ui-project-title-area">
+                  <h4 class="ui-project-name" data-en="Happy Metal — Industrial Tools & Hardware Website"
+                    data-th="Happy Metal — เว็บไซต์อุปกรณ์เครื่องมือช่าง & งานเชื่อม">Happy Metal —
+                    เว็บไซต์อุปกรณ์เครื่องมือช่าง & งานเชื่อม</h4>
+                  <p class="ui-project-summary"
+                    data-en="UI/UX web design for Happy Metal, specializing in welding equipment, cutting tools, and industrial hardware. Engineered with clear information architecture, accessible product categorization, and a bold industrial aesthetic across 4 core desktop page templates."
+                    data-th="ออกแบบ UI/UX สำหรับเว็บไซต์ Happy Metal ศูนย์รวมอุปกรณ์เครื่องมือช่างและงานเชื่อมครบวงจร เน้นการวางโครงสร้างข้อมูลสินค้า (Information Architecture) ให้ค้นหาง่าย ชัดเจน ภาพลักษณ์แข็งแกร่ง ทันสมัย ครอบคลุม 4 หน้าหลัก: Homepage, About Us, Product Catalog และ Channels">
+                    ออกแบบ UI/UX สำหรับเว็บไซต์ Happy Metal ศูนย์รวมอุปกรณ์เครื่องมือช่างและงานเชื่อมครบวงจร
+                    เน้นการวางโครงสร้างข้อมูลสินค้า (Information Architecture) ให้ค้นหาง่าย ชัดเจน ภาพลักษณ์แข็งแกร่ง
+                    ทันสมัย ครอบคลุม 4 หน้าหลัก: Homepage, About Us, Product Catalog และ Channels
+                  </p>
+                </div>
+                <div class="ui-project-meta-tags">
+                  <div class="ui-tag-pill">UI / UX Design</div>
+                  <div class="ui-tag-pill">Key Visual (KV) Integrated</div>
+                  <div class="ui-tag-pill">Web Architecture</div>
+                  <div class="ui-tag-pill">E-Catalog Layout</div>
+                  <div class="ui-tag-pill">4 Core Templates</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 BROWSER MOCKUP CARDS GRID -->
+            <div class="ui-browser-grid">
+              <!-- Screen 01: Homepage -->
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="0"
+                role="button" tabindex="0" title="Click to view full screen">
+                <div class="ui-browser-bar">
+                  <div class="ui-browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="ui-browser-url">happymetal.com/index.html</div>
+                  <div class="ui-browser-page-num">01 / HOME</div>
+                </div>
+                <div class="ui-browser-screen">
+                  <img src="assets/Web & ui Design/index.html (1).png" alt="Happy Metal - Homepage UI Design"
+                    loading="lazy">
+                  <div class="ui-card-overlay">
+                    <span class="ui-zoom-btn">🔍 View Full Page</span>
+                  </div>
+                </div>
+                <div class="ui-browser-footer">
+                  <span class="ui-screen-title" data-en="01. Homepage — Hero & Highlights"
+                    data-th="01. Homepage — หน้าแรก & สินค้าไฮไลต์">01. Homepage — หน้าแรก & สินค้าไฮไลต์</span>
+                  <span class="ui-screen-badge">Main Page</span>
+                </div>
+              </div>
+
+              <!-- Screen 02: About Us -->
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="1"
+                role="button" tabindex="0" title="Click to view full screen">
+                <div class="ui-browser-bar">
+                  <div class="ui-browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="ui-browser-url">happymetal.com/about.html</div>
+                  <div class="ui-browser-page-num">02 / ABOUT</div>
+                </div>
+                <div class="ui-browser-screen">
+                  <img src="assets/Web & ui Design/about.html (2).png" alt="Happy Metal - About Us UI Design"
+                    loading="lazy">
+                  <div class="ui-card-overlay">
+                    <span class="ui-zoom-btn">🔍 View Full Page</span>
+                  </div>
+                </div>
+                <div class="ui-browser-footer">
+                  <span class="ui-screen-title" data-en="02. About Us — Company Profile"
+                    data-th="02. About Us — เกี่ยวกับบริษัท & วิสัยทัศน์">02. About Us — เกี่ยวกับบริษัท &
+                    วิสัยทัศน์</span>
+                  <span class="ui-screen-badge">Story</span>
+                </div>
+              </div>
+
+              <!-- Screen 03: Product Catalog -->
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="2"
+                role="button" tabindex="0" title="Click to view full screen">
+                <div class="ui-browser-bar">
+                  <div class="ui-browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="ui-browser-url">happymetal.com/catalog.html</div>
+                  <div class="ui-browser-page-num">03 / CATALOG</div>
+                </div>
+                <div class="ui-browser-screen">
+                  <img src="assets/Web & ui Design/catalog.html (3).png" alt="Happy Metal - Product Catalog UI Design"
+                    loading="lazy">
+                  <div class="ui-card-overlay">
+                    <span class="ui-zoom-btn">🔍 View Full Page</span>
+                  </div>
+                </div>
+                <div class="ui-browser-footer">
+                  <span class="ui-screen-title" data-en="03. Catalog — Tool Categories & Specs"
+                    data-th="03. Catalog — หมวดหมู่อุปกรณ์ & สเปกสินค้า">03. Catalog — หมวดหมู่อุปกรณ์ &
+                    สเปกสินค้า</span>
+                  <span class="ui-screen-badge">Catalog</span>
+                </div>
+              </div>
+
+              <!-- Screen 04: Channels / Contact -->
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="3"
+                role="button" tabindex="0" title="Click to view full screen">
+                <div class="ui-browser-bar">
+                  <div class="ui-browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="ui-browser-url">happymetal.com/channels.html</div>
+                  <div class="ui-browser-page-num">04 / CHANNELS</div>
+                </div>
+                <div class="ui-browser-screen">
+                  <img src="assets/Web & ui Design/channels.html (4).png"
+                    alt="Happy Metal - Channels & Contact UI Design" loading="lazy">
+                  <div class="ui-card-overlay">
+                    <span class="ui-zoom-btn">🔍 View Full Page</span>
+                  </div>
+                </div>
+                <div class="ui-browser-footer">
+                  <span class="ui-screen-title" data-en="04. Channels — Stores & Contact"
+                    data-th="04. Channels — ช่องทางจัดจำหน่าย & ติดต่อ">04. Channels — ช่องทางจัดจำหน่าย & ติดต่อ</span>
+                  <span class="ui-screen-badge">Channels</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2703,7 +3685,7 @@
               lighting layouts, and spatial event coordination.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="41" role="button" tabindex="0">
               <img src="assets/project_event.png"
                 alt="Premium art gallery or product launch exhibition event stage design">
               <span class="label">Event & Coord — 06</span>
@@ -2725,7 +3707,7 @@
               multi-medium assets, and independent design showcases.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="42" role="button" tabindex="0">
               <img src="assets/project_miscellaneous.png" alt="Miscellaneous design collection and creative projects">
               <span class="label">Miscellaneous — 07</span>
             </div>
@@ -2746,39 +3728,39 @@
               photography.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="43" role="button" tabindex="0">
               <img src="assets/Photography/R0009094.jpg" alt="Portrait Photography 01">
               <span class="label">Photography — 01</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="44" role="button" tabindex="0">
               <img src="assets/Photography/R0009442.jpg" alt="Portrait Photography 02">
               <span class="label">Photography — 02</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" role="button" tabindex="0">
               <img src="assets/Photography/R0009444.jpg" alt="Portrait Photography 03">
               <span class="label">Photography — 03</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
               <img src="assets/Photography/R0009501.jpg" alt="Portrait Photography 04">
               <span class="label">Photography — 04</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
               <img src="assets/Photography/R0009641.jpg" alt="Portrait Photography 05">
               <span class="label">Photography — 05</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
               <img src="assets/Photography/R0009892.jpg" alt="Portrait Photography 06">
               <span class="label">Photography — 06</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
               <img src="assets/Photography/R0002090.jpg" alt="Portrait Photography 07">
               <span class="label">Photography — 07</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="50" role="button" tabindex="0">
               <img src="assets/Photography/R0002465.jpg" alt="Portrait Photography 08">
               <span class="label">Photography — 08</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="51" role="button" tabindex="0">
               <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
               <span class="label">Photography — 09</span>
             </div>
@@ -3433,6 +4415,111 @@
         title: 'Cutlery 50% Off'
       },
       {
+        image: 'assets/graphic designer/Monin.png',
+        tag: 'GRAPHIC DESIGN',
+        title: 'Monin Syrup'
+      },
+      {
+        image: 'assets/graphic designer/HounoInvitationCard.jpg',
+        tag: 'GRAPHIC DESIGN',
+        title: 'Houno Combi Day 2026 Invitation Card'
+      },
+      {
+        image: 'assets/graphic designer/IMG_0480.png',
+        tag: 'GRAPHIC DESIGN',
+        title: 'Lunch Promotion Pizza Poster'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'Corolla — ใบตัดสแตนเลส/ตัดเหล็ก 4 นิ้ว'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'Keenness — ใบตัดหญ้า 12 นิ้ว ความหนา 1.6 มม.'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/solex 425ss .jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'Solex 425SS — กุญแจประตูรั้ว สแตนเลสเกรด 304'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'Sumo 80J — ใบเจียรอ่อนตัว 4" x 2'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'CO2 Regulator — เกจ์ซีโอทู เรกกูเรเตอร์ Heater 36V'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ใบเจียร (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: '3M Green Corps — ใบเจียร 4" #36 ความหนา 3mm'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: '3M General Purpose — ใบตัดและเจียรบาง 3.5mm'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'ขายึดราวผ้าม่าน — สแตนเลสเกรด 304'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'ตราปลาทอง — ขาล้อเดี่ยว เหล็กชุบซิงค์ 2 นิ้ว'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'ชุดล้อคู่ — สแตนเลส 304 ขนาด 2.5 นิ้ว'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'MAX — น้ำมันครอบจักรวาล Multi Lubricant Spray 450ml'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'SBC — ปุ๊กเหล็ก SUG Sleeve Anchor Bolt'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'Yawata 71T-1 — ลวดเชื่อมฟลักซ์คอร์ 15kg'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'E308LT0-3 — ลวดเชื่อมสแตนเลสฟลักซ์คอร์'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'Kovet Ni98 — ลวดเชื่อมไฟฟ้าเหล็กหล่อ'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'ลวดสแตนเลส 304 — ชนิดม้วน 0.5 กก. (1.6mm)'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: '961 Welding Torch — หัวเชื่อมแก๊ส/หัวพ่นไฟอเนกประสงค์'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).jpg',
+        tag: 'KV WEBSITE — HAPPY METAL',
+        title: 'หินเจียรรูเกลียว — Mounted Grinding Wheel'
+      },
+      {
         videoSrc: 'assets/Motion Graphics/4990_1.mp4',
         tag: 'VIDEO & MOTION DESIGN',
         title: '4990 Promotional Motion Video'
@@ -3458,9 +4545,16 @@
         title: 'DE370 Motion Commercial Showcase'
       },
       {
-        image: 'assets/project_display.png',
+        image: 'assets/Visual Merchandising/mo2.png',
+        images: [
+          'assets/Visual Merchandising/mo2.png',
+          'assets/Visual Merchandising/sddfdf1645.jpg',
+          'assets/Visual Merchandising/mo1.jpg'
+        ],
+        fullSize: true,
         tag: 'VISUAL MERCHANDISING',
-        title: 'Luxury Store Window Exhibition'
+        title: 'โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อมให้น่าสนใจ',
+        desc: 'โปรเจคออกแบบ สำหรับชั้นวางสินค้าช้อนส้อม โดยออกแบบให้มีโครงสร้าง 4 ชั้นวาง พร้อมป้ายหัวชั้น (Header) ระบุชื่อแบรนด์ "ช้อน ส้อม" ที่สื่อสารได้ชัดเจน ออกแบบกราฟิกป้ายลดราคา (-50%) และป้ายแยกซีรีส์สินค้าแต่ละแถว (Windsor, Colton, Candy ฯลฯ) เพื่อให้ลูกค้าเลือกซื้อสินค้าได้ง่ายและรวดเร็ว พร้อมนำไปติดตั้งจริง ณ หน้าร้าน'
       },
       {
         image: 'assets/project_brand.png',
@@ -3468,9 +4562,20 @@
         title: 'STVDIO NORD: Premium Brand Architecture'
       },
       {
-        image: 'assets/project_product.png',
+        image: 'assets/Web & ui Design/index.html (1).png',
+        images: [
+          'assets/Web & ui Design/index.html (1).png',
+          'assets/Web & ui Design/about.html (2).png',
+          'assets/Web & ui Design/catalog.html (3).png',
+          'assets/Web & ui Design/channels.html (4).png'
+        ],
+        fullSize: true,
         tag: 'WEB & UI DESIGN',
-        title: 'Mobile App Interface & Interaction Design'
+        title: 'Happy Metal — เว็บไซต์อุปกรณ์เครื่องมือช่าง',
+        desc: 'โปรเจคออกแบบ UI/UX เว็บไซต์ Happy Metal จัดจำหน่ายอุปกรณ์เครื่องมือช่าง งานเชื่อม และฮาร์ดแวร์อุตสาหกรรม โดยเน้นการจัดวางโครงสร้างข้อมูลสินค้า (Information Architecture) ให้ค้นหาง่าย รวดเร็ว ดีไซน์ทันสมัย ตอบโจทย์ทั้งช่างมืออาชีพและโรงงานอุตสาหกรรม ครอบคลุม 4 หน้าหลัก: Homepage (หน้าแรก), About Us (เกี่ยวกับเรา), Product Catalog (แคตตาล็อกสินค้า) และ Distribution Channels (ช่องทางการจัดจำหน่าย)',
+        client: 'Happy Metal',
+        role: 'UI/UX & Web Design',
+        year: '2024'
       },
       {
         image: 'assets/project_event.png',
@@ -3542,7 +4647,7 @@
 
 
     // Function to open modal
-    function openModal(index) {
+    function openModal(index, imageIndex) {
       const data = projectData[index];
       if (!data) return;
 
@@ -3553,12 +4658,20 @@
         modalMedia.innerHTML = `
           <div class="${galleryClass}">
             ${data.images.map((imgSrc, i) => `
-              <div class="modal-image-item">
+              <div class="modal-image-item" data-item-idx="${i}">
                 <img src="${imgSrc}" alt="${data.title} ${i + 1}" style="width: 100%; height: auto; display: block; object-fit: contain;" loading="lazy">
               </div>
             `).join('')}
           </div>
         `;
+        if (typeof imageIndex === 'number') {
+          setTimeout(() => {
+            const targetItem = modalMedia.querySelector(`.modal-image-item[data-item-idx="${imageIndex}"]`);
+            if (targetItem) {
+              targetItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 120);
+        }
       } else if (data.videoSrc) {
         modalMedia.innerHTML = `
           <div class="modal-single-stage">
@@ -3656,22 +4769,26 @@
       });
     });
 
-    // Attach click and keydown events to project portraits using data-index
-    const portraits = document.querySelectorAll('.portrait[data-index]');
+    // Attach click and keydown events to project portraits and interactive showcase items using data-index
+    const portraits = document.querySelectorAll('.portrait[data-index], .vm-clickable-item[data-index]');
     portraits.forEach((portrait) => {
       const idxAttr = portrait.getAttribute('data-index');
       const index = idxAttr !== null ? parseInt(idxAttr, 10) : 0;
 
       // Click event
       portrait.addEventListener('click', () => {
-        openModal(index);
+        const imgIdxAttr = portrait.getAttribute('data-img-idx');
+        const imgIdx = imgIdxAttr !== null ? parseInt(imgIdxAttr, 10) : undefined;
+        openModal(index, imgIdx);
       });
 
       // Keydown event (Enter / Space) for accessibility
       portrait.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openModal(index);
+          const imgIdxAttr = portrait.getAttribute('data-img-idx');
+          const imgIdx = imgIdxAttr !== null ? parseInt(imgIdxAttr, 10) : undefined;
+          openModal(index, imgIdx);
         }
       });
     });
