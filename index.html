@@ -348,19 +348,23 @@
       transition: color 0.4s ease;
     }
 
-    .nav-links a {
+    .nav-links > a,
+    .nav-item-dropdown > a {
       position: relative;
       padding: 4px 0;
       color: inherit;
       transition: color .2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.is-active {
+    .nav-links > a:hover,
+    .nav-item-dropdown > a:hover,
+    .nav-links > a.is-active,
+    .nav-item-dropdown > a.is-active {
       color: var(--ink);
     }
 
-    .nav-links a.is-active::after {
+    .nav-links > a.is-active::after,
+    .nav-item-dropdown > a.is-active::after {
       content: '';
       position: absolute;
       left: 50%;
@@ -384,6 +388,110 @@
         transform: translateX(-50%) scale(1);
         opacity: 1;
       }
+    }
+
+    /* ---------- HEADER PROJECTS DROPDOWN MENU ---------- */
+    .nav-item-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-link-projects {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .nav-arrow {
+      font-size: 9px;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease;
+      opacity: 0.7;
+    }
+
+    .nav-item-dropdown:hover .nav-arrow,
+    .nav-item-dropdown.open .nav-arrow {
+      transform: rotate(180deg);
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--header-bg);
+      backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--panel-border);
+      border-radius: 18px;
+      padding: 8px;
+      min-width: 250px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.25s;
+      z-index: 250;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-menu,
+    .nav-item-dropdown:focus-within .nav-dropdown-menu,
+    .nav-item-dropdown.open .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-header {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 6px 12px 4px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .dropdown-item {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted) !important;
+      padding: 7px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      color: var(--ink) !important;
+      background: rgba(var(--accent-rgb), 0.09);
+      transform: translateX(3px);
+    }
+
+    .dropdown-item.active {
+      color: var(--accent) !important;
+      background: rgba(var(--accent-rgb), 0.12);
+      font-weight: 600;
+    }
+
+    .dropdown-idx {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      min-width: 22px;
+      opacity: 0.85;
     }
 
     .nav-cta {
@@ -1154,6 +1262,364 @@
       display: none;
     }
 
+    @keyframes categoryHighlight {
+      0% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.5);
+      }
+      50% {
+        box-shadow: 0 0 35px 6px rgba(var(--accent-rgb), 0.3);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0);
+      }
+    }
+
+    .category-highlight-pulse {
+      animation: categoryHighlight 1.2s ease-out;
+      border-radius: 16px;
+    }
+
+    /* Category Bottom Return & Flow Guides */
+    .category-bottom-guide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--line);
+      flex-wrap: wrap;
+    }
+
+    .cat-guide-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.03em;
+      padding: 7px 18px;
+      border-radius: 100px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-decoration: none;
+    }
+
+    .cat-guide-btn:hover {
+      color: var(--ink);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(var(--accent-rgb), 0.18);
+    }
+
+    .cat-guide-btn.to-top:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- FLOATING PROJECT QUICK NAVIGATOR DOCK ---------- */
+    .project-quick-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(32px);
+      z-index: 950;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.35s;
+    }
+
+    .project-quick-dock.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .quick-dock-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--header-bg);
+      backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid var(--panel-border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      box-shadow: 0 16px 40px var(--header-shadow), 0 0 1px rgba(255, 255, 255, 0.12);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quick-dock-pill:hover {
+      border-color: rgba(var(--accent-rgb), 0.35);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(var(--accent-rgb), 0.15);
+    }
+
+    .dock-current-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: none;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .dock-current-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent);
+    }
+
+    .dock-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: dockDotPulse 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    @keyframes dockDotPulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 0.7;
+      }
+    }
+
+    .dock-cat-label {
+      max-width: 190px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dock-arrow {
+      font-size: 9px;
+      opacity: 0.6;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .project-quick-dock.popover-open .dock-arrow {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .dock-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--line);
+    }
+
+    .dock-nav-arrows {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .dock-arrow-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .dock-arrow-btn:hover:not(:disabled) {
+      background: rgba(var(--accent-rgb), 0.12);
+      color: var(--ink);
+      transform: scale(1.12);
+    }
+
+    .dock-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .dock-top-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      white-space: nowrap;
+    }
+
+    .dock-top-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.35);
+      transform: translateY(-1px);
+    }
+
+    /* Popover Sheet attached to Floating Dock */
+    .quick-dock-popover {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--header-bg);
+      backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      padding: 12px;
+      width: 300px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 1px rgba(255, 255, 255, 0.12);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.25s;
+    }
+
+    .project-quick-dock.popover-open .quick-dock-popover {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .popover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 8px 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 8px;
+    }
+
+    .popover-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .popover-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .popover-close-btn:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .popover-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      max-height: 340px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .popover-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 13px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .popover-item:hover {
+      background: rgba(var(--accent-rgb), 0.08);
+      color: var(--ink);
+      transform: translateX(3px);
+    }
+
+    .popover-item.active {
+      background: rgba(var(--accent-rgb), 0.14);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .popover-idx {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--accent);
+      min-width: 24px;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      .project-quick-dock {
+        bottom: 18px;
+        max-width: calc(100vw - 28px);
+      }
+
+      .dock-cat-label {
+        max-width: 110px;
+        font-size: 12px;
+      }
+
+      .quick-dock-pill {
+        padding: 5px 10px;
+        gap: 4px;
+      }
+
+      .dock-top-btn {
+        padding: 4px 8px;
+        font-size: 10.5px;
+      }
+
+      .category-bottom-guide {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cat-guide-btn {
+        justify-content: center;
+      }
+    }
+
     .category-header {
       display: flex;
       align-items: flex-end;
@@ -1212,194 +1678,29 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
-    /* ---------- GRAPHIC DESIGN SUB-DIVIDER (HAPPY METAL) ---------- */
+    /* ---------- GRAPHIC DESIGN SUB-BAR (HAPPY METAL) ---------- */
     .project-sub-divider {
-      margin: 52px 0 28px 0;
-      padding: clamp(24px, 3.2vw, 36px);
-      background: var(--panel-bg);
-      border: 1px solid var(--panel-border);
-      border-radius: 20px;
-      backdrop-filter: blur(14px);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
-      transition: background-color 0.4s ease, border-color 0.4s ease;
-    }
-
-    .project-sub-divider::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent) 0%, rgba(var(--accent-rgb), 0.45) 45%, transparent 100%);
-    }
-
-    .project-sub-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: clamp(24px, 3.5vw, 44px);
-      align-items: center;
-    }
-
-    .project-sub-left {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .project-sub-badge-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .sub-badge-featured {
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 100px;
-      font-family: var(--font-mono);
-      letter-spacing: 0.06em;
-      box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.35);
-    }
-
-    .sub-badge-tag {
-      background: rgba(var(--accent-rgb), 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
-      font-size: 10.5px;
-      font-weight: 600;
-      padding: 4px 11px;
-      border-radius: 100px;
-      font-family: var(--font-mono);
-      letter-spacing: 0.05em;
-    }
-
-    .sub-badge-count {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--muted);
+      margin: 44px 0 24px 0;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--line);
-      font-size: 10.5px;
-      font-weight: 500;
-      padding: 4px 11px;
-      border-radius: 100px;
-      font-family: var(--font-mono);
-      letter-spacing: 0.04em;
-    }
-
-    .light-theme .sub-badge-count {
-      background: rgba(0, 0, 0, 0.04);
-    }
-
-    .project-sub-title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 2.3vw, 30px);
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.015em;
-      line-height: 1.25;
-      margin: 0;
-    }
-
-    .project-sub-subtitle {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      margin: -2px 0 2px 0;
-    }
-
-    .project-sub-meta-tags {
+      border-radius: 14px;
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-top: 4px;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
     }
 
-    .project-sub-meta-tags .ui-tag-pill {
-      font-size: 11px;
-      padding: 4px 12px;
-      border-radius: 6px;
+    .light-theme .project-sub-divider {
+      background: rgba(0, 0, 0, 0.015);
     }
 
-    .project-sub-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-left: 1px solid var(--line);
-      padding-left: clamp(20px, 3vw, 40px);
-    }
-
-    .project-sub-desc {
-      font-family: var(--font-body);
-      font-size: clamp(13px, 1.05vw, 14.5px);
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .project-sub-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .sub-link-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: var(--font-mono);
-      color: #ffffff;
-      background: var(--accent);
-      border: 1px solid transparent;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.25);
-      width: fit-content;
-    }
-
-    .sub-link-pill:hover {
-      background: rgba(var(--accent-rgb), 0.88);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(var(--accent-rgb), 0.4);
-    }
-
-    .sub-ref-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-      padding: 6px 12px;
-      border-radius: 100px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--line);
-    }
-
-    .light-theme .sub-ref-badge {
-      background: rgba(0, 0, 0, 0.03);
-    }
-
-    @media (max-width: 900px) {
-      .project-sub-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .project-sub-right {
-        border-left: none;
-        border-top: 1px solid var(--line);
-        padding-left: 0;
-        padding-top: 18px;
+    @media (max-width: 860px) {
+      .project-sub-divider {
+        align-items: flex-start;
+        gap: 14px;
       }
     }
 
@@ -1737,103 +2038,120 @@
       }
     }
 
-    /* ---------- WEB & UI DESIGN SHOWCASE (HAPPY METAL) ---------- */
+    /* ---------- WEB & UI DESIGN SUB-BAR (HAPPY METAL) ---------- */
     .ui-showcase-container {
-      margin-top: 24px;
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
     }
 
-    .ui-project-intro {
-      background: var(--panel-bg);
-      border: 1px solid var(--panel-border);
-      border-radius: 24px;
-      padding: clamp(24px, 3.5vw, 40px);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.4s ease, border-color 0.4s ease;
+    .ui-project-subbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      flex-wrap: wrap;
     }
 
-    .ui-project-intro::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, #E52E2D, #FF6B4A, transparent);
-      opacity: 0.9;
+    .light-theme .ui-project-subbar {
+      background: rgba(0, 0, 0, 0.015);
     }
 
-    .ui-project-badge-group {
+    .ui-subbar-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ui-subbar-meta {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .ui-badge-featured {
-      background: #E52E2D;
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 100px;
+      gap: 8px;
       font-family: var(--font-mono);
-      letter-spacing: 0.06em;
-      box-shadow: 0 4px 14px rgba(229, 46, 45, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+      flex-wrap: wrap;
     }
 
-    .ui-badge-tag {
-      background: rgba(255, 255, 255, 0.08);
+    .ui-subbar-tag {
+      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
+      padding: 2px 9px;
+      border-radius: 100px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .ui-subbar-dot {
+      opacity: 0.4;
+    }
+
+    .ui-subbar-title {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.8vw, 22px);
+      font-weight: 600;
       color: var(--ink);
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .ui-subbar-aside {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .ui-subbar-desc {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .ui-subbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 600;
-      padding: 5px 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 6px 12px;
       border-radius: 100px;
-      font-family: var(--font-mono);
-      border: 1px solid var(--panel-border);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
     }
 
-    .ui-badge-type {
-      font-size: 12px;
-      color: var(--muted);
-      font-family: var(--font-mono);
-    }
-
-    .ui-project-header-flex {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .ui-project-name {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 2.4vw, 32px);
-      font-weight: 700;
+    .ui-subbar-link:hover {
       color: var(--ink);
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.08);
+      transform: translateY(-1px);
     }
 
-    .ui-project-summary {
-      font-family: var(--font-body);
-      font-size: clamp(14px, 1.1vw, 16px);
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 900px;
-    }
+    @media (max-width: 860px) {
+      .ui-project-subbar {
+        align-items: flex-start;
+        gap: 14px;
+      }
 
-    .ui-project-meta-tags {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
+      .ui-subbar-aside {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
     }
 
     .ui-tag-pill {
@@ -2701,7 +3019,8 @@
     /* Smooth anchor padding for floating header */
     #about,
     #work,
-    #contact {
+    #contact,
+    .portfolio-category-block {
       scroll-margin-top: 110px;
     }
 
@@ -2953,7 +3272,48 @@
       <div class="nav-links">
         <a href="#home" class="is-active" data-en="Home" data-th="หน้าแรก">Home</a>
         <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
-        <a href="#work" data-en="Projects" data-th="ผลงาน">Projects</a>
+        <div class="nav-item-dropdown" id="projectsDropdownWrapper">
+          <a href="#work" class="nav-link-projects" data-en="Projects" data-th="ผลงาน">Projects <span class="nav-arrow">▾</span></a>
+          <div class="nav-dropdown-menu" id="projectsNavDropdown">
+            <div class="dropdown-header" data-en="Jump to Category" data-th="ไปยังหมวดหมู่">Jump to Category</div>
+            <a href="#work" class="dropdown-item" data-cat="all">
+              <span class="dropdown-idx">ALL</span>
+              <span class="dropdown-text" data-en="All Projects" data-th="ผลงานทั้งหมด">All Projects</span>
+            </a>
+            <a href="#cat-graphic" class="dropdown-item" data-cat="graphic">
+              <span class="dropdown-idx">01</span>
+              <span class="dropdown-text" data-en="Graphic Design" data-th="กราฟิกดีไซน์">Graphic Design</span>
+            </a>
+            <a href="#cat-motion" class="dropdown-item" data-cat="motion">
+              <span class="dropdown-idx">02</span>
+              <span class="dropdown-text" data-en="Video & Motion Design" data-th="วิดีโอ & โมชั่นดีไซน์">Video & Motion Design</span>
+            </a>
+            <a href="#cat-merchandising" class="dropdown-item" data-cat="merchandising">
+              <span class="dropdown-idx">03</span>
+              <span class="dropdown-text" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</span>
+            </a>
+            <a href="#cat-branding" class="dropdown-item" data-cat="branding">
+              <span class="dropdown-idx">04</span>
+              <span class="dropdown-text" data-en="Branding & Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์">Branding & Identity</span>
+            </a>
+            <a href="#category-web-ui" class="dropdown-item" data-cat="web-ui">
+              <span class="dropdown-idx">05</span>
+              <span class="dropdown-text" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI Design</span>
+            </a>
+            <a href="#cat-event" class="dropdown-item" data-cat="event">
+              <span class="dropdown-idx">06</span>
+              <span class="dropdown-text" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
+            </a>
+            <a href="#cat-miscellaneous" class="dropdown-item" data-cat="miscellaneous">
+              <span class="dropdown-idx">07</span>
+              <span class="dropdown-text" data-en="Miscellaneous Projects" data-th="โปรเจกต์อื่นๆ">Miscellaneous Projects</span>
+            </a>
+            <a href="#cat-photography" class="dropdown-item" data-cat="photography">
+              <span class="dropdown-idx">08</span>
+              <span class="dropdown-text" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
+            </a>
+          </div>
+        </div>
         <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
       </div>
       <div style="display: flex; align-items: center; gap: 10px;">
@@ -3200,7 +3560,7 @@
       <div class="portfolio-categories-container">
 
         <!-- CATEGORY 01: GRAPHIC DESIGN -->
-        <div class="portfolio-category-block reveal" data-category="graphic">
+        <div class="portfolio-category-block reveal" data-category="graphic" id="cat-graphic">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">01 / CATEGORY</span>
@@ -3278,35 +3638,25 @@
           </div>
 
           <!-- SUB-PROJECT SECTION: HAPPY METAL -->
-          <div class="project-sub-divider reveal" id="project-happy-metal-kv">
-            <div class="project-sub-grid">
-              <div class="project-sub-left">
-                <div class="project-sub-badge-row">
-                  <span class="sub-badge-featured" data-en="★ KEY VISUAL SHOWCASE" data-th="★ KEY VISUAL SHOWCASE">★ KEY VISUAL SHOWCASE</span>
-                  <span class="sub-badge-tag">HAPPY METAL</span>
-                  <span class="sub-badge-count" data-en="18 Items" data-th="18 ชิ้นงาน">18 Items</span>
-                </div>
-                <h4 class="project-sub-title" data-en="Happy Metal — Key Visual (KV)"
-                  data-th="Happy Metal — Key Visual (KV)">Happy Metal — Key Visual (KV)</h4>
-                <p class="project-sub-subtitle" data-en="Industrial Tools & Hardware Website Graphics"
-                  data-th="ภาพกราฟิกเครื่องมือช่าง & งานเชื่อมสำหรับหน้าเว็บไซต์">Industrial Tools & Hardware Website Graphics</p>
-                <div class="project-sub-meta-tags">
-                  <span class="ui-tag-pill">Key Visual (KV)</span>
-                  <span class="ui-tag-pill">Website Creative</span>
-                  <span class="ui-tag-pill">E-Catalog Assets</span>
-                </div>
+          <div class="project-sub-divider reveal" id="project-happy-metal">
+            <div class="ui-subbar-info">
+              <div class="ui-subbar-meta">
+                <span class="ui-subbar-tag">HAPPY METAL</span>
+                <span class="ui-subbar-dot">·</span>
+                <span class="ui-subbar-type" data-en="Industrial Hardware & Tools" data-th="อุปกรณ์เครื่องมือช่าง & ฮาร์ดแวร์">Industrial Hardware & Tools</span>
+                <span class="ui-subbar-dot">·</span>
+                <span class="ui-subbar-pages" data-en="18 Products" data-th="18 ชิ้นงานสินค้า">18 Products</span>
               </div>
-              <div class="project-sub-right">
-                <p class="project-sub-desc"
-                  data-en="Key Visual (KV) creatives, commercial website banners, and e-commerce product showcase designs tailored for the Happy Metal official website and catalog."
-                  data-th="ชุดภาพ Key Visual (KV) แบนเนอร์หน้าเว็บไซต์ และภาพกราฟิกนำเสนอผลิตภัณฑ์สำหรับเว็บไซต์และระบบ E-Commerce แบรนด์ Happy Metal อุปกรณ์เครื่องมือช่างและงานเชื่อมครบวงจร">
-                  Key Visual (KV) creatives, commercial website banners, and e-commerce product showcase designs tailored for the Happy Metal official website and catalog.
-                </p>
-                <div class="project-sub-actions">
-                  <a href="#category-web-ui" class="sub-link-pill" data-en="View Website UI/UX Design ↗" data-th="ดูงานออกแบบเว็บไซต์ UI/UX ↗">View Website UI/UX Design ↗</a>
-                  <span class="sub-ref-badge" data-en="Category 05 Project" data-th="เชื่อมโยง หมวด 05">Category 05 Project</span>
-                </div>
-              </div>
+              <h4 class="ui-subbar-title" data-en="Happy Metal — Product Showcase & Commercial Banners"
+                data-th="Happy Metal — กราฟิกโฆษณา & ภาพแคตตาล็อกสินค้า">Happy Metal — Product Showcase & Commercial Banners</h4>
+            </div>
+            <div class="ui-subbar-aside">
+              <p class="ui-subbar-desc"
+                data-en="Commercial ad banners, promotional flyers, and detailed product showcase graphics designed for industrial hardware and tools."
+                data-th="สื่อกราฟิกโฆษณา แบนเนอร์สินค้าสำหรับจำหน่าย และภาพโปรโมตผลิตภัณฑ์อุปกรณ์งานช่าง เครื่องมือตัด และงานเชื่อมแบรนด์ Happy Metal">
+                Commercial ad banners, promotional flyers, and detailed product showcase graphics designed for industrial hardware and tools.
+              </p>
+              <a href="#category-web-ui" class="ui-subbar-link" data-en="Website UI/UX Design ↗" data-th="ดูงานออกแบบเว็บไซต์ UI/UX ↗">Website UI/UX Design ↗</a>
             </div>
           </div>
 
@@ -3395,10 +3745,16 @@
               <span class="label">หินเจียรรูเกลียว</span>
             </div>
           </div>
+
+          <!-- CATEGORY 01 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="motion" data-en="Next: Video & Motion Design →" data-th="หมวดถัดไป: วิดีโอ & โมชั่นดีไซน์ →">Next: Video & Motion Design →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 02: VIDEO & MOTION DESIGN -->
-        <div class="portfolio-category-block reveal" data-category="motion">
+        <div class="portfolio-category-block reveal" data-category="motion" id="cat-motion">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">02 / CATEGORY</span>
@@ -3438,10 +3794,16 @@
               <span class="label">DE370 Commercial — 02-E</span>
             </div>
           </div>
+
+          <!-- CATEGORY 02 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="merchandising" data-en="Next: Visual Merchandising →" data-th="หมวดถัดไป: วีซวลเมอร์แชนไดซิ่ง →">Next: Visual Merchandising →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 03: VISUAL MERCHANDISING -->
-        <div class="portfolio-category-block reveal" data-category="merchandising">
+        <div class="portfolio-category-block reveal" data-category="merchandising" id="cat-merchandising">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">03 / CATEGORY</span>
@@ -3490,10 +3852,16 @@
               <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
           </div>
+
+          <!-- CATEGORY 03 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="branding" data-en="Next: Branding & Identity →" data-th="หมวดถัดไป: แบรนด์ดิ้ง & อัตลักษณ์ →">Next: Branding & Identity →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 04: BRANDING -->
-        <div class="portfolio-category-block reveal" data-category="branding">
+        <div class="portfolio-category-block reveal" data-category="branding" id="cat-branding">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">04 / CATEGORY</span>
@@ -3512,6 +3880,12 @@
               <span class="label">Branding — 04</span>
             </div>
           </div>
+
+          <!-- CATEGORY 04 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="web-ui" data-en="Next: Web & UI Design →" data-th="หมวดถัดไป: เว็บ & UI ดีไซน์ →">Next: Web & UI Design →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 05: WEB & UI DESIGN -->
@@ -3527,36 +3901,24 @@
               design, e-catalog architecture, and interactive digital web interfaces.</p>
           </div>
 
-          <!-- HAPPY METAL FEATURED PROJECT SHOWCASE -->
+          <!-- HAPPY METAL UI/UX PROJECT SUB-BAR -->
           <div class="ui-showcase-container">
-            <div class="ui-project-intro reveal">
-              <div class="ui-project-badge-group">
-                <span class="ui-badge-featured">★ FEATURED UI/UX PROJECT</span>
-                <span class="ui-badge-tag">HAPPY METAL</span>
-                <a href="#project-happy-metal-kv" class="ui-badge-tag" style="border-color: rgba(229,46,45,0.4); color: #FF6B4A; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="View Happy Metal Key Visuals">KV WEBSITE & ASSETS ↗</a>
-                <span class="ui-badge-type" data-en="Industrial Hardware & Tools Website"
-                  data-th="เว็บไซต์อุปกรณ์เครื่องมือช่าง">เว็บไซต์อุปกรณ์เครื่องมือช่าง</span>
+            <div class="ui-project-subbar reveal">
+              <div class="ui-subbar-info">
+                <div class="ui-subbar-meta">
+                  <span class="ui-subbar-tag">HAPPY METAL</span>
+                  <span class="ui-subbar-dot">·</span>
+                  <span class="ui-subbar-type" data-en="E-Commerce & Web Architecture" data-th="เว็บไซต์ & โครงสร้างแคตตาล็อก">E-Commerce & Web Architecture</span>
+                  <span class="ui-subbar-dot">·</span>
+                  <span class="ui-subbar-pages" data-en="4 Core Desktop Templates" data-th="4 หน้าหลัก (Desktop)">4 Core Desktop Templates</span>
+                </div>
+                <h4 class="ui-subbar-title" data-en="Happy Metal — Industrial Hardware & Tools Website" data-th="Happy Metal — เว็บไซต์อุปกรณ์เครื่องมือช่าง & งานเชื่อม">Happy Metal — Industrial Hardware & Tools Website</h4>
               </div>
-              <div class="ui-project-header-flex">
-                <div class="ui-project-title-area">
-                  <h4 class="ui-project-name" data-en="Happy Metal — Industrial Tools & Hardware Website"
-                    data-th="Happy Metal — เว็บไซต์อุปกรณ์เครื่องมือช่าง & งานเชื่อม">Happy Metal —
-                    เว็บไซต์อุปกรณ์เครื่องมือช่าง & งานเชื่อม</h4>
-                  <p class="ui-project-summary"
-                    data-en="UI/UX web design for Happy Metal, specializing in welding equipment, cutting tools, and industrial hardware. Engineered with clear information architecture, accessible product categorization, and a bold industrial aesthetic across 4 core desktop page templates."
-                    data-th="ออกแบบ UI/UX สำหรับเว็บไซต์ Happy Metal ศูนย์รวมอุปกรณ์เครื่องมือช่างและงานเชื่อมครบวงจร เน้นการวางโครงสร้างข้อมูลสินค้า (Information Architecture) ให้ค้นหาง่าย ชัดเจน ภาพลักษณ์แข็งแกร่ง ทันสมัย ครอบคลุม 4 หน้าหลัก: Homepage, About Us, Product Catalog และ Channels">
-                    ออกแบบ UI/UX สำหรับเว็บไซต์ Happy Metal ศูนย์รวมอุปกรณ์เครื่องมือช่างและงานเชื่อมครบวงจร
-                    เน้นการวางโครงสร้างข้อมูลสินค้า (Information Architecture) ให้ค้นหาง่าย ชัดเจน ภาพลักษณ์แข็งแกร่ง
-                    ทันสมัย ครอบคลุม 4 หน้าหลัก: Homepage, About Us, Product Catalog และ Channels
-                  </p>
-                </div>
-                <div class="ui-project-meta-tags">
-                  <div class="ui-tag-pill">UI / UX Design</div>
-                  <div class="ui-tag-pill">Key Visual (KV) Integrated</div>
-                  <div class="ui-tag-pill">Web Architecture</div>
-                  <div class="ui-tag-pill">E-Catalog Layout</div>
-                  <div class="ui-tag-pill">4 Core Templates</div>
-                </div>
+              <div class="ui-subbar-aside">
+                <p class="ui-subbar-desc" data-en="UI/UX desktop layout structured for clear catalog categorization and industrial brand aesthetic." data-th="ออกแบบ UI/UX เว็บไซต์ Happy Metal เน้นการจัดหมวดหมู่สินค้าให้ค้นหาง่าย ชัดเจน และเป็นระบบ">
+                  UI/UX desktop layout structured for clear catalog categorization and industrial brand aesthetic.
+                </p>
+                <a href="#project-happy-metal" class="ui-subbar-link" data-en="Product Graphics ↗" data-th="ดูกราฟิกสินค้า ↗">Product Graphics ↗</a>
               </div>
             </div>
 
@@ -3669,10 +4031,16 @@
               </div>
             </div>
           </div>
+
+          <!-- CATEGORY 05 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="event" data-en="Next: Event & Coordination →" data-th="หมวดถัดไป: จัดงานอีเวนต์ →">Next: Event & Coordination →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 06: EVENT & COORDINATION -->
-        <div class="portfolio-category-block reveal" data-category="event">
+        <div class="portfolio-category-block reveal" data-category="event" id="cat-event">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">06 / CATEGORY</span>
@@ -3691,10 +4059,16 @@
               <span class="label">Event & Coord — 06</span>
             </div>
           </div>
+
+          <!-- CATEGORY 06 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="miscellaneous" data-en="Next: Miscellaneous Projects →" data-th="หมวดถัดไป: โปรเจกต์อื่นๆ →">Next: Miscellaneous Projects →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 07: MISCELLANEOUS -->
-        <div class="portfolio-category-block reveal" data-category="miscellaneous">
+        <div class="portfolio-category-block reveal" data-category="miscellaneous" id="cat-miscellaneous">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">07 / CATEGORY</span>
@@ -3712,10 +4086,16 @@
               <span class="label">Miscellaneous — 07</span>
             </div>
           </div>
+
+          <!-- CATEGORY 07 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="photography" data-en="Next: Photography →" data-th="หมวดถัดไป: งานถ่ายภาพ →">Next: Photography →</button>
+          </div>
         </div>
 
         <!-- CATEGORY 08: PHOTOGRAPHY -->
-        <div class="portfolio-category-block reveal" data-category="photography">
+        <div class="portfolio-category-block reveal" data-category="photography" id="cat-photography">
           <div class="category-header">
             <div class="category-title-group">
               <span class="category-num">08 / CATEGORY</span>
@@ -3764,6 +4144,12 @@
               <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
               <span class="label">Photography — 09</span>
             </div>
+          </div>
+
+          <!-- CATEGORY 08 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <a href="#contact" class="cat-guide-btn to-next" data-en="Get in touch →" data-th="ติดต่อร่วมงาน →">Get in touch →</a>
           </div>
         </div>
 
@@ -3864,6 +4250,79 @@
       </div>
     </div>
   </div>
+
+  <!-- FLOATING PROJECT QUICK NAVIGATOR DOCK -->
+  <aside class="project-quick-dock" id="projectQuickDock" aria-label="Project Quick Navigator">
+    <div class="quick-dock-pill">
+      <!-- Active category indicator & Popover trigger -->
+      <button type="button" class="dock-current-btn" id="dockCurrentBtn" title="Click to view all categories">
+        <span class="dock-dot"></span>
+        <span class="dock-cat-label" id="dockCatLabel" data-en="All Projects" data-th="ผลงานทั้งหมด">All Projects</span>
+        <span class="dock-arrow">▾</span>
+      </button>
+
+      <span class="dock-divider"></span>
+
+      <!-- Prev / Next category jump buttons -->
+      <div class="dock-nav-arrows">
+        <button type="button" class="dock-arrow-btn" id="dockPrevBtn" aria-label="Previous category" title="Previous category">‹</button>
+        <button type="button" class="dock-arrow-btn" id="dockNextBtn" aria-label="Next category" title="Next category">›</button>
+      </div>
+
+      <span class="dock-divider"></span>
+
+      <!-- Jump to top of projects -->
+      <button type="button" class="dock-top-btn" id="dockTopBtn" title="Back to top of projects" data-en="↑ Top" data-th="↑ บนสุด">
+        ↑ Top
+      </button>
+    </div>
+
+    <!-- Quick Dock Category Popover Sheet -->
+    <div class="quick-dock-popover" id="quickDockPopover">
+      <div class="popover-header">
+        <span class="popover-title" data-en="Project Categories" data-th="หมวดหมู่โปรเจกต์">Project Categories</span>
+        <button type="button" class="popover-close-btn" id="popoverCloseBtn" aria-label="Close menu">✕</button>
+      </div>
+      <div class="popover-list">
+        <button type="button" class="popover-item active" data-cat="all">
+          <span class="popover-idx">ALL</span>
+          <span class="popover-name" data-en="All Projects" data-th="ผลงานทั้งหมด">All Projects</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="graphic">
+          <span class="popover-idx">01</span>
+          <span class="popover-name" data-en="Graphic Design" data-th="กราฟิกดีไซน์">Graphic Design</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="motion">
+          <span class="popover-idx">02</span>
+          <span class="popover-name" data-en="Video & Motion Design" data-th="วิดีโอ & โมชั่นดีไซน์">Video & Motion Design</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="merchandising">
+          <span class="popover-idx">03</span>
+          <span class="popover-name" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="branding">
+          <span class="popover-idx">04</span>
+          <span class="popover-name" data-en="Branding & Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์">Branding & Identity</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="web-ui">
+          <span class="popover-idx">05</span>
+          <span class="popover-name" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI Design</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="event">
+          <span class="popover-idx">06</span>
+          <span class="popover-name" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="miscellaneous">
+          <span class="popover-idx">07</span>
+          <span class="popover-name" data-en="Miscellaneous Projects" data-th="โปรเจกต์อื่นๆ">Miscellaneous Projects</span>
+        </button>
+        <button type="button" class="popover-item" data-cat="photography">
+          <span class="popover-idx">08</span>
+          <span class="popover-name" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <!-- PROJECT DETAIL POPUP MODAL -->
   <div id="projectModal" class="modal" aria-hidden="true">
@@ -3968,6 +4427,10 @@
           el.textContent = targetText;
         }
       });
+
+      if (typeof updateDockUI === 'function' && typeof currentCategoryIndex !== 'undefined') {
+        updateDockUI(currentCategoryIndex);
+      }
     }
 
     const savedLang = localStorage.getItem('selected-lang') || 'en';
@@ -4070,7 +4533,7 @@
     // Nav links instant active click handler & scroll spy lock
     let isClickScrolling = false;
     let clickScrollTimer = null;
-    const navLinkEls = document.querySelectorAll('.nav-links a');
+    const navLinkEls = document.querySelectorAll('.nav-links > a, .nav-item-dropdown > a');
 
     navLinkEls.forEach(link => {
       link.addEventListener('click', () => {
@@ -4431,92 +4894,92 @@
       },
       {
         image: 'assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Corolla — ใบตัดสแตนเลส/ตัดเหล็ก 4 นิ้ว'
       },
       {
         image: 'assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Keenness — ใบตัดหญ้า 12 นิ้ว ความหนา 1.6 มม.'
       },
       {
         image: 'assets/graphic designer/Happy Metal/solex 425ss .jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Solex 425SS — กุญแจประตูรั้ว สแตนเลสเกรด 304'
       },
       {
         image: 'assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Sumo 80J — ใบเจียรอ่อนตัว 4" x 2'
       },
       {
         image: 'assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'CO2 Regulator — เกจ์ซีโอทู เรกกูเรเตอร์ Heater 36V'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ใบเจียร (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: '3M Green Corps — ใบเจียร 4" #36 ความหนา 3mm'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: '3M General Purpose — ใบตัดและเจียรบาง 3.5mm'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ขายึดราวผ้าม่าน — สแตนเลสเกรด 304'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ตราปลาทอง — ขาล้อเดี่ยว เหล็กชุบซิงค์ 2 นิ้ว'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ชุดล้อคู่ — สแตนเลส 304 ขนาด 2.5 นิ้ว'
       },
       {
         image: 'assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'MAX — น้ำมันครอบจักรวาล Multi Lubricant Spray 450ml'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'SBC — ปุ๊กเหล็ก SUG Sleeve Anchor Bolt'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Yawata 71T-1 — ลวดเชื่อมฟลักซ์คอร์ 15kg'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'E308LT0-3 — ลวดเชื่อมสแตนเลสฟลักซ์คอร์'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Kovet Ni98 — ลวดเชื่อมไฟฟ้าเหล็กหล่อ'
       },
       {
         image: 'assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ลวดสแตนเลส 304 — ชนิดม้วน 0.5 กก. (1.6mm)'
       },
       {
         image: 'assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: '961 Welding Torch — หัวเชื่อมแก๊ส/หัวพ่นไฟอเนกประสงค์'
       },
       {
         image: 'assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).jpg',
-        tag: 'KV WEBSITE — HAPPY METAL',
+        tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'หินเจียรรูเกลียว — Mounted Grinding Wheel'
       },
       {
@@ -4746,10 +5209,166 @@
       }, 400);
     }
 
-    // Category filter tabs logic
+    // ---------- PROJECT CATEGORIES & NAVIGATION GUIDES LOGIC ----------
+    const projectCategoryList = [
+      { id: 'cat-graphic', cat: 'graphic', en: '01 Graphic Design', th: '01 กราฟิกดีไซน์' },
+      { id: 'cat-motion', cat: 'motion', en: '02 Video & Motion', th: '02 วิดีโอ & โมชั่นดีไซน์' },
+      { id: 'cat-merchandising', cat: 'merchandising', en: '03 Visual Merch', th: '03 วีซวลเมอร์แชนไดซิ่ง' },
+      { id: 'cat-branding', cat: 'branding', en: '04 Branding & Identity', th: '04 แบรนด์ดิ้ง & อัตลักษณ์' },
+      { id: 'category-web-ui', cat: 'web-ui', en: '05 Web & UI Design', th: '05 เว็บ & UI ดีไซน์' },
+      { id: 'cat-event', cat: 'event', en: '06 Event & Coord', th: '06 จัดงานอีเวนต์' },
+      { id: 'cat-miscellaneous', cat: 'miscellaneous', en: '07 Miscellaneous', th: '07 โปรเจกต์อื่นๆ' },
+      { id: 'cat-photography', cat: 'photography', en: '08 Photography', th: '08 งานถ่ายภาพ' }
+    ];
+
     const filterBtns = document.querySelectorAll('.filter-btn');
     const categoryBlocks = document.querySelectorAll('.portfolio-category-block');
+    const quickDock = document.getElementById('projectQuickDock');
+    const dockCatLabel = document.getElementById('dockCatLabel');
+    const dockCurrentBtn = document.getElementById('dockCurrentBtn');
+    const quickDockPopover = document.getElementById('quickDockPopover');
+    const popoverCloseBtn = document.getElementById('popoverCloseBtn');
+    const dockPrevBtn = document.getElementById('dockPrevBtn');
+    const dockNextBtn = document.getElementById('dockNextBtn');
+    const dockTopBtn = document.getElementById('dockTopBtn');
+    const projectsNavDropdown = document.getElementById('projectsNavDropdown');
+    const projectsDropdownWrapper = document.getElementById('projectsDropdownWrapper');
 
+    let currentCategoryIndex = -1; // -1 means all / top
+
+    // Central jumpToCategory function
+    function jumpToCategory(catKey) {
+      // Close dropdown and popovers
+      if (quickDock) quickDock.classList.remove('popover-open');
+      if (projectsDropdownWrapper) projectsDropdownWrapper.classList.remove('open');
+
+      if (catKey === 'all') {
+        const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allBtn) {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          allBtn.classList.add('active');
+        }
+        categoryBlocks.forEach(b => {
+          b.classList.remove('is-hidden');
+          b.classList.add('revealed');
+        });
+        const workSec = document.getElementById('work');
+        if (workSec) {
+          workSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        updateDockUI(-1);
+        return;
+      }
+
+      // If a specific filter is currently active that hides this category, reset filter to 'all'
+      const activeFilterBtn = document.querySelector('.filter-btn.active');
+      const currentFilter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+      if (currentFilter !== 'all' && currentFilter !== catKey) {
+        const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allBtn) {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          allBtn.classList.add('active');
+        }
+        categoryBlocks.forEach(b => {
+          b.classList.remove('is-hidden');
+          b.classList.add('revealed');
+        });
+      }
+
+      const targetBlock = document.querySelector(`.portfolio-category-block[data-category="${catKey}"]`);
+      if (targetBlock) {
+        targetBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Highlight flash effect to signal arrival
+        targetBlock.classList.add('category-highlight-pulse');
+        setTimeout(() => {
+          targetBlock.classList.remove('category-highlight-pulse');
+        }, 1200);
+
+        const targetIdx = projectCategoryList.findIndex(item => item.cat === catKey);
+        updateDockUI(targetIdx);
+      }
+    }
+
+    // Update Dock UI label, active items, and Prev/Next buttons
+    function updateDockUI(idx) {
+      currentCategoryIndex = idx;
+      const currentLang = document.documentElement.getAttribute('lang') || 'en';
+
+      if (idx >= 0 && idx < projectCategoryList.length) {
+        const item = projectCategoryList[idx];
+        if (dockCatLabel) {
+          dockCatLabel.textContent = currentLang === 'th' ? item.th : item.en;
+        }
+
+        // Sync popover active
+        document.querySelectorAll('.quick-dock-popover .popover-item').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-cat') === item.cat);
+        });
+
+        // Sync header dropdown active
+        document.querySelectorAll('.nav-dropdown-menu .dropdown-item').forEach(link => {
+          link.classList.toggle('active', link.getAttribute('data-cat') === item.cat);
+        });
+
+        if (dockPrevBtn) dockPrevBtn.disabled = (idx === 0);
+        if (dockNextBtn) dockNextBtn.disabled = (idx === projectCategoryList.length - 1);
+      } else {
+        if (dockCatLabel) {
+          dockCatLabel.textContent = currentLang === 'th' ? 'ผลงานทั้งหมด' : 'All Projects';
+        }
+        document.querySelectorAll('.quick-dock-popover .popover-item').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-cat') === 'all');
+        });
+        document.querySelectorAll('.nav-dropdown-menu .dropdown-item').forEach(link => {
+          link.classList.toggle('active', link.getAttribute('data-cat') === 'all');
+        });
+        if (dockPrevBtn) dockPrevBtn.disabled = true;
+        if (dockNextBtn) dockNextBtn.disabled = false;
+      }
+    }
+
+    // Scroll spy for Floating Quick Dock and current category tracking
+    function updateProjectQuickNav() {
+      const workSec = document.getElementById('work');
+      if (!workSec || !quickDock) return;
+
+      const workRect = workSec.getBoundingClientRect();
+      const inWork = workRect.top < window.innerHeight * 0.7 && workRect.bottom > 200;
+
+      quickDock.classList.toggle('is-visible', inWork);
+
+      if (!inWork) {
+        quickDock.classList.remove('popover-open');
+        return;
+      }
+
+      // Find category closest to top threshold (180px)
+      let activeCatIdx = -1;
+      let minDistance = Infinity;
+
+      projectCategoryList.forEach((item, index) => {
+        const block = document.querySelector(`.portfolio-category-block[data-category="${item.cat}"]`);
+        if (block && !block.classList.contains('is-hidden')) {
+          const rect = block.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.55 && rect.bottom >= 120) {
+            const distance = Math.abs(rect.top - 140);
+            if (distance < minDistance) {
+              minDistance = distance;
+              activeCatIdx = index;
+            }
+          }
+        }
+      });
+
+      updateDockUI(activeCatIdx);
+    }
+
+    window.addEventListener('scroll', () => {
+      updateProjectQuickNav();
+    }, { passive: true });
+
+    // Category filter tabs logic with enhanced top view alignment
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
@@ -4766,7 +5385,112 @@
             block.classList.add('is-hidden');
           }
         });
+
+        // If user is scrolled far into the projects, smoothly glide up to #work
+        const workSec = document.getElementById('work');
+        if (workSec) {
+          const workRect = workSec.getBoundingClientRect();
+          if (workRect.top < -100) {
+            workSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+
+        const idx = projectCategoryList.findIndex(i => i.cat === filter);
+        updateDockUI(idx);
       });
+    });
+
+    // Popover toggle & close
+    if (dockCurrentBtn) {
+      dockCurrentBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (quickDock) quickDock.classList.toggle('popover-open');
+      });
+    }
+
+    if (popoverCloseBtn) {
+      popoverCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (quickDock) quickDock.classList.remove('popover-open');
+      });
+    }
+
+    // Prev / Next category jump buttons
+    if (dockPrevBtn) {
+      dockPrevBtn.addEventListener('click', () => {
+        const nextIdx = currentCategoryIndex > 0 ? currentCategoryIndex - 1 : 0;
+        jumpToCategory(projectCategoryList[nextIdx].cat);
+      });
+    }
+
+    if (dockNextBtn) {
+      dockNextBtn.addEventListener('click', () => {
+        const nextIdx = currentCategoryIndex < projectCategoryList.length - 1 ? currentCategoryIndex + 1 : 0;
+        jumpToCategory(projectCategoryList[nextIdx].cat);
+      });
+    }
+
+    // Dock Top button
+    if (dockTopBtn) {
+      dockTopBtn.addEventListener('click', () => {
+        const workSec = document.getElementById('work');
+        if (workSec) {
+          workSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    // Category popover items click
+    document.querySelectorAll('.quick-dock-popover .popover-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-cat');
+        jumpToCategory(cat);
+      });
+    });
+
+    // Header dropdown items click
+    document.querySelectorAll('.nav-dropdown-menu .dropdown-item').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = link.getAttribute('data-cat');
+        jumpToCategory(cat);
+      });
+    });
+
+    // Category bottom guide buttons click
+    document.querySelectorAll('.cat-guide-btn[data-action]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        if (action === 'top') {
+          const workSec = document.getElementById('work');
+          if (workSec) {
+            workSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else if (action === 'next') {
+          const nextCat = btn.getAttribute('data-next-cat');
+          if (nextCat) {
+            jumpToCategory(nextCat);
+          }
+        }
+      });
+    });
+
+    // Dismiss popovers when clicking outside
+    document.addEventListener('click', (e) => {
+      if (quickDock && !quickDock.contains(e.target)) {
+        quickDock.classList.remove('popover-open');
+      }
+      if (projectsDropdownWrapper && !projectsDropdownWrapper.contains(e.target)) {
+        projectsDropdownWrapper.classList.remove('open');
+      }
+    });
+
+    // Dismiss popover on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (quickDock) quickDock.classList.remove('popover-open');
+        if (projectsDropdownWrapper) projectsDropdownWrapper.classList.remove('open');
+      }
     });
 
     // Attach click and keydown events to project portraits and interactive showcase items using data-index
