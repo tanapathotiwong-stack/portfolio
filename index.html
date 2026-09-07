@@ -439,6 +439,15 @@
       gap: 2px;
     }
 
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
     .nav-item-dropdown:hover .nav-dropdown-menu,
     .nav-item-dropdown:focus-within .nav-dropdown-menu,
     .nav-item-dropdown.open .nav-dropdown-menu {
@@ -4428,7 +4437,7 @@
         }
       });
 
-      if (typeof updateDockUI === 'function' && typeof currentCategoryIndex !== 'undefined') {
+      if (window._isProjectNavReady && typeof updateDockUI === 'function') {
         updateDockUI(currentCategoryIndex);
       }
     }
@@ -5492,6 +5501,26 @@
         if (projectsDropdownWrapper) projectsDropdownWrapper.classList.remove('open');
       }
     });
+
+    // Toggle Projects dropdown on click (especially helpful on mobile/touch screens)
+    if (projectsDropdownWrapper) {
+      const projectsLink = projectsDropdownWrapper.querySelector('.nav-link-projects');
+      if (projectsLink) {
+        projectsLink.addEventListener('click', (e) => {
+          if (e.target.classList.contains('nav-arrow') || window.innerWidth <= 768) {
+            e.preventDefault();
+            projectsDropdownWrapper.classList.toggle('open');
+          }
+        });
+      }
+    }
+
+    // Mark project navigation as fully initialized and run initial state check
+    window._isProjectNavReady = true;
+    updateProjectQuickNav();
+    window.addEventListener('resize', () => {
+      updateProjectQuickNav();
+    }, { passive: true });
 
     // Attach click and keydown events to project portraits and interactive showcase items using data-index
     const portraits = document.querySelectorAll('.portrait[data-index], .vm-clickable-item[data-index]');
