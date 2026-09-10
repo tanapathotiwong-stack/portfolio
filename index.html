@@ -295,7 +295,7 @@
       transform: translateX(-50%);
       width: calc(100% - 80px);
       max-width: 960px;
-      z-index: 100;
+      z-index: 1100;
       background: var(--header-bg);
       backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid var(--header-border);
@@ -457,6 +457,17 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Force close immediately when an option is selected */
+    .nav-item-dropdown.is-dismissed .nav-dropdown-menu,
+    .nav-item-dropdown.is-dismissed:hover .nav-dropdown-menu,
+    .nav-item-dropdown.is-dismissed:focus-within .nav-dropdown-menu {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      transform: translateX(-50%) translateY(8px) !important;
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s !important;
+    }
+
     .dropdown-header {
       font-family: var(--font-mono);
       font-size: 10px;
@@ -501,6 +512,74 @@
       color: var(--accent);
       min-width: 22px;
       opacity: 0.85;
+    }
+
+    /* ---------- FULL PAGE DROPDOWN BLUR BACKDROP ---------- */
+    .nav-dropdown-backdrop {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1050;
+      background: rgba(7, 7, 8, 0.52);
+      backdrop-filter: blur(18px) saturate(130%);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, backdrop-filter;
+    }
+
+    .light-theme .nav-dropdown-backdrop {
+      background: rgba(245, 244, 240, 0.55);
+    }
+
+    /* Trigger blur when hovering or focusing Projects dropdown, or via body class */
+    body:has(#projectsDropdownWrapper:hover) .nav-dropdown-backdrop,
+    body:has(#projectsDropdownWrapper.open) .nav-dropdown-backdrop,
+    body:has(#projectsDropdownWrapper:focus-within) .nav-dropdown-backdrop,
+    body.dropdown-backdrop-active .nav-dropdown-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    /* Immediately remove backdrop blur and reset header when dismissed/selected */
+    body:has(#projectsDropdownWrapper.is-dismissed) .nav-dropdown-backdrop,
+    body.is-dropdown-dismissed .nav-dropdown-backdrop {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      transition: opacity 0.2s ease, visibility 0.2s !important;
+    }
+
+    /* Header elevation glow when dropdown is active */
+    body:has(#projectsDropdownWrapper:hover) header,
+    body:has(#projectsDropdownWrapper.open) header,
+    body.dropdown-backdrop-active header {
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(var(--accent-rgb), 0.3);
+      border-color: rgba(var(--accent-rgb), 0.35);
+    }
+
+    body:has(#projectsDropdownWrapper.is-dismissed) header,
+    body.is-dropdown-dismissed header {
+      box-shadow: 0 20px 40px var(--header-shadow) !important;
+      border-color: var(--header-border) !important;
+    }
+
+    .light-theme body:has(#projectsDropdownWrapper:hover) header,
+    .light-theme body:has(#projectsDropdownWrapper.open) header,
+    .light-theme body.dropdown-backdrop-active header {
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(var(--accent-rgb), 0.3);
+      border-color: rgba(var(--accent-rgb), 0.4);
+    }
+
+    .light-theme body:has(#projectsDropdownWrapper.is-dismissed) header,
+    .light-theme body.is-dropdown-dismissed header {
+      box-shadow: 0 20px 40px var(--header-shadow) !important;
+      border-color: var(--header-border) !important;
     }
 
     .nav-cta {
@@ -1329,351 +1408,7 @@
       color: var(--accent);
     }
 
-    /* ---------- FLOATING PROJECT QUICK NAVIGATOR DOCK (VERTICAL RIGHT RAIL) ---------- */
-    .project-quick-dock {
-      position: fixed;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%) translateX(45px);
-      z-index: 950;
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
-      transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.35s;
-    }
-
-    .project-quick-dock.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-      visibility: visible;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    .quick-dock-pill {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
-      background: var(--header-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--panel-border);
-      border-radius: 100px;
-      padding: 10px 6px;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.12);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      width: 58px;
-    }
-
-    .quick-dock-pill:hover {
-      border-color: rgba(var(--accent-rgb), 0.4);
-      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.6), 0 0 24px rgba(var(--accent-rgb), 0.18);
-    }
-
-    .dock-top-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      width: 44px;
-      height: 44px;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.25);
-      color: var(--accent);
-      font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .dock-top-btn:hover {
-      background: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
-      box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.45);
-      transform: translateY(-2px);
-    }
-
-    .dock-top-icon {
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 800;
-    }
-
-    .dock-top-text {
-      line-height: 1;
-    }
-
-    .dock-divider {
-      width: 22px;
-      height: 1px;
-      background: var(--line);
-      opacity: 0.7;
-    }
-
-    .dock-arrow-btn {
-      width: 36px;
-      height: 32px;
-      border-radius: 8px;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
-    }
-
-    .dock-arrow-btn:hover:not(:disabled) {
-      background: rgba(var(--accent-rgb), 0.15);
-      color: var(--accent);
-      transform: scale(1.15);
-    }
-
-    .dock-arrow-btn:disabled {
-      opacity: 0.22;
-      cursor: not-allowed;
-    }
-
-    .dock-current-btn {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      width: 46px;
-      padding: 7px 2px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 20px;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .dock-current-btn:hover {
-      background: rgba(var(--accent-rgb), 0.12);
-      border-color: rgba(var(--accent-rgb), 0.35);
-    }
-
-    .dock-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-      animation: dockDotPulse 2s infinite ease-in-out;
-      flex-shrink: 0;
-    }
-
-    @keyframes dockDotPulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.35);
-        opacity: 0.7;
-      }
-    }
-
-    .dock-cat-num {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1;
-    }
-
-    .dock-cat-label {
-      font-family: var(--font-body);
-      font-size: 8.5px;
-      color: var(--muted);
-      max-width: 44px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-height: 1;
-      text-align: center;
-    }
-
-    .dock-arrow {
-      font-size: 8px;
-      opacity: 0.55;
-      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease;
-      line-height: 1;
-    }
-
-    .project-quick-dock.popover-open .dock-arrow {
-      transform: rotate(180deg);
-      color: var(--accent);
-      opacity: 1;
-    }
-
-    /* Popover Sheet attached to Vertical Rail (Opens to the left) */
-    .quick-dock-popover {
-      position: absolute;
-      right: calc(100% + 14px);
-      top: 50%;
-      transform: translateY(-50%) translateX(12px);
-      background: var(--header-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--panel-border);
-      border-radius: 20px;
-      padding: 12px;
-      width: 290px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.12);
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
-      transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.25s;
-    }
-
-    .quick-dock-popover::after {
-      content: '';
-      position: absolute;
-      right: -16px;
-      top: 0;
-      bottom: 0;
-      width: 16px;
-    }
-
-    .project-quick-dock.popover-open .quick-dock-popover {
-      opacity: 1;
-      pointer-events: auto;
-      visibility: visible;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    .popover-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 4px 8px 10px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 8px;
-    }
-
-    .popover-title {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    .popover-close-btn {
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      font-size: 13px;
-      cursor: pointer;
-      padding: 4px 6px;
-      border-radius: 6px;
-      transition: color 0.2s ease, background-color 0.2s ease;
-    }
-
-    .popover-close-btn:hover {
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .popover-list {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      max-height: 340px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-    }
-
-    .popover-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      background: transparent;
-      border: none;
-      padding: 8px 10px;
-      border-radius: 10px;
-      color: var(--muted);
-      font-family: var(--font-body);
-      font-size: 13px;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .popover-item:hover {
-      background: rgba(var(--accent-rgb), 0.08);
-      color: var(--ink);
-      transform: translateX(3px);
-    }
-
-    .popover-item.active {
-      background: rgba(var(--accent-rgb), 0.14);
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .popover-idx {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      color: var(--accent);
-      min-width: 24px;
-      opacity: 0.85;
-    }
-
     @media (max-width: 768px) {
-      .project-quick-dock {
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%) translateX(35px);
-      }
-
-      .project-quick-dock.is-visible {
-        transform: translateY(-50%) translateX(0);
-      }
-
-      .quick-dock-pill {
-        width: 48px;
-        padding: 8px 4px;
-        gap: 5px;
-      }
-
-      .dock-top-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 8px;
-      }
-
-      .dock-arrow-btn {
-        width: 34px;
-        height: 28px;
-        font-size: 10px;
-      }
-
-      .dock-current-btn {
-        width: 40px;
-        padding: 6px 2px;
-      }
-
-      .dock-cat-label {
-        display: none;
-      }
-
-      .quick-dock-popover {
-        right: calc(100% + 8px);
-        width: 250px;
-        max-width: calc(100vw - 70px);
-      }
 
       .category-bottom-guide {
         flex-direction: column;
@@ -3330,6 +3065,9 @@
   <!-- TOP HEADER PROGRESSIVE BLUR OVERLAY -->
   <div class="top-header-blur" aria-hidden="true"></div>
 
+  <!-- FULL PAGE DROPDOWN BLUR BACKDROP -->
+  <div class="nav-dropdown-backdrop" id="navDropdownBackdrop" aria-hidden="true"></div>
+
   <!-- HEADER / FLOATING NAV -->
   <header>
     <nav>
@@ -3369,12 +3107,8 @@
               <span class="dropdown-idx">06</span>
               <span class="dropdown-text" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
             </a>
-            <a href="#cat-miscellaneous" class="dropdown-item" data-cat="miscellaneous">
-              <span class="dropdown-idx">07</span>
-              <span class="dropdown-text" data-en="Miscellaneous Projects" data-th="โปรเจกต์อื่นๆ">Miscellaneous Projects</span>
-            </a>
             <a href="#cat-photography" class="dropdown-item" data-cat="photography">
-              <span class="dropdown-idx">08</span>
+              <span class="dropdown-idx">07</span>
               <span class="dropdown-text" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
             </a>
           </div>
@@ -3615,8 +3349,6 @@
           Design</button>
         <button class="filter-btn" data-filter="event" data-en="Event & Coord" data-th="อีเวนต์ & คอร์ดิเนชั่น">Event &
           Coord</button>
-        <button class="filter-btn" data-filter="miscellaneous" data-en="Miscellaneous"
-          data-th="ผลงานอื่นๆ">Miscellaneous</button>
         <button class="filter-btn" data-filter="photography" data-en="Photography"
           data-th="งานถ่ายภาพ">Photography</button>
       </div>
@@ -3637,7 +3369,7 @@
               promotional artwork, single posts, and product graphics.</p>
           </div>
           <div class="grid-portraits">
-            <!-- GRAPHIC DESIGN PROJECTS (15 ITEMS) -->
+            <!-- GRAPHIC DESIGN PROJECTS (14 ITEMS) -->
             <div class="portrait reveal reveal-scale" data-index="0" role="button" tabindex="0">
               <img src="assets/graphic designer/Dehydeator/1.png" alt="Dehydrator">
               <span class="label">Dehydrator</span>
@@ -3696,10 +3428,6 @@
               <img src="assets/graphic designer/HounoInvitationCard.jpg" alt="Houno Combi Day 2026 Invitation Card">
               <span class="label">Houno Invitation Card</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
-              <img src="assets/graphic designer/IMG_0480.png" alt="Lunch Promotion Pizza Poster">
-              <span class="label">Lunch Promotion</span>
-            </div>
           </div>
 
           <!-- SUB-PROJECT SECTION: HAPPY METAL -->
@@ -3727,85 +3455,85 @@
 
           <!-- HAPPY METAL PRODUCT GRAPHICS (18 ITEMS) -->
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg" alt="Corolla ใบตัด 4 นิ้ว">
               <span class="label">Corolla ใบตัด 4"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.jpg" alt="Keenness ใบตัดหญ้า 12 นิ้ว">
               <span class="label">Keenness ใบตัดหญ้า 12"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/solex 425ss .jpg" alt="Solex กุญแจประตูรั้ว 425SS">
               <span class="label">Solex กุญแจประตูรั้ว</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).jpg" alt="Sumo ใบเจียรอ่อน 80J">
               <span class="label">Sumo ใบเจียรอ่อน 80J</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).jpg"
                 alt="เกจ์ซีโอทู เรกกูเรเตอร์ 36V">
               <span class="label">เกจ์ซีโอทู 36V</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ใบเจียร (1).jpg" alt="3M ใบเจียรกรีนคอร์ป 4 นิ้ว">
               <span class="label">3M ใบเจียร 4"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).jpg"
                 alt="3M ใบตัดเจียรแบบบาง 3.5mm">
               <span class="label">3M ตัดเจียรบาง 3.5mm</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).jpg"
                 alt="ขายึดราวผ้าม่าน สแตนเลส 304">
               <span class="label">ขายึดราวผ้าม่าน 304</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).jpg"
                 alt="ขาล้อเดี่ยว ตราปลาทอง 2 นิ้ว">
               <span class="label">ขาล้อปลาทอง 2"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.jpg"
                 alt="ชุดล้อคู่ สแตนเลส 304 2.5 นิ้ว">
               <span class="label">ชุดล้อคู่ สแตนเลส 2.5"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).jpg"
                 alt="น้ำมันครอบจักรวาล 450ml">
               <span class="label">น้ำมันครอบจักรวาล 450ml</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.jpg" alt="SBC ปุ๊กเหล็ก SUG">
               <span class="label">ปุ๊กเหล็ก SUG</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).jpg"
                 alt="Yawata ลวดเชื่อมฟลักซ์คอร์ 71T-1">
               <span class="label">ลวดเชื่อม 71T-1</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).jpg"
                 alt="ลวดเชื่อมสแตนเลส E308LT0-3">
               <span class="label">ลวดเชื่อมสแตนเลส E308L</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).jpg"
                 alt="Kovet ลวดเชื่อมไฟฟ้า Ni98">
               <span class="label">ลวดเชื่อมไฟฟ้า Ni98</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).jpg"
                 alt="ลวดสแตนเลส 304 ม้วน 1.6mm">
               <span class="label">ลวดสแตนเลสม้วน 1.6mm</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="31" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).jpg" alt="หัวเชื่อมแก๊ส 961">
               <span class="label">หัวเชื่อมแก๊ส 961</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="32" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="31" role="button" tabindex="0">
               <img src="assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).jpg" alt="หินเจียรรูเกลียว">
               <span class="label">หินเจียรรูเกลียว</span>
             </div>
@@ -3833,27 +3561,27 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="32" role="button" tabindex="0">
               <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">4990 Promo — 02-A</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Mayday Sale — 02-B</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Xiaomi 15T Pro — 02-C</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
               <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 04</span>
               <span class="label">Bottle Sprayer — 02-D</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="37" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
               <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="auto"></video>
               <span class="video-badge-icon">▶ Motion 05</span>
               <span class="label">DE370 Commercial — 02-E</span>
@@ -3883,7 +3611,7 @@
           </div>
           <div class="vm-showcase-board reveal reveal-scale">
             <!-- Row 1, Col 1: 3D Render Model -->
-            <div class="vm-cell-render vm-clickable-item" data-index="38" role="button" tabindex="0"
+            <div class="vm-cell-render vm-clickable-item" data-index="37" role="button" tabindex="0"
               title="Click to view full presentation">
               <img src="assets/Visual Merchandising/mo2.png" alt="โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อม - 3D Render">
               <span class="vm-zoom-badge">🔍 Zoom</span>
@@ -3904,14 +3632,14 @@
             </div>
 
             <!-- Row 2, Col 1: Store Installation Photo -->
-            <div class="vm-cell-store vm-clickable-item" data-index="38" role="button" tabindex="0"
+            <div class="vm-cell-store vm-clickable-item" data-index="37" role="button" tabindex="0"
               title="Click to view full presentation">
               <img src="assets/Visual Merchandising/sddfdf1645.jpg" alt="ติดตั้งจริง ณ หน้าร้าน">
               <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
 
             <!-- Row 2, Col 2: 3 Options Render Graphic -->
-            <div class="vm-cell-variants vm-clickable-item" data-index="38" role="button" tabindex="0"
+            <div class="vm-cell-variants vm-clickable-item" data-index="37" role="button" tabindex="0"
               title="Click to view full presentation">
               <img src="assets/Visual Merchandising/mo1.jpg" alt="รูปแบบดีไซน์ชั้นวางสินค้า 1, 2, 3">
               <span class="vm-zoom-badge">🔍 Zoom</span>
@@ -3940,7 +3668,7 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="39" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="38" role="button" tabindex="0">
               <img src="assets/project_brand.png" alt="Brand Concept Guidelines presentation sheet">
               <span class="label">Branding — 04</span>
             </div>
@@ -3990,7 +3718,7 @@
             <!-- 4 BROWSER MOCKUP CARDS GRID -->
             <div class="ui-browser-grid">
               <!-- Screen 01: Homepage -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="0"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="0"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -4016,7 +3744,7 @@
               </div>
 
               <!-- Screen 02: About Us -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="1"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="1"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -4043,7 +3771,7 @@
               </div>
 
               <!-- Screen 03: Product Catalog -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="2"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="2"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -4070,7 +3798,7 @@
               </div>
 
               <!-- Screen 04: Channels / Contact -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="40" data-img-idx="3"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="3"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -4118,7 +3846,7 @@
               lighting layouts, and spatial event coordination.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="41" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="40" role="button" tabindex="0">
               <img src="assets/project_event.png"
                 alt="Premium art gallery or product launch exhibition event stage design">
               <span class="label">Event & Coord — 06</span>
@@ -4128,42 +3856,15 @@
           <!-- CATEGORY 06 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
-            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="miscellaneous" data-en="Next: Miscellaneous Projects →" data-th="หมวดถัดไป: โปรเจกต์อื่นๆ →">Next: Miscellaneous Projects →</button>
-          </div>
-        </div>
-
-        <!-- CATEGORY 07: MISCELLANEOUS -->
-        <div class="portfolio-category-block reveal" data-category="miscellaneous" id="cat-miscellaneous">
-          <div class="category-header">
-            <div class="category-title-group">
-              <span class="category-num">07 / CATEGORY</span>
-              <h3 class="category-title" data-en="Miscellaneous Projects" data-th="โปรเจกต์สร้างสรรค์อื่นๆ">
-                Miscellaneous Projects</h3>
-            </div>
-            <p class="category-desc"
-              data-en="Creative experiments, multi-medium assets, and independent design showcases."
-              data-th="งานทดลองสร้างสรรค์ ชิ้นงานหลากหลายสื่อ และคอลเลกชันดีไซน์อิสระ">Creative experiments,
-              multi-medium assets, and independent design showcases.</p>
-          </div>
-          <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="42" role="button" tabindex="0">
-              <img src="assets/project_miscellaneous.png" alt="Miscellaneous design collection and creative projects">
-              <span class="label">Miscellaneous — 07</span>
-            </div>
-          </div>
-
-          <!-- CATEGORY 07 BOTTOM GUIDE -->
-          <div class="category-bottom-guide">
-            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="photography" data-en="Next: Photography →" data-th="หมวดถัดไป: งานถ่ายภาพ →">Next: Photography →</button>
           </div>
         </div>
 
-        <!-- CATEGORY 08: PHOTOGRAPHY -->
+        <!-- CATEGORY 07: PHOTOGRAPHY -->
         <div class="portfolio-category-block reveal" data-category="photography" id="cat-photography">
           <div class="category-header">
             <div class="category-title-group">
-              <span class="category-num">08 / CATEGORY</span>
+              <span class="category-num">07 / CATEGORY</span>
               <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
             </div>
             <p class="category-desc"
@@ -4173,45 +3874,45 @@
               photography.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="43" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="41" role="button" tabindex="0">
               <img src="assets/Photography/R0009094.jpg" alt="Portrait Photography 01">
               <span class="label">Photography — 01</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="44" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="42" role="button" tabindex="0">
               <img src="assets/Photography/R0009442.jpg" alt="Portrait Photography 02">
               <span class="label">Photography — 02</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="45" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="43" role="button" tabindex="0">
               <img src="assets/Photography/R0009444.jpg" alt="Portrait Photography 03">
               <span class="label">Photography — 03</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="44" role="button" tabindex="0">
               <img src="assets/Photography/R0009501.jpg" alt="Portrait Photography 04">
               <span class="label">Photography — 04</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" role="button" tabindex="0">
               <img src="assets/Photography/R0009641.jpg" alt="Portrait Photography 05">
               <span class="label">Photography — 05</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
               <img src="assets/Photography/R0009892.jpg" alt="Portrait Photography 06">
               <span class="label">Photography — 06</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
               <img src="assets/Photography/R0002090.jpg" alt="Portrait Photography 07">
               <span class="label">Photography — 07</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="50" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
               <img src="assets/Photography/R0002465.jpg" alt="Portrait Photography 08">
               <span class="label">Photography — 08</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="51" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
               <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
               <span class="label">Photography — 09</span>
             </div>
           </div>
 
-          <!-- CATEGORY 08 BOTTOM GUIDE -->
+          <!-- CATEGORY 07 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <a href="#contact" class="cat-guide-btn to-next" data-en="Get in touch →" data-th="ติดต่อร่วมงาน →">Get in touch →</a>
@@ -4316,79 +4017,6 @@
     </div>
   </div>
 
-  <!-- FLOATING PROJECT QUICK NAVIGATOR DOCK -->
-  <aside class="project-quick-dock" id="projectQuickDock" aria-label="Project Quick Navigator">
-    <div class="quick-dock-pill">
-      <!-- Jump to top of projects -->
-      <button type="button" class="dock-top-btn" id="dockTopBtn" title="Back to top of projects" data-en="Top" data-th="บนสุด">
-        <span class="dock-top-icon">↑</span>
-        <span class="dock-top-text" data-en="TOP" data-th="บน">TOP</span>
-      </button>
-
-      <span class="dock-divider"></span>
-
-      <!-- Prev category jump button (Up) -->
-      <button type="button" class="dock-arrow-btn" id="dockPrevBtn" aria-label="Previous category" title="Previous category">▲</button>
-
-      <!-- Active category indicator & Popover trigger -->
-      <button type="button" class="dock-current-btn" id="dockCurrentBtn" title="Click to view all categories">
-        <span class="dock-dot"></span>
-        <span class="dock-cat-num" id="dockCatNum">ALL</span>
-        <span class="dock-cat-label" id="dockCatLabel" data-en="All" data-th="ทั้งหมด">All</span>
-        <span class="dock-arrow">◂</span>
-      </button>
-
-      <!-- Next category jump button (Down) -->
-      <button type="button" class="dock-arrow-btn" id="dockNextBtn" aria-label="Next category" title="Next category">▼</button>
-    </div>
-
-    <!-- Quick Dock Category Popover Sheet -->
-    <div class="quick-dock-popover" id="quickDockPopover">
-      <div class="popover-header">
-        <span class="popover-title" data-en="Project Categories" data-th="หมวดหมู่โปรเจกต์">Project Categories</span>
-        <button type="button" class="popover-close-btn" id="popoverCloseBtn" aria-label="Close menu">✕</button>
-      </div>
-      <div class="popover-list">
-        <button type="button" class="popover-item active" data-cat="all">
-          <span class="popover-idx">ALL</span>
-          <span class="popover-name" data-en="All Projects" data-th="ผลงานทั้งหมด">All Projects</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="graphic">
-          <span class="popover-idx">01</span>
-          <span class="popover-name" data-en="Graphic Design" data-th="กราฟิกดีไซน์">Graphic Design</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="motion">
-          <span class="popover-idx">02</span>
-          <span class="popover-name" data-en="Video & Motion Design" data-th="วิดีโอ & โมชั่นดีไซน์">Video & Motion Design</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="merchandising">
-          <span class="popover-idx">03</span>
-          <span class="popover-name" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="branding">
-          <span class="popover-idx">04</span>
-          <span class="popover-name" data-en="Branding & Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์">Branding & Identity</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="web-ui">
-          <span class="popover-idx">05</span>
-          <span class="popover-name" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI Design</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="event">
-          <span class="popover-idx">06</span>
-          <span class="popover-name" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="miscellaneous">
-          <span class="popover-idx">07</span>
-          <span class="popover-name" data-en="Miscellaneous Projects" data-th="โปรเจกต์อื่นๆ">Miscellaneous Projects</span>
-        </button>
-        <button type="button" class="popover-item" data-cat="photography">
-          <span class="popover-idx">08</span>
-          <span class="popover-name" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
-        </button>
-      </div>
-    </div>
-  </aside>
-
   <!-- PROJECT DETAIL POPUP MODAL -->
   <div id="projectModal" class="modal" aria-hidden="true">
     <div class="modal-overlay"></div>
@@ -4480,10 +4108,13 @@
         if (!targetText) return;
 
         const hasArrow = el.querySelector('.btn-arrow');
+        const hasNavArrow = el.querySelector('.nav-arrow');
         const hasSq = el.querySelector('.sq');
 
         if (hasArrow) {
           el.innerHTML = `${targetText} <span class="btn-arrow">↗</span>`;
+        } else if (hasNavArrow) {
+          el.innerHTML = `${targetText} <span class="nav-arrow">▾</span>`;
         } else if (hasSq) {
           el.innerHTML = `<span class="sq"></span>${targetText}`;
         } else if (targetText.includes('<')) {
@@ -4493,8 +4124,8 @@
         }
       });
 
-      if (window._isProjectNavReady && typeof updateDockUI === 'function') {
-        updateDockUI(currentCategoryIndex);
+      if (window._isProjectNavReady && typeof updateCategoryNavUI === 'function') {
+        updateCategoryNavUI(currentCategoryIndex);
       }
     }
 
@@ -4953,11 +4584,6 @@
         title: 'Houno Combi Day 2026 Invitation Card'
       },
       {
-        image: 'assets/graphic designer/IMG_0480.png',
-        tag: 'GRAPHIC DESIGN',
-        title: 'Lunch Promotion Pizza Poster'
-      },
-      {
         image: 'assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Corolla — ใบตัดสแตนเลส/ตัดเหล็ก 4 นิ้ว'
@@ -5109,11 +4735,6 @@
         image: 'assets/project_event.png',
         tag: 'EVENT DESIGN',
         title: 'Creative Exhibition Stage & Coordination'
-      },
-      {
-        image: 'assets/project_miscellaneous.png',
-        tag: 'MISCELLANEOUS',
-        title: 'Miscellaneous Creative Projects'
       },
       {
         image: 'assets/Photography/R0009094.jpg',
@@ -5282,21 +4903,11 @@
       { id: 'cat-branding', cat: 'branding', num: '04', shortEn: 'Brand', shortTh: 'แบรนด์', en: '04 Branding & Identity', th: '04 แบรนด์ดิ้ง & อัตลักษณ์' },
       { id: 'category-web-ui', cat: 'web-ui', num: '05', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '05 Web & UI Design', th: '05 เว็บ & UI ดีไซน์' },
       { id: 'cat-event', cat: 'event', num: '06', shortEn: 'Event', shortTh: 'อีเวนต์', en: '06 Event & Coord', th: '06 จัดงานอีเวนต์' },
-      { id: 'cat-miscellaneous', cat: 'miscellaneous', num: '07', shortEn: 'Misc', shortTh: 'อื่นๆ', en: '07 Miscellaneous', th: '07 โปรเจกต์อื่นๆ' },
-      { id: 'cat-photography', cat: 'photography', num: '08', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '08 Photography', th: '08 งานถ่ายภาพ' }
+      { id: 'cat-photography', cat: 'photography', num: '07', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '07 Photography', th: '07 งานถ่ายภาพ' }
     ];
 
     const filterBtns = document.querySelectorAll('.filter-btn');
     const categoryBlocks = document.querySelectorAll('.portfolio-category-block');
-    const quickDock = document.getElementById('projectQuickDock');
-    const dockCatNum = document.getElementById('dockCatNum');
-    const dockCatLabel = document.getElementById('dockCatLabel');
-    const dockCurrentBtn = document.getElementById('dockCurrentBtn');
-    const quickDockPopover = document.getElementById('quickDockPopover');
-    const popoverCloseBtn = document.getElementById('popoverCloseBtn');
-    const dockPrevBtn = document.getElementById('dockPrevBtn');
-    const dockNextBtn = document.getElementById('dockNextBtn');
-    const dockTopBtn = document.getElementById('dockTopBtn');
     const projectsNavDropdown = document.getElementById('projectsNavDropdown');
     const projectsDropdownWrapper = document.getElementById('projectsDropdownWrapper');
 
@@ -5304,9 +4915,20 @@
 
     // Central jumpToCategory function
     function jumpToCategory(catKey) {
-      // Close dropdown and popovers
-      if (quickDock) quickDock.classList.remove('popover-open');
-      if (projectsDropdownWrapper) projectsDropdownWrapper.classList.remove('open');
+      // Close dropdown immediately
+      if (projectsDropdownWrapper) {
+        projectsDropdownWrapper.classList.remove('open');
+        projectsDropdownWrapper.classList.add('is-dismissed');
+      }
+      document.body.classList.remove('dropdown-backdrop-active');
+      document.body.classList.add('is-dropdown-dismissed');
+      if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+      }
+      setTimeout(() => {
+        if (projectsDropdownWrapper) projectsDropdownWrapper.classList.remove('is-dismissed');
+        document.body.classList.remove('is-dropdown-dismissed');
+      }, 600);
 
       if (catKey === 'all') {
         const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
@@ -5322,7 +4944,7 @@
         if (workSec) {
           workSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        updateDockUI(-1);
+        updateCategoryNavUI(-1);
         return;
       }
 
@@ -5352,66 +4974,34 @@
         }, 1200);
 
         const targetIdx = projectCategoryList.findIndex(item => item.cat === catKey);
-        updateDockUI(targetIdx);
+        updateCategoryNavUI(targetIdx);
       }
     }
 
-    // Update Dock UI label, active items, and Prev/Next buttons
-    function updateDockUI(idx) {
+    // Sync active category in header dropdown
+    function updateCategoryNavUI(idx) {
       currentCategoryIndex = idx;
-      const currentLang = document.documentElement.getAttribute('lang') || 'en';
-
       if (idx >= 0 && idx < projectCategoryList.length) {
         const item = projectCategoryList[idx];
-        if (dockCatNum) {
-          dockCatNum.textContent = item.num;
-        }
-        if (dockCatLabel) {
-          dockCatLabel.textContent = currentLang === 'th' ? item.shortTh : item.shortEn;
-        }
-
-        // Sync popover active
-        document.querySelectorAll('.quick-dock-popover .popover-item').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-cat') === item.cat);
-        });
-
-        // Sync header dropdown active
         document.querySelectorAll('.nav-dropdown-menu .dropdown-item').forEach(link => {
           link.classList.toggle('active', link.getAttribute('data-cat') === item.cat);
         });
-
-        if (dockPrevBtn) dockPrevBtn.disabled = (idx === 0);
-        if (dockNextBtn) dockNextBtn.disabled = (idx === projectCategoryList.length - 1);
       } else {
-        if (dockCatNum) {
-          dockCatNum.textContent = 'ALL';
-        }
-        if (dockCatLabel) {
-          dockCatLabel.textContent = currentLang === 'th' ? 'ทั้งหมด' : 'All';
-        }
-        document.querySelectorAll('.quick-dock-popover .popover-item').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-cat') === 'all');
-        });
         document.querySelectorAll('.nav-dropdown-menu .dropdown-item').forEach(link => {
           link.classList.toggle('active', link.getAttribute('data-cat') === 'all');
         });
-        if (dockPrevBtn) dockPrevBtn.disabled = true;
-        if (dockNextBtn) dockNextBtn.disabled = false;
       }
     }
 
-    // Scroll spy for Floating Quick Dock and current category tracking
+    // Scroll spy for current category tracking (syncs top nav dropdown)
     function updateProjectQuickNav() {
       const workSec = document.getElementById('work');
-      if (!workSec || !quickDock) return;
+      if (!workSec) return;
 
       const workRect = workSec.getBoundingClientRect();
       const inWork = workRect.top < window.innerHeight * 0.7 && workRect.bottom > 200;
-
-      quickDock.classList.toggle('is-visible', inWork);
-
       if (!inWork) {
-        quickDock.classList.remove('popover-open');
+        updateCategoryNavUI(-1);
         return;
       }
 
@@ -5433,7 +5023,7 @@
         }
       });
 
-      updateDockUI(activeCatIdx);
+      updateCategoryNavUI(activeCatIdx);
     }
 
     window.addEventListener('scroll', () => {
@@ -5468,55 +5058,7 @@
         }
 
         const idx = projectCategoryList.findIndex(i => i.cat === filter);
-        updateDockUI(idx);
-      });
-    });
-
-    // Popover toggle & close
-    if (dockCurrentBtn) {
-      dockCurrentBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (quickDock) quickDock.classList.toggle('popover-open');
-      });
-    }
-
-    if (popoverCloseBtn) {
-      popoverCloseBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (quickDock) quickDock.classList.remove('popover-open');
-      });
-    }
-
-    // Prev / Next category jump buttons
-    if (dockPrevBtn) {
-      dockPrevBtn.addEventListener('click', () => {
-        const nextIdx = currentCategoryIndex > 0 ? currentCategoryIndex - 1 : 0;
-        jumpToCategory(projectCategoryList[nextIdx].cat);
-      });
-    }
-
-    if (dockNextBtn) {
-      dockNextBtn.addEventListener('click', () => {
-        const nextIdx = currentCategoryIndex < projectCategoryList.length - 1 ? currentCategoryIndex + 1 : 0;
-        jumpToCategory(projectCategoryList[nextIdx].cat);
-      });
-    }
-
-    // Dock Top button
-    if (dockTopBtn) {
-      dockTopBtn.addEventListener('click', () => {
-        const workSec = document.getElementById('work');
-        if (workSec) {
-          workSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    }
-
-    // Category popover items click
-    document.querySelectorAll('.quick-dock-popover .popover-item').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const cat = btn.getAttribute('data-cat');
-        jumpToCategory(cat);
+        updateCategoryNavUI(idx);
       });
     });
 
@@ -5525,6 +5067,16 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const cat = link.getAttribute('data-cat');
+        // Force close dropdown and blur immediately
+        if (projectsDropdownWrapper) {
+          projectsDropdownWrapper.classList.remove('open');
+          projectsDropdownWrapper.classList.add('is-dismissed');
+        }
+        document.body.classList.remove('dropdown-backdrop-active');
+        document.body.classList.add('is-dropdown-dismissed');
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
         jumpToCategory(cat);
       });
     });
@@ -5547,36 +5099,85 @@
       });
     });
 
-    // Dismiss popovers when clicking outside
-    document.addEventListener('click', (e) => {
-      if (quickDock && !quickDock.contains(e.target)) {
-        quickDock.classList.remove('popover-open');
+    // Full-page blur backdrop sync for Projects dropdown
+    const navDropdownBackdrop = document.getElementById('navDropdownBackdrop');
+
+    function setDropdownBackdrop(active) {
+      if (active) {
+        if (!projectsDropdownWrapper || !projectsDropdownWrapper.classList.contains('is-dismissed')) {
+          document.body.classList.add('dropdown-backdrop-active');
+        }
+      } else {
+        if (!projectsDropdownWrapper || !projectsDropdownWrapper.classList.contains('open')) {
+          document.body.classList.remove('dropdown-backdrop-active');
+        }
       }
+    }
+
+    if (projectsDropdownWrapper) {
+      projectsDropdownWrapper.addEventListener('mouseenter', () => {
+        if (!projectsDropdownWrapper.classList.contains('is-dismissed')) {
+          setDropdownBackdrop(true);
+        }
+      });
+      projectsDropdownWrapper.addEventListener('mouseleave', () => {
+        projectsDropdownWrapper.classList.remove('is-dismissed');
+        document.body.classList.remove('is-dropdown-dismissed');
+        setDropdownBackdrop(false);
+      });
+      projectsDropdownWrapper.addEventListener('focusin', () => {
+        if (!projectsDropdownWrapper.classList.contains('is-dismissed')) {
+          setDropdownBackdrop(true);
+        }
+      });
+      projectsDropdownWrapper.addEventListener('focusout', () => setDropdownBackdrop(false));
+    }
+
+    if (navDropdownBackdrop) {
+      navDropdownBackdrop.addEventListener('click', () => {
+        if (projectsDropdownWrapper) {
+          projectsDropdownWrapper.classList.remove('open');
+        }
+        document.body.classList.remove('dropdown-backdrop-active');
+      });
+    }
+
+    // Dismiss dropdown when clicking outside
+    document.addEventListener('click', (e) => {
       if (projectsDropdownWrapper && !projectsDropdownWrapper.contains(e.target)) {
         projectsDropdownWrapper.classList.remove('open');
+        document.body.classList.remove('dropdown-backdrop-active');
       }
     });
 
-    // Dismiss popover on Escape key
+    // Dismiss dropdown on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        if (quickDock) quickDock.classList.remove('popover-open');
         if (projectsDropdownWrapper) projectsDropdownWrapper.classList.remove('open');
+        document.body.classList.remove('dropdown-backdrop-active');
       }
     });
 
-    // Toggle Projects dropdown on click (especially helpful on mobile/touch screens)
+    // Toggle Projects dropdown on click (for mobile and desktop)
     if (projectsDropdownWrapper) {
       const projectsLink = projectsDropdownWrapper.querySelector('.nav-link-projects');
       if (projectsLink) {
         projectsLink.addEventListener('click', (e) => {
-          if (e.target.classList.contains('nav-arrow') || window.innerWidth <= 768) {
-            e.preventDefault();
-            projectsDropdownWrapper.classList.toggle('open');
-          }
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = projectsDropdownWrapper.classList.toggle('open');
+          setDropdownBackdrop(isOpen);
         });
       }
     }
+
+    // Dismiss dropdown and backdrop blur on page scroll
+    window.addEventListener('scroll', () => {
+      if (projectsDropdownWrapper && projectsDropdownWrapper.classList.contains('open')) {
+        projectsDropdownWrapper.classList.remove('open');
+        document.body.classList.remove('dropdown-backdrop-active');
+      }
+    }, { passive: true });
 
     // Mark project navigation as fully initialized and run initial state check
     window._isProjectNavReady = true;
