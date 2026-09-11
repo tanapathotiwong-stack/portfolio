@@ -1,3 +1,14 @@
 .vscode/
 Thumbs.db
 Desktop.ini
+node_modules/
+analyze.js
+inspect_images.ps1
+optimize_images.js
+check_coverage.js
+verify_links.js
+inspect_lucaris.ps1
+remove_branding.js
+package.json
+package-lock.json
+*temp.mp4

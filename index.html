@@ -120,6 +120,9 @@
       --switcher-bg: rgba(18, 18, 20, 0.85);
       --mesh-bg-color: #070708;
       --hero-bg-overlay: linear-gradient(to right, rgba(7, 7, 8, 0.70) 30%, rgba(7, 7, 8, 0.2) 100%);
+      --card-hover-bg: rgba(26, 26, 30, 0.85);
+      --card-hover-border: rgba(255, 255, 255, 0.15);
+      --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     :root.light-theme {
@@ -141,6 +144,9 @@
       --switcher-bg: rgba(255, 255, 255, 0.9);
       --mesh-bg-color: #F5F4F0;
       --hero-bg-overlay: linear-gradient(to right, rgba(245, 244, 240, 0.96) 30%, rgba(245, 244, 240, 0.75) 100%);
+      --card-hover-bg: #FFFFFF;
+      --card-hover-border: rgba(0, 0, 0, 0.12);
+      --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -708,7 +714,7 @@
       padding-top: 150px;
       padding-bottom: 64px;
       isolation: isolate;
-      background-image: var(--hero-bg-overlay), url('assets/hero_visual.jpg');
+      background-image: var(--hero-bg-overlay), url('assets/hero_visual.webp');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -2191,9 +2197,9 @@
 
     .method-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(255, 255, 255, 0.1);
-      background: rgba(18, 18, 20, 0.65);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: var(--card-hover-border);
+      background: var(--card-hover-bg);
+      box-shadow: var(--card-hover-shadow);
     }
 
     .method-card:hover::before {
@@ -3095,20 +3101,16 @@
               <span class="dropdown-idx">03</span>
               <span class="dropdown-text" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</span>
             </a>
-            <a href="#cat-branding" class="dropdown-item" data-cat="branding">
-              <span class="dropdown-idx">04</span>
-              <span class="dropdown-text" data-en="Branding & Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์">Branding & Identity</span>
-            </a>
             <a href="#category-web-ui" class="dropdown-item" data-cat="web-ui">
-              <span class="dropdown-idx">05</span>
+              <span class="dropdown-idx">04</span>
               <span class="dropdown-text" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI Design</span>
             </a>
             <a href="#cat-event" class="dropdown-item" data-cat="event">
-              <span class="dropdown-idx">06</span>
+              <span class="dropdown-idx">05</span>
               <span class="dropdown-text" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
             </a>
             <a href="#cat-photography" class="dropdown-item" data-cat="photography">
-              <span class="dropdown-idx">07</span>
+              <span class="dropdown-idx">06</span>
               <span class="dropdown-text" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
             </a>
           </div>
@@ -3188,32 +3190,32 @@
       </div>
       <div class="marquee-container">
         <div class="marquee-content">
-          <img src="assets/icon programs/ae.png" alt="After Effects" class="marquee-icon">
-          <img src="assets/icon programs/pr.png" alt="Premiere Pro" class="marquee-icon">
-          <img src="assets/icon programs/ps.png" alt="Photoshop" class="marquee-icon">
-          <img src="assets/icon programs/ai.png" alt="Illustrator" class="marquee-icon">
-          <img src="assets/icon programs/Figma.png" alt="Figma" class="marquee-icon">
-          <img src="assets/icon programs/affinity.png" alt="Affinity Design" class="marquee-icon">
-          <img src="assets/icon programs/canva.png" alt="Canva" class="marquee-icon marquee-icon-wide">
-          <img src="assets/icon programs/capcut.png" alt="Capcut" class="marquee-icon marquee-icon-wide">
-          <img src="assets/icon programs/chatgpt.png" alt="ChatGPT" class="marquee-icon marquee-icon-wide">
-          <img src="assets/icon programs/Gemini.png" alt="Gemini" class="marquee-icon">
-          <img src="assets/icon programs/cscode.png" alt="VS Code" class="marquee-icon">
-          <img src="assets/icon programs/antigravity.png" alt="Antigravity" class="marquee-icon">
+          <img src="assets/icon programs/ae.webp" alt="After Effects" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/pr.webp" alt="Premiere Pro" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/ps.webp" alt="Photoshop" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/ai.webp" alt="Illustrator" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/Figma.webp" alt="Figma" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/affinity.webp" alt="Affinity Design" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/canva.webp" alt="Canva" class="marquee-icon marquee-icon-wide" loading="lazy" decoding="async">
+          <img src="assets/icon programs/capcut.webp" alt="Capcut" class="marquee-icon marquee-icon-wide" loading="lazy" decoding="async">
+          <img src="assets/icon programs/chatgpt.webp" alt="ChatGPT" class="marquee-icon marquee-icon-wide" loading="lazy" decoding="async">
+          <img src="assets/icon programs/Gemini.webp" alt="Gemini" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/cscode.webp" alt="VS Code" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/antigravity.webp" alt="Antigravity" class="marquee-icon" loading="lazy" decoding="async">
         </div>
         <div class="marquee-content" aria-hidden="true">
-          <img src="assets/icon programs/ae.png" alt="After Effects" class="marquee-icon">
-          <img src="assets/icon programs/pr.png" alt="Premiere Pro" class="marquee-icon">
-          <img src="assets/icon programs/ps.png" alt="Photoshop" class="marquee-icon">
-          <img src="assets/icon programs/ai.png" alt="Illustrator" class="marquee-icon">
-          <img src="assets/icon programs/Figma.png" alt="Figma" class="marquee-icon">
-          <img src="assets/icon programs/affinity.png" alt="Affinity Design" class="marquee-icon">
-          <img src="assets/icon programs/canva.png" alt="Canva" class="marquee-icon marquee-icon-wide">
-          <img src="assets/icon programs/capcut.png" alt="Capcut" class="marquee-icon marquee-icon-wide">
-          <img src="assets/icon programs/chatgpt.png" alt="ChatGPT" class="marquee-icon marquee-icon-wide">
-          <img src="assets/icon programs/Gemini.png" alt="Gemini" class="marquee-icon">
-          <img src="assets/icon programs/cscode.png" alt="VS Code" class="marquee-icon">
-          <img src="assets/icon programs/antigravity.png" alt="Antigravity" class="marquee-icon">
+          <img src="assets/icon programs/ae.webp" alt="After Effects" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/pr.webp" alt="Premiere Pro" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/ps.webp" alt="Photoshop" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/ai.webp" alt="Illustrator" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/Figma.webp" alt="Figma" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/affinity.webp" alt="Affinity Design" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/canva.webp" alt="Canva" class="marquee-icon marquee-icon-wide" loading="lazy" decoding="async">
+          <img src="assets/icon programs/capcut.webp" alt="Capcut" class="marquee-icon marquee-icon-wide" loading="lazy" decoding="async">
+          <img src="assets/icon programs/chatgpt.webp" alt="ChatGPT" class="marquee-icon marquee-icon-wide" loading="lazy" decoding="async">
+          <img src="assets/icon programs/Gemini.webp" alt="Gemini" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/cscode.webp" alt="VS Code" class="marquee-icon" loading="lazy" decoding="async">
+          <img src="assets/icon programs/antigravity.webp" alt="Antigravity" class="marquee-icon" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -3344,7 +3346,6 @@
           data-th="วิดีโอ & โมชั่นดีไซน์">Video & Motion Design</button>
         <button class="filter-btn" data-filter="merchandising" data-en="Visual Merchandising"
           data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</button>
-        <button class="filter-btn" data-filter="branding" data-en="Branding" data-th="แบรนด์ดิ้ง">Branding</button>
         <button class="filter-btn" data-filter="web-ui" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI
           Design</button>
         <button class="filter-btn" data-filter="event" data-en="Event & Coord" data-th="อีเวนต์ & คอร์ดิเนชั่น">Event &
@@ -3369,64 +3370,68 @@
               promotional artwork, single posts, and product graphics.</p>
           </div>
           <div class="grid-portraits">
-            <!-- GRAPHIC DESIGN PROJECTS (14 ITEMS) -->
+            <!-- GRAPHIC DESIGN PROJECTS (15 ITEMS) -->
             <div class="portrait reveal reveal-scale" data-index="0" role="button" tabindex="0">
-              <img src="assets/graphic designer/Dehydeator/1.png" alt="Dehydrator">
+              <img src="assets/graphic designer/Dehydeator/1.webp" alt="Dehydrator" loading="lazy" decoding="async">
               <span class="label">Dehydrator</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="1" role="button" tabindex="0">
-              <img src="assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png"
-                alt="Table Craft Ribbed Ramekin">
+              <img src="assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.webp"
+                alt="Table Craft Ribbed Ramekin" loading="lazy" decoding="async">
               <span class="label">Table Craft Ribbed Ramekin</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="2" role="button" tabindex="0">
-              <img src="assets/graphic designer/Bigrig/1.png" alt="Bigrig">
+              <img src="assets/graphic designer/Bigrig/1.webp" alt="Bigrig" loading="lazy" decoding="async">
               <span class="label">Bigrig</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
-              <img src="assets/graphic designer/Winsor/Windsor series (1).png" alt="ช้อนส้อม Windsor Series">
+              <img src="assets/graphic designer/Winsor/Windsor series (1).webp" alt="ช้อนส้อม Windsor Series" loading="lazy" decoding="async">
               <span class="label">ช้อนส้อม Windsor Series</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="4" role="button" tabindex="0">
-              <img src="assets/graphic designer/Cambro 50/1.jpg" alt="Cambro 50%">
+              <img src="assets/graphic designer/Cambro 50/1.webp" alt="Cambro 50%" loading="lazy" decoding="async">
               <span class="label">Cambro 50%</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
-              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.png" alt="EPP BOX 50%">
+              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.webp" alt="EPP BOX 50%" loading="lazy" decoding="async">
               <span class="label">EPP BOX 50%</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="6" role="button" tabindex="0">
-              <img src="assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png" alt="Fast Food Tray">
+              <img src="assets/graphic designer/FAST FOOD TRAY/1217FF@2x.webp" alt="Fast Food Tray" loading="lazy" decoding="async">
               <span class="label">Fast Food Tray</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="7" role="button" tabindex="0">
-              <img src="assets/graphic designer/chef guarantee.png" alt="Chef Guarantee">
+              <img src="assets/graphic designer/chef guarantee.webp" alt="Chef Guarantee" loading="lazy" decoding="async">
               <span class="label">Chef Guarantee</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="8" role="button" tabindex="0">
-              <img src="assets/graphic designer/Meat Cutting/1.png" alt="Meat Cutting">
+              <img src="assets/graphic designer/Meat Cutting/1.webp" alt="Meat Cutting" loading="lazy" decoding="async">
               <span class="label">Meat Cutting</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="9" role="button" tabindex="0">
-              <img src="assets/graphic designer/Ad single post/Cambro.png" alt="Ad Single Post">
+              <img src="assets/graphic designer/Ad single post/Cambro.webp" alt="Ad Single Post" loading="lazy" decoding="async">
               <span class="label">Ad Single Post</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="10" role="button" tabindex="0">
-              <img src="assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.png"
-                alt="Oblong Double Wall Bowl">
+              <img src="assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.webp"
+                alt="Oblong Double Wall Bowl" loading="lazy" decoding="async">
               <span class="label">Oblong Double Wall Bowl</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="11" role="button" tabindex="0">
-              <img src="assets/graphic designer/Ad single post/cutlery-50-off.png" alt="Cutlery 50% Off">
+              <img src="assets/graphic designer/Ad single post/cutlery-50-off.webp" alt="Cutlery 50% Off" loading="lazy" decoding="async">
               <span class="label">Cutlery 50% Off</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
-              <img src="assets/graphic designer/Monin.png" alt="Monin Syrup">
+              <img src="assets/graphic designer/Monin.webp" alt="Monin Syrup" loading="lazy" decoding="async">
               <span class="label">Monin Syrup</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
-              <img src="assets/graphic designer/HounoInvitationCard.jpg" alt="Houno Combi Day 2026 Invitation Card">
+              <img src="assets/graphic designer/HounoInvitationCard.webp" alt="Houno Combi Day 2026 Invitation Card" loading="lazy" decoding="async">
               <span class="label">Houno Invitation Card</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+              <img src="assets/graphic designer/Lucaris/Lucaris - 1.webp" alt="Lucaris Crystal Glassware" loading="lazy" decoding="async">
+              <span class="label">Lucaris Crystal Glassware</span>
             </div>
           </div>
 
@@ -3455,86 +3460,86 @@
 
           <!-- HAPPY METAL PRODUCT GRAPHICS (18 ITEMS) -->
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg" alt="Corolla ใบตัด 4 นิ้ว">
+            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).webp" alt="Corolla ใบตัด 4 นิ้ว" loading="lazy" decoding="async">
               <span class="label">Corolla ใบตัด 4"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="15" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.jpg" alt="Keenness ใบตัดหญ้า 12 นิ้ว">
+            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.webp" alt="Keenness ใบตัดหญ้า 12 นิ้ว" loading="lazy" decoding="async">
               <span class="label">Keenness ใบตัดหญ้า 12"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="16" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/solex 425ss .jpg" alt="Solex กุญแจประตูรั้ว 425SS">
+            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/solex 425ss .webp" alt="Solex กุญแจประตูรั้ว 425SS" loading="lazy" decoding="async">
               <span class="label">Solex กุญแจประตูรั้ว</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="17" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).jpg" alt="Sumo ใบเจียรอ่อน 80J">
+            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).webp" alt="Sumo ใบเจียรอ่อน 80J" loading="lazy" decoding="async">
               <span class="label">Sumo ใบเจียรอ่อน 80J</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="18" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).jpg"
-                alt="เกจ์ซีโอทู เรกกูเรเตอร์ 36V">
+            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).webp"
+                alt="เกจ์ซีโอทู เรกกูเรเตอร์ 36V" loading="lazy" decoding="async">
               <span class="label">เกจ์ซีโอทู 36V</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="19" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ใบเจียร (1).jpg" alt="3M ใบเจียรกรีนคอร์ป 4 นิ้ว">
+            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ใบเจียร (1).webp" alt="3M ใบเจียรกรีนคอร์ป 4 นิ้ว" loading="lazy" decoding="async">
               <span class="label">3M ใบเจียร 4"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="20" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).jpg"
-                alt="3M ใบตัดเจียรแบบบาง 3.5mm">
+            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).webp"
+                alt="3M ใบตัดเจียรแบบบาง 3.5mm" loading="lazy" decoding="async">
               <span class="label">3M ตัดเจียรบาง 3.5mm</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="21" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).jpg"
-                alt="ขายึดราวผ้าม่าน สแตนเลส 304">
+            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).webp"
+                alt="ขายึดราวผ้าม่าน สแตนเลส 304" loading="lazy" decoding="async">
               <span class="label">ขายึดราวผ้าม่าน 304</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="22" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).jpg"
-                alt="ขาล้อเดี่ยว ตราปลาทอง 2 นิ้ว">
+            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).webp"
+                alt="ขาล้อเดี่ยว ตราปลาทอง 2 นิ้ว" loading="lazy" decoding="async">
               <span class="label">ขาล้อปลาทอง 2"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="23" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.jpg"
-                alt="ชุดล้อคู่ สแตนเลส 304 2.5 นิ้ว">
+            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.webp"
+                alt="ชุดล้อคู่ สแตนเลส 304 2.5 นิ้ว" loading="lazy" decoding="async">
               <span class="label">ชุดล้อคู่ สแตนเลส 2.5"</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="24" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).jpg"
-                alt="น้ำมันครอบจักรวาล 450ml">
+            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).webp"
+                alt="น้ำมันครอบจักรวาล 450ml" loading="lazy" decoding="async">
               <span class="label">น้ำมันครอบจักรวาล 450ml</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="25" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.jpg" alt="SBC ปุ๊กเหล็ก SUG">
+            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.webp" alt="SBC ปุ๊กเหล็ก SUG" loading="lazy" decoding="async">
               <span class="label">ปุ๊กเหล็ก SUG</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="26" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).jpg"
-                alt="Yawata ลวดเชื่อมฟลักซ์คอร์ 71T-1">
+            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).webp"
+                alt="Yawata ลวดเชื่อมฟลักซ์คอร์ 71T-1" loading="lazy" decoding="async">
               <span class="label">ลวดเชื่อม 71T-1</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="27" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).jpg"
-                alt="ลวดเชื่อมสแตนเลส E308LT0-3">
+            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).webp"
+                alt="ลวดเชื่อมสแตนเลส E308LT0-3" loading="lazy" decoding="async">
               <span class="label">ลวดเชื่อมสแตนเลส E308L</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="28" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).jpg"
-                alt="Kovet ลวดเชื่อมไฟฟ้า Ni98">
+            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).webp"
+                alt="Kovet ลวดเชื่อมไฟฟ้า Ni98" loading="lazy" decoding="async">
               <span class="label">ลวดเชื่อมไฟฟ้า Ni98</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="29" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).jpg"
-                alt="ลวดสแตนเลส 304 ม้วน 1.6mm">
+            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).webp"
+                alt="ลวดสแตนเลส 304 ม้วน 1.6mm" loading="lazy" decoding="async">
               <span class="label">ลวดสแตนเลสม้วน 1.6mm</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="30" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).jpg" alt="หัวเชื่อมแก๊ส 961">
+            <div class="portrait reveal reveal-scale" data-index="31" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).webp" alt="หัวเชื่อมแก๊ส 961" loading="lazy" decoding="async">
               <span class="label">หัวเชื่อมแก๊ส 961</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="31" role="button" tabindex="0">
-              <img src="assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).jpg" alt="หินเจียรรูเกลียว">
+            <div class="portrait reveal reveal-scale" data-index="32" role="button" tabindex="0">
+              <img src="assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).webp" alt="หินเจียรรูเกลียว" loading="lazy" decoding="async">
               <span class="label">หินเจียรรูเกลียว</span>
             </div>
           </div>
@@ -3561,30 +3566,40 @@
             </p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="32" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+            <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">4990 Promo — 02-A</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+            <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Mayday Sale — 02-B</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+            <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Xiaomi 15T Pro — 02-C</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+            <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
               <span class="video-badge-icon">▶ Motion 04</span>
               <span class="label">Bottle Sprayer — 02-D</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="auto"></video>
+            <div class="portrait reveal reveal-scale" data-index="37" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
               <span class="video-badge-icon">▶ Motion 05</span>
               <span class="label">DE370 Commercial — 02-E</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="38" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/CAMBRO CAMTAINER®.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <span class="video-badge-icon">▶ Motion 06</span>
+              <span class="label">CAMBRO Camtainer® — 02-F</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="39" role="button" tabindex="0">
+              <video src="assets/Motion Graphics/Hamilton Beach Vacuum.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <span class="video-badge-icon">▶ Motion 07</span>
+              <span class="label">Hamilton Beach Vacuum — 02-G</span>
             </div>
           </div>
 
@@ -3611,9 +3626,9 @@
           </div>
           <div class="vm-showcase-board reveal reveal-scale">
             <!-- Row 1, Col 1: 3D Render Model -->
-            <div class="vm-cell-render vm-clickable-item" data-index="37" role="button" tabindex="0"
+            <div class="vm-cell-render vm-clickable-item" data-index="40" role="button" tabindex="0"
               title="Click to view full presentation">
-              <img src="assets/Visual Merchandising/mo2.png" alt="โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อม - 3D Render">
+              <img src="assets/Visual Merchandising/mo2.webp" alt="โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อม - 3D Render" loading="lazy" decoding="async">
               <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
 
@@ -3632,16 +3647,16 @@
             </div>
 
             <!-- Row 2, Col 1: Store Installation Photo -->
-            <div class="vm-cell-store vm-clickable-item" data-index="37" role="button" tabindex="0"
+            <div class="vm-cell-store vm-clickable-item" data-index="40" role="button" tabindex="0"
               title="Click to view full presentation">
-              <img src="assets/Visual Merchandising/sddfdf1645.jpg" alt="ติดตั้งจริง ณ หน้าร้าน">
+              <img src="assets/Visual Merchandising/sddfdf1645.webp" alt="ติดตั้งจริง ณ หน้าร้าน" loading="lazy" decoding="async">
               <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
 
             <!-- Row 2, Col 2: 3 Options Render Graphic -->
-            <div class="vm-cell-variants vm-clickable-item" data-index="37" role="button" tabindex="0"
+            <div class="vm-cell-variants vm-clickable-item" data-index="40" role="button" tabindex="0"
               title="Click to view full presentation">
-              <img src="assets/Visual Merchandising/mo1.jpg" alt="รูปแบบดีไซน์ชั้นวางสินค้า 1, 2, 3">
+              <img src="assets/Visual Merchandising/mo1.webp" alt="รูปแบบดีไซน์ชั้นวางสินค้า 1, 2, 3" loading="lazy" decoding="async">
               <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
           </div>
@@ -3649,43 +3664,15 @@
           <!-- CATEGORY 03 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
-            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="branding" data-en="Next: Branding & Identity →" data-th="หมวดถัดไป: แบรนด์ดิ้ง & อัตลักษณ์ →">Next: Branding & Identity →</button>
-          </div>
-        </div>
-
-        <!-- CATEGORY 04: BRANDING -->
-        <div class="portfolio-category-block reveal" data-category="branding" id="cat-branding">
-          <div class="category-header">
-            <div class="category-title-group">
-              <span class="category-num">04 / CATEGORY</span>
-              <h3 class="category-title" data-en="Branding & Visual Identity" data-th="แบรนด์ดิ้ง & อัตลักษณ์องค์กร">
-                Branding & Visual Identity</h3>
-            </div>
-            <p class="category-desc"
-              data-en="Brand strategy, logo architecture, visual identity systems, and design guidelines."
-              data-th="กลยุทธ์แบรนด์ การออกแบบโลโก้ ระบบอัตลักษณ์วิชวล และคู่มือมาตรฐานดีไซน์">Brand strategy, logo
-              architecture, visual identity systems, and design guidelines.
-            </p>
-          </div>
-          <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="38" role="button" tabindex="0">
-              <img src="assets/project_brand.png" alt="Brand Concept Guidelines presentation sheet">
-              <span class="label">Branding — 04</span>
-            </div>
-          </div>
-
-          <!-- CATEGORY 04 BOTTOM GUIDE -->
-          <div class="category-bottom-guide">
-            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="web-ui" data-en="Next: Web & UI Design →" data-th="หมวดถัดไป: เว็บ & UI ดีไซน์ →">Next: Web & UI Design →</button>
           </div>
         </div>
 
-        <!-- CATEGORY 05: WEB & UI DESIGN -->
+        <!-- CATEGORY 04: WEB & UI DESIGN -->
         <div class="portfolio-category-block reveal" data-category="web-ui" id="category-web-ui">
           <div class="category-header">
             <div class="category-title-group">
-              <span class="category-num">05 / CATEGORY</span>
+              <span class="category-num">04 / CATEGORY</span>
               <h3 class="category-title" data-en="Web & UI Design" data-th="เว็บ & ดีไซน์ UI">Web & UI Design</h3>
             </div>
             <p class="category-desc"
@@ -3718,7 +3705,7 @@
             <!-- 4 BROWSER MOCKUP CARDS GRID -->
             <div class="ui-browser-grid">
               <!-- Screen 01: Homepage -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="0"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="41" data-img-idx="0"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3730,8 +3717,8 @@
                   <div class="ui-browser-page-num">01 / HOME</div>
                 </div>
                 <div class="ui-browser-screen">
-                  <img src="assets/Web & ui Design/index.html (1).png" alt="Happy Metal - Homepage UI Design"
-                    loading="lazy">
+                  <img src="assets/Web & ui Design/index.html (1).webp" alt="Happy Metal - Homepage UI Design"
+                    loading="lazy" decoding="async">
                   <div class="ui-card-overlay">
                     <span class="ui-zoom-btn">🔍 View Full Page</span>
                   </div>
@@ -3744,7 +3731,7 @@
               </div>
 
               <!-- Screen 02: About Us -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="1"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="41" data-img-idx="1"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3756,8 +3743,8 @@
                   <div class="ui-browser-page-num">02 / ABOUT</div>
                 </div>
                 <div class="ui-browser-screen">
-                  <img src="assets/Web & ui Design/about.html (2).png" alt="Happy Metal - About Us UI Design"
-                    loading="lazy">
+                  <img src="assets/Web & ui Design/about.html (2).webp" alt="Happy Metal - About Us UI Design"
+                    loading="lazy" decoding="async">
                   <div class="ui-card-overlay">
                     <span class="ui-zoom-btn">🔍 View Full Page</span>
                   </div>
@@ -3771,7 +3758,7 @@
               </div>
 
               <!-- Screen 03: Product Catalog -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="2"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="41" data-img-idx="2"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3783,8 +3770,8 @@
                   <div class="ui-browser-page-num">03 / CATALOG</div>
                 </div>
                 <div class="ui-browser-screen">
-                  <img src="assets/Web & ui Design/catalog.html (3).png" alt="Happy Metal - Product Catalog UI Design"
-                    loading="lazy">
+                  <img src="assets/Web & ui Design/catalog.html (3).webp" alt="Happy Metal - Product Catalog UI Design"
+                    loading="lazy" decoding="async">
                   <div class="ui-card-overlay">
                     <span class="ui-zoom-btn">🔍 View Full Page</span>
                   </div>
@@ -3798,7 +3785,7 @@
               </div>
 
               <!-- Screen 04: Channels / Contact -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="39" data-img-idx="3"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="41" data-img-idx="3"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3810,8 +3797,8 @@
                   <div class="ui-browser-page-num">04 / CHANNELS</div>
                 </div>
                 <div class="ui-browser-screen">
-                  <img src="assets/Web & ui Design/channels.html (4).png"
-                    alt="Happy Metal - Channels & Contact UI Design" loading="lazy">
+                  <img src="assets/Web & ui Design/channels.html (4).webp"
+                    alt="Happy Metal - Channels & Contact UI Design" loading="lazy" decoding="async">
                   <div class="ui-card-overlay">
                     <span class="ui-zoom-btn">🔍 View Full Page</span>
                   </div>
@@ -3836,7 +3823,7 @@
         <div class="portfolio-category-block reveal" data-category="event" id="cat-event">
           <div class="category-header">
             <div class="category-title-group">
-              <span class="category-num">06 / CATEGORY</span>
+              <span class="category-num">05 / CATEGORY</span>
               <h3 class="category-title" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event &
                 Coordination</h3>
             </div>
@@ -3846,10 +3833,45 @@
               lighting layouts, and spatial event coordination.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="40" role="button" tabindex="0">
-              <img src="assets/project_event.png"
-                alt="Premium art gallery or product launch exhibition event stage design">
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="0" role="button" tabindex="0">
+              <img src="assets/event/1  (1).webp" alt="Sevenfive Exhibition & Cooking Demo 01" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 01</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="1" role="button" tabindex="0">
+              <img src="assets/event/1  (2).webp" alt="Sevenfive Exhibition & Cooking Demo 02" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 02</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="2" role="button" tabindex="0">
+              <img src="assets/event/1  (3).webp" alt="Sevenfive Exhibition & Cooking Demo 03" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 03</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="3" role="button" tabindex="0">
+              <img src="assets/event/1  (4).webp" alt="Sevenfive Exhibition & Cooking Demo 04" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 04</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="4" role="button" tabindex="0">
+              <img src="assets/event/1  (5).webp" alt="Sevenfive Exhibition & Cooking Demo 05" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 05</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="5" role="button" tabindex="0">
+              <img src="assets/event/1  (6).webp" alt="Sevenfive Exhibition & Cooking Demo 06" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 06</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="6" role="button" tabindex="0">
+              <img src="assets/event/1  (7).webp" alt="Sevenfive Exhibition & Cooking Demo 07" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 07</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="7" role="button" tabindex="0">
+              <img src="assets/event/1  (8).webp" alt="Sevenfive Exhibition & Cooking Demo 08" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 08</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="8" role="button" tabindex="0">
+              <img src="assets/event/1  (9).webp" alt="Sevenfive Exhibition & Cooking Demo 09" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 09</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="42" data-img-idx="9" role="button" tabindex="0">
+              <img src="assets/event/1  (10).webp" alt="Sevenfive Exhibition & Cooking Demo 10" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 10</span>
             </div>
           </div>
 
@@ -3864,7 +3886,7 @@
         <div class="portfolio-category-block reveal" data-category="photography" id="cat-photography">
           <div class="category-header">
             <div class="category-title-group">
-              <span class="category-num">07 / CATEGORY</span>
+              <span class="category-num">06 / CATEGORY</span>
               <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
             </div>
             <p class="category-desc"
@@ -3874,40 +3896,40 @@
               photography.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="41" role="button" tabindex="0">
-              <img src="assets/Photography/R0009094.jpg" alt="Portrait Photography 01">
+            <div class="portrait reveal reveal-scale" data-index="43" role="button" tabindex="0">
+              <img src="assets/Photography/R0009094.webp" alt="Portrait Photography 01" loading="lazy" decoding="async">
               <span class="label">Photography — 01</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="42" role="button" tabindex="0">
-              <img src="assets/Photography/R0009442.jpg" alt="Portrait Photography 02">
+            <div class="portrait reveal reveal-scale" data-index="44" role="button" tabindex="0">
+              <img src="assets/Photography/R0009442.webp" alt="Portrait Photography 02" loading="lazy" decoding="async">
               <span class="label">Photography — 02</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" role="button" tabindex="0">
-              <img src="assets/Photography/R0009444.jpg" alt="Portrait Photography 03">
+            <div class="portrait reveal reveal-scale" data-index="45" role="button" tabindex="0">
+              <img src="assets/Photography/R0009444.webp" alt="Portrait Photography 03" loading="lazy" decoding="async">
               <span class="label">Photography — 03</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="44" role="button" tabindex="0">
-              <img src="assets/Photography/R0009501.jpg" alt="Portrait Photography 04">
+            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
+              <img src="assets/Photography/R0009501.webp" alt="Portrait Photography 04" loading="lazy" decoding="async">
               <span class="label">Photography — 04</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="45" role="button" tabindex="0">
-              <img src="assets/Photography/R0009641.jpg" alt="Portrait Photography 05">
+            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
+              <img src="assets/Photography/R0009641.webp" alt="Portrait Photography 05" loading="lazy" decoding="async">
               <span class="label">Photography — 05</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
-              <img src="assets/Photography/R0009892.jpg" alt="Portrait Photography 06">
+            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
+              <img src="assets/Photography/R0009892.webp" alt="Portrait Photography 06" loading="lazy" decoding="async">
               <span class="label">Photography — 06</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
-              <img src="assets/Photography/R0002090.jpg" alt="Portrait Photography 07">
+            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
+              <img src="assets/Photography/R0002090.webp" alt="Portrait Photography 07" loading="lazy" decoding="async">
               <span class="label">Photography — 07</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
-              <img src="assets/Photography/R0002465.jpg" alt="Portrait Photography 08">
+            <div class="portrait reveal reveal-scale" data-index="50" role="button" tabindex="0">
+              <img src="assets/Photography/R0002465.webp" alt="Portrait Photography 08" loading="lazy" decoding="async">
               <span class="label">Photography — 08</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
-              <img src="assets/Photography/R0002585.jpg" alt="Portrait Photography 09">
+            <div class="portrait reveal reveal-scale" data-index="51" role="button" tabindex="0">
+              <img src="assets/Photography/R0002585.webp" alt="Portrait Photography 09" loading="lazy" decoding="async">
               <span class="label">Photography — 09</span>
             </div>
           </div>
@@ -4030,7 +4052,7 @@
       </button>
       <div class="modal-content">
         <div class="modal-media">
-          <img id="modalImg" src="" alt="">
+          <img id="modalImg" src="" alt="" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -4459,217 +4481,229 @@
     // Project data details for the popup modal
     const projectData = [
       {
-        image: 'assets/graphic designer/Dehydeator/1.png',
+        image: 'assets/graphic designer/Dehydeator/1.webp',
         images: [
-          'assets/graphic designer/Dehydeator/1.png',
-          'assets/graphic designer/Dehydeator/2.png',
-          'assets/graphic designer/Dehydeator/3.png',
-          'assets/graphic designer/Dehydeator/4.png'
+          'assets/graphic designer/Dehydeator/1.webp',
+          'assets/graphic designer/Dehydeator/2.webp',
+          'assets/graphic designer/Dehydeator/3.webp',
+          'assets/graphic designer/Dehydeator/4.webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Dehydrator'
       },
       {
-        image: 'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png',
+        image: 'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.webp',
         images: [
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (2).png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (3).png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (4).png',
-          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (5).png'
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.webp',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (2).webp',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (3).webp',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (4).webp',
+          'assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin (5).webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Table Craft Ribbed Ramekin'
       },
       {
-        image: 'assets/graphic designer/Bigrig/1.png',
+        image: 'assets/graphic designer/Bigrig/1.webp',
         images: [
-          'assets/graphic designer/Bigrig/1.png',
-          'assets/graphic designer/Bigrig/2.png',
-          'assets/graphic designer/Bigrig/3.png',
-          'assets/graphic designer/Bigrig/4.png'
+          'assets/graphic designer/Bigrig/1.webp',
+          'assets/graphic designer/Bigrig/2.webp',
+          'assets/graphic designer/Bigrig/3.webp',
+          'assets/graphic designer/Bigrig/4.webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Bigrig'
       },
       {
-        image: 'assets/graphic designer/Winsor/Windsor series (1).png',
+        image: 'assets/graphic designer/Winsor/Windsor series (1).webp',
         images: [
-          'assets/graphic designer/Winsor/Windsor series (1).png',
-          'assets/graphic designer/Winsor/Windsor series (2).png',
-          'assets/graphic designer/Winsor/Windsor series (3).png',
-          'assets/graphic designer/Winsor/Windsor series (4).png',
-          'assets/graphic designer/Winsor/Windsor series (5).png'
+          'assets/graphic designer/Winsor/Windsor series (1).webp',
+          'assets/graphic designer/Winsor/Windsor series (2).webp',
+          'assets/graphic designer/Winsor/Windsor series (3).webp',
+          'assets/graphic designer/Winsor/Windsor series (4).webp',
+          'assets/graphic designer/Winsor/Windsor series (5).webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'ช้อนส้อม Windsor Series'
       },
       {
-        image: 'assets/graphic designer/Cambro 50/1.jpg',
+        image: 'assets/graphic designer/Cambro 50/1.webp',
         images: [
-          'assets/graphic designer/Cambro 50/1.jpg',
-          'assets/graphic designer/Cambro 50/2.jpg',
-          'assets/graphic designer/Cambro 50/3.jpg',
-          'assets/graphic designer/Cambro 50/9.jpg'
+          'assets/graphic designer/Cambro 50/1.webp',
+          'assets/graphic designer/Cambro 50/2.webp',
+          'assets/graphic designer/Cambro 50/3.webp',
+          'assets/graphic designer/Cambro 50/9.webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Cambro 50%'
       },
       {
-        image: 'assets/graphic designer/EPP BOX/EPP-BOX-1.png',
+        image: 'assets/graphic designer/EPP BOX/EPP-BOX-1.webp',
         images: [
-          'assets/graphic designer/EPP BOX/EPP-BOX-1.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-2.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-3.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-4.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-5.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-6.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-7.png',
-          'assets/graphic designer/EPP BOX/EPP-BOX-8.png'
+          'assets/graphic designer/EPP BOX/EPP-BOX-1.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-2.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-3.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-4.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-5.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-6.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-7.webp',
+          'assets/graphic designer/EPP BOX/EPP-BOX-8.webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'EPP BOX 50%'
       },
       {
-        image: 'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png',
+        image: 'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.webp',
         images: [
-          'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.png',
-          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY @2x.png',
-          'assets/graphic designer/FAST FOOD TRAY/1014FF@2x.png',
-          'assets/graphic designer/FAST FOOD TRAY/1418FF@2x.png'
+          'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.webp',
+          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY @2x.webp',
+          'assets/graphic designer/FAST FOOD TRAY/1014FF@2x.webp',
+          'assets/graphic designer/FAST FOOD TRAY/1418FF@2x.webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Fast Food Tray'
       },
       {
-        image: 'assets/graphic designer/chef guarantee.png',
+        image: 'assets/graphic designer/chef guarantee.webp',
         tag: 'GRAPHIC DESIGN',
         title: 'Chef Guarantee'
       },
       {
-        image: 'assets/graphic designer/Meat Cutting/1.png',
+        image: 'assets/graphic designer/Meat Cutting/1.webp',
         images: [
-          'assets/graphic designer/Meat Cutting/1.png',
-          'assets/graphic designer/Meat Cutting/2.png',
-          'assets/graphic designer/Meat Cutting/3.png',
-          'assets/graphic designer/Meat Cutting/4.png',
-          'assets/graphic designer/Meat Cutting/5.png'
+          'assets/graphic designer/Meat Cutting/1.webp',
+          'assets/graphic designer/Meat Cutting/2.webp',
+          'assets/graphic designer/Meat Cutting/3.webp',
+          'assets/graphic designer/Meat Cutting/4.webp',
+          'assets/graphic designer/Meat Cutting/5.webp'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Meat Cutting'
       },
       {
-        image: 'assets/graphic designer/Ad single post/Cambro.png',
+        image: 'assets/graphic designer/Ad single post/Cambro.webp',
         tag: 'GRAPHIC DESIGN',
         title: 'Ad Single Post'
       },
       {
-        image: 'assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.png',
+        image: 'assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.webp',
         tag: 'GRAPHIC DESIGN',
         title: 'Oblong Double Wall Bowl'
       },
       {
-        image: 'assets/graphic designer/Ad single post/cutlery-50-off.png',
+        image: 'assets/graphic designer/Ad single post/cutlery-50-off.webp',
         tag: 'GRAPHIC DESIGN',
         title: 'Cutlery 50% Off'
       },
       {
-        image: 'assets/graphic designer/Monin.png',
+        image: 'assets/graphic designer/Monin.webp',
         tag: 'GRAPHIC DESIGN',
         title: 'Monin Syrup'
       },
       {
-        image: 'assets/graphic designer/HounoInvitationCard.jpg',
+        image: 'assets/graphic designer/HounoInvitationCard.webp',
         tag: 'GRAPHIC DESIGN',
         title: 'Houno Combi Day 2026 Invitation Card'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).jpg',
+        image: 'assets/graphic designer/Lucaris/Lucaris - 1.webp',
+        images: [
+          'assets/graphic designer/Lucaris/Lucaris - 1.webp',
+          'assets/graphic designer/Lucaris/Lucaris - 2.webp',
+          'assets/graphic designer/Lucaris/Lucaris - 3.webp',
+          'assets/graphic designer/Lucaris/Lucaris - 4.webp',
+          'assets/graphic designer/Lucaris/Lucaris - 5.webp'
+        ],
+        tag: 'GRAPHIC DESIGN',
+        title: 'Lucaris — Modern Asian Crafted Crystal'
+      },
+      {
+        image: 'assets/graphic designer/Happy Metal/Corolla 4 นิ้ว (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Corolla — ใบตัดสแตนเลส/ตัดเหล็ก 4 นิ้ว'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.jpg',
+        image: 'assets/graphic designer/Happy Metal/12นิ้วหนา 1.6.webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Keenness — ใบตัดหญ้า 12 นิ้ว ความหนา 1.6 มม.'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/solex 425ss .jpg',
+        image: 'assets/graphic designer/Happy Metal/solex 425ss .webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Solex 425SS — กุญแจประตูรั้ว สแตนเลสเกรด 304'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/sumo ใบเจียรอ่อน 80J (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Sumo 80J — ใบเจียรอ่อนตัว 4" x 2'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/เกจ์ซีโอทู เรกกูเรเตอร์ 36V (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'CO2 Regulator — เกจ์ซีโอทู เรกกูเรเตอร์ Heater 36V'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ใบเจียร (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/ใบเจียร (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: '3M Green Corps — ใบเจียร 4" #36 ความหนา 3mm'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).jpg',
+        image: 'assets/graphic designer/Happy Metal/ใบตัดเจียร์ 3M (บาง) แบบใบ (6).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: '3M General Purpose — ใบตัดและเจียรบาง 3.5mm'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/ขายึดราวผ้าม่าน สแตนเลส (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ขายึดราวผ้าม่าน — สแตนเลสเกรด 304'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/ขาล้อปลาทอง 2 นิ้ว (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ตราปลาทอง — ขาล้อเดี่ยว เหล็กชุบซิงค์ 2 นิ้ว'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.jpg',
+        image: 'assets/graphic designer/Happy Metal/ชุดล้อคู่ 2.5 นิ้ว (ธรรมดา) 4.webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ชุดล้อคู่ — สแตนเลส 304 ขนาด 2.5 นิ้ว'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/น้ำมันครอบจักรวาล 450ml (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'MAX — น้ำมันครอบจักรวาล Multi Lubricant Spray 450ml'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.jpg',
+        image: 'assets/graphic designer/Happy Metal/ปุ๊กเหล็กSUG.webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'SBC — ปุ๊กเหล็ก SUG Sleeve Anchor Bolt'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม 71T-1 (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Yawata 71T-1 — ลวดเชื่อมฟลักซ์คอร์ 15kg'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อม E308LT0-3 (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'E308LT0-3 — ลวดเชื่อมสแตนเลสฟลักซ์คอร์'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).jpg',
+        image: 'assets/graphic designer/Happy Metal/ลวดเชื่อมไฟฟ้า Ni98 (2).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'Kovet Ni98 — ลวดเชื่อมไฟฟ้าเหล็กหล่อ'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).jpg',
+        image: 'assets/graphic designer/Happy Metal/ลวดม้วน 0.5กิโล (1.6mm).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'ลวดสแตนเลส 304 — ชนิดม้วน 0.5 กก. (1.6mm)'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/หัวเชื่อมแก๊ส (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: '961 Welding Torch — หัวเชื่อมแก๊ส/หัวพ่นไฟอเนกประสงค์'
       },
       {
-        image: 'assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).jpg',
+        image: 'assets/graphic designer/Happy Metal/หินเจียรรูเกลียว (1).webp',
         tag: 'GRAPHIC DESIGN — HAPPY METAL',
         title: 'หินเจียรรูเกลียว — Mounted Grinding Wheel'
       },
@@ -4699,11 +4733,21 @@
         title: 'DE370 Motion Commercial Showcase'
       },
       {
-        image: 'assets/Visual Merchandising/mo2.png',
+        videoSrc: 'assets/Motion Graphics/CAMBRO CAMTAINER®.mp4',
+        tag: 'VIDEO & MOTION DESIGN',
+        title: 'CAMBRO Camtainer® Commercial Video'
+      },
+      {
+        videoSrc: 'assets/Motion Graphics/Hamilton Beach Vacuum.mp4',
+        tag: 'VIDEO & MOTION DESIGN',
+        title: 'Hamilton Beach Vacuum Sealer Commercial'
+      },
+      {
+        image: 'assets/Visual Merchandising/mo2.webp',
         images: [
-          'assets/Visual Merchandising/mo2.png',
-          'assets/Visual Merchandising/sddfdf1645.jpg',
-          'assets/Visual Merchandising/mo1.jpg'
+          'assets/Visual Merchandising/mo2.webp',
+          'assets/Visual Merchandising/sddfdf1645.webp',
+          'assets/Visual Merchandising/mo1.webp'
         ],
         fullSize: true,
         tag: 'VISUAL MERCHANDISING',
@@ -4711,17 +4755,12 @@
         desc: 'โปรเจคออกแบบ สำหรับชั้นวางสินค้าช้อนส้อม โดยออกแบบให้มีโครงสร้าง 4 ชั้นวาง พร้อมป้ายหัวชั้น (Header) ระบุชื่อแบรนด์ "ช้อน ส้อม" ที่สื่อสารได้ชัดเจน ออกแบบกราฟิกป้ายลดราคา (-50%) และป้ายแยกซีรีส์สินค้าแต่ละแถว (Windsor, Colton, Candy ฯลฯ) เพื่อให้ลูกค้าเลือกซื้อสินค้าได้ง่ายและรวดเร็ว พร้อมนำไปติดตั้งจริง ณ หน้าร้าน'
       },
       {
-        image: 'assets/project_brand.png',
-        tag: 'BRAND IDENTITY',
-        title: 'STVDIO NORD: Premium Brand Architecture'
-      },
-      {
-        image: 'assets/Web & ui Design/index.html (1).png',
+        image: 'assets/Web & ui Design/index.html (1).webp',
         images: [
-          'assets/Web & ui Design/index.html (1).png',
-          'assets/Web & ui Design/about.html (2).png',
-          'assets/Web & ui Design/catalog.html (3).png',
-          'assets/Web & ui Design/channels.html (4).png'
+          'assets/Web & ui Design/index.html (1).webp',
+          'assets/Web & ui Design/about.html (2).webp',
+          'assets/Web & ui Design/catalog.html (3).webp',
+          'assets/Web & ui Design/channels.html (4).webp'
         ],
         fullSize: true,
         tag: 'WEB & UI DESIGN',
@@ -4732,52 +4771,64 @@
         year: '2024'
       },
       {
-        image: 'assets/project_event.png',
-        tag: 'EVENT DESIGN',
-        title: 'Creative Exhibition Stage & Coordination'
+        image: 'assets/event/1  (1).webp',
+        images: [
+          'assets/event/1  (1).webp',
+          'assets/event/1  (2).webp',
+          'assets/event/1  (3).webp',
+          'assets/event/1  (4).webp',
+          'assets/event/1  (5).webp',
+          'assets/event/1  (6).webp',
+          'assets/event/1  (7).webp',
+          'assets/event/1  (8).webp',
+          'assets/event/1  (9).webp',
+          'assets/event/1  (10).webp'
+        ],
+        tag: 'EVENT & COORDINATION',
+        title: 'Exhibition Showcase & Culinary Event Coordination'
       },
       {
-        image: 'assets/Photography/R0009094.jpg',
+        image: 'assets/Photography/R0009094.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 01'
       },
       {
-        image: 'assets/Photography/R0009442.jpg',
+        image: 'assets/Photography/R0009442.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 02'
       },
       {
-        image: 'assets/Photography/R0009444.jpg',
+        image: 'assets/Photography/R0009444.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 03'
       },
       {
-        image: 'assets/Photography/R0009501.jpg',
+        image: 'assets/Photography/R0009501.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 04'
       },
       {
-        image: 'assets/Photography/R0009641.jpg',
+        image: 'assets/Photography/R0009641.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 05'
       },
       {
-        image: 'assets/Photography/R0009892.jpg',
+        image: 'assets/Photography/R0009892.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 06'
       },
       {
-        image: 'assets/Photography/R0002090.jpg',
+        image: 'assets/Photography/R0002090.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 07'
       },
       {
-        image: 'assets/Photography/R0002465.jpg',
+        image: 'assets/Photography/R0002465.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 08'
       },
       {
-        image: 'assets/Photography/R0002585.jpg',
+        image: 'assets/Photography/R0002585.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 09'
       }
@@ -4808,7 +4859,7 @@
           <div class="${galleryClass}">
             ${data.images.map((imgSrc, i) => `
               <div class="modal-image-item" data-item-idx="${i}">
-                <img src="${imgSrc}" alt="${data.title} ${i + 1}" style="width: 100%; height: auto; display: block; object-fit: contain;" loading="lazy">
+                <img src="${imgSrc}" alt="${data.title} ${i + 1}" style="width: 100%; height: auto; display: block; object-fit: contain;" loading="lazy" decoding="async">
               </div>
             `).join('')}
           </div>
@@ -4845,7 +4896,7 @@
         modalMedia.innerHTML = `
           <div class="modal-single-stage">
             <div class="modal-single-item">
-              <img src="${singleImgSrc}" alt="${data.title}">
+              <img src="${singleImgSrc}" alt="${data.title}" loading="lazy" decoding="async">
             </div>
           </div>
         `;
@@ -4890,7 +4941,7 @@
       setTimeout(() => {
         if (!projectModal.classList.contains('is-open')) {
           const modalMedia = projectModal.querySelector('.modal-media');
-          modalMedia.innerHTML = '<img id="modalImg" src="" alt="">';
+          modalMedia.innerHTML = '<img id="modalImg" src="" alt="" loading="lazy" decoding="async">';
         }
       }, 400);
     }
@@ -4900,10 +4951,9 @@
       { id: 'cat-graphic', cat: 'graphic', num: '01', shortEn: 'Graphic', shortTh: 'กราฟิก', en: '01 Graphic Design', th: '01 กราฟิกดีไซน์' },
       { id: 'cat-motion', cat: 'motion', num: '02', shortEn: 'Motion', shortTh: 'วิดีโอ', en: '02 Video & Motion', th: '02 วิดีโอ & โมชั่นดีไซน์' },
       { id: 'cat-merchandising', cat: 'merchandising', num: '03', shortEn: 'Merch', shortTh: 'ดิสเพลย์', en: '03 Visual Merch', th: '03 วีซวลเมอร์แชนไดซิ่ง' },
-      { id: 'cat-branding', cat: 'branding', num: '04', shortEn: 'Brand', shortTh: 'แบรนด์', en: '04 Branding & Identity', th: '04 แบรนด์ดิ้ง & อัตลักษณ์' },
-      { id: 'category-web-ui', cat: 'web-ui', num: '05', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '05 Web & UI Design', th: '05 เว็บ & UI ดีไซน์' },
-      { id: 'cat-event', cat: 'event', num: '06', shortEn: 'Event', shortTh: 'อีเวนต์', en: '06 Event & Coord', th: '06 จัดงานอีเวนต์' },
-      { id: 'cat-photography', cat: 'photography', num: '07', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '07 Photography', th: '07 งานถ่ายภาพ' }
+      { id: 'category-web-ui', cat: 'web-ui', num: '04', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '04 Web & UI Design', th: '04 เว็บ & UI ดีไซน์' },
+      { id: 'cat-event', cat: 'event', num: '05', shortEn: 'Event', shortTh: 'อีเวนต์', en: '05 Event & Coord', th: '05 จัดงานอีเวนต์' },
+      { id: 'cat-photography', cat: 'photography', num: '06', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '06 Photography', th: '06 งานถ่ายภาพ' }
     ];
 
     const filterBtns = document.querySelectorAll('.filter-btn');
