@@ -3566,37 +3566,37 @@
           </div>
           <div class="grid-portraits">
             <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_4990_1.webp" data-src="assets/Motion Graphics/4990_1.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">4990 Promo — 02-A</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_A1.webp" data-src="assets/Motion Graphics/A1.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Mayday Sale — 02-B</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_A2.webp" data-src="assets/Motion Graphics/A2.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Xiaomi 15T Pro — 02-C</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_A3.webp" data-src="assets/Motion Graphics/A3.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 04</span>
               <span class="label">Bottle Sprayer — 02-D</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="37" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_DE370.webp" data-src="assets/Motion Graphics/DE370.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 05</span>
               <span class="label">DE370 Commercial — 02-E</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="38" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/CAMBRO CAMTAINER®.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_CAMBRO.webp" data-src="assets/Motion Graphics/CAMBRO CAMTAINER®.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 06</span>
               <span class="label">CAMBRO Camtainer® — 02-F</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="39" role="button" tabindex="0">
-              <video data-src="assets/Motion Graphics/Hamilton Beach Vacuum.mp4#t=0.001" loop muted playsinline preload="none"></video>
+              <video poster="assets/Motion Graphics/poster_Hamilton.webp" data-src="assets/Motion Graphics/Hamilton Beach Vacuum.mp4" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 07</span>
               <span class="label">Hamilton Beach Vacuum — 02-G</span>
             </div>
@@ -4743,36 +4743,43 @@
       },
       {
         videoSrc: 'assets/Motion Graphics/4990_1.mp4',
+        poster: 'assets/Motion Graphics/poster_4990_1.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: '4990 Promotional Motion Video'
       },
       {
         videoSrc: 'assets/Motion Graphics/A1.mp4',
+        poster: 'assets/Motion Graphics/poster_A1.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: 'Mayday Sale 50% Motion Commercial'
       },
       {
         videoSrc: 'assets/Motion Graphics/A2.mp4',
+        poster: 'assets/Motion Graphics/poster_A2.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: 'Xiaomi 15T Pro Commercial Video'
       },
       {
         videoSrc: 'assets/Motion Graphics/A3.mp4',
+        poster: 'assets/Motion Graphics/poster_A3.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: 'Bottle Sprayer Product Showcase'
       },
       {
         videoSrc: 'assets/Motion Graphics/DE370.mp4',
+        poster: 'assets/Motion Graphics/poster_DE370.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: 'DE370 Motion Commercial Showcase'
       },
       {
         videoSrc: 'assets/Motion Graphics/CAMBRO CAMTAINER®.mp4',
+        poster: 'assets/Motion Graphics/poster_CAMBRO.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: 'CAMBRO Camtainer® Commercial Video'
       },
       {
         videoSrc: 'assets/Motion Graphics/Hamilton Beach Vacuum.mp4',
+        poster: 'assets/Motion Graphics/poster_Hamilton.webp',
         tag: 'VIDEO & MOTION DESIGN',
         title: 'Hamilton Beach Vacuum Sealer Commercial'
       },
@@ -4910,7 +4917,7 @@
         modalMedia.innerHTML = `
           <div class="modal-single-stage">
             <div class="modal-single-item">
-              <video src="${data.videoSrc}" controls loop playsinline autoplay style="max-width: 100%; max-height: 78vh; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75); object-fit: contain;"></video>
+              <video src="${data.videoSrc}" poster="${data.poster || ''}" controls loop playsinline autoplay style="max-width: 100%; max-height: 78vh; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75); object-fit: contain;"></video>
             </div>
           </div>
         `;
