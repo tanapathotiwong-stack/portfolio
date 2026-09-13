@@ -9,6 +9,7 @@
     content="Portfolio of Tanapat, a Creative Graphic Designer & Video Editor. Specializing in brand visual identities, digital designs, video post-production, and motion graphics.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/hero_visual.webp" type="image/webp">
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet">
@@ -1348,8 +1349,6 @@
 
     .portfolio-category-block {
       transition: opacity 0.4s ease, transform 0.4s ease;
-      content-visibility: auto;
-      contain-intrinsic-size: 500px;
     }
 
     .portfolio-category-block.is-hidden {
@@ -3358,8 +3357,8 @@
       <div class="portfolio-categories-container">
 
         <!-- CATEGORY 01: GRAPHIC DESIGN -->
-        <div class="portfolio-category-block reveal" data-category="graphic" id="cat-graphic">
-          <div class="category-header">
+        <div class="portfolio-category-block" data-category="graphic" id="cat-graphic">
+          <div class="category-header reveal">
             <div class="category-title-group">
               <span class="category-num">01 / CATEGORY</span>
               <h3 class="category-title" data-en="Graphic Design" data-th="กราฟิกดีไซน์">Graphic Design</h3>
@@ -3372,20 +3371,20 @@
           <div class="grid-portraits">
             <!-- GRAPHIC DESIGN PROJECTS (15 ITEMS) -->
             <div class="portrait reveal reveal-scale" data-index="0" role="button" tabindex="0">
-              <img src="assets/graphic designer/Dehydeator/1.webp" alt="Dehydrator" loading="lazy" decoding="async">
+              <img src="assets/graphic designer/Dehydeator/1.webp" alt="Dehydrator" loading="eager" fetchpriority="high" decoding="async">
               <span class="label">Dehydrator</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="1" role="button" tabindex="0">
               <img src="assets/graphic designer/TABLE CRAFT RIBBED RAMEKIN/Ribbed Ramekin.webp"
-                alt="Table Craft Ribbed Ramekin" loading="lazy" decoding="async">
+                alt="Table Craft Ribbed Ramekin" loading="eager" fetchpriority="high" decoding="async">
               <span class="label">Table Craft Ribbed Ramekin</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="2" role="button" tabindex="0">
-              <img src="assets/graphic designer/Bigrig/1.webp" alt="Bigrig" loading="lazy" decoding="async">
+              <img src="assets/graphic designer/Bigrig/1.webp" alt="Bigrig" loading="eager" fetchpriority="high" decoding="async">
               <span class="label">Bigrig</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
-              <img src="assets/graphic designer/Winsor/Windsor series (1).webp" alt="ช้อนส้อม Windsor Series" loading="lazy" decoding="async">
+              <img src="assets/graphic designer/Winsor/Windsor series (1).webp" alt="ช้อนส้อม Windsor Series" loading="eager" fetchpriority="high" decoding="async">
               <span class="label">ช้อนส้อม Windsor Series</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="4" role="button" tabindex="0">
@@ -3552,8 +3551,8 @@
         </div>
 
         <!-- CATEGORY 02: VIDEO & MOTION DESIGN -->
-        <div class="portfolio-category-block reveal" data-category="motion" id="cat-motion">
-          <div class="category-header">
+        <div class="portfolio-category-block" data-category="motion" id="cat-motion">
+          <div class="category-header reveal">
             <div class="category-title-group">
               <span class="category-num">02 / CATEGORY</span>
               <h3 class="category-title" data-en="Video & Motion Design" data-th="วิดีโอ & โมชั่นดีไซน์">Video & Motion
@@ -3567,37 +3566,37 @@
           </div>
           <div class="grid-portraits">
             <div class="portrait reveal reveal-scale" data-index="33" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/4990_1.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 01</span>
               <span class="label">4990 Promo — 02-A</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="34" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/A1.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 02</span>
               <span class="label">Mayday Sale — 02-B</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="35" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/A2.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 03</span>
               <span class="label">Xiaomi 15T Pro — 02-C</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="36" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/A3.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 04</span>
               <span class="label">Bottle Sprayer — 02-D</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="37" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/DE370.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 05</span>
               <span class="label">DE370 Commercial — 02-E</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="38" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/CAMBRO CAMTAINER®.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/CAMBRO CAMTAINER®.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 06</span>
               <span class="label">CAMBRO Camtainer® — 02-F</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="39" role="button" tabindex="0">
-              <video src="assets/Motion Graphics/Hamilton Beach Vacuum.mp4#t=0.001" loop muted playsinline preload="metadata"></video>
+              <video data-src="assets/Motion Graphics/Hamilton Beach Vacuum.mp4#t=0.001" loop muted playsinline preload="none"></video>
               <span class="video-badge-icon">▶ Motion 07</span>
               <span class="label">Hamilton Beach Vacuum — 02-G</span>
             </div>
@@ -3611,8 +3610,8 @@
         </div>
 
         <!-- CATEGORY 03: VISUAL MERCHANDISING -->
-        <div class="portfolio-category-block reveal" data-category="merchandising" id="cat-merchandising">
-          <div class="category-header">
+        <div class="portfolio-category-block" data-category="merchandising" id="cat-merchandising">
+          <div class="category-header reveal">
             <div class="category-title-group">
               <span class="category-num">03 / CATEGORY</span>
               <h3 class="category-title" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual
@@ -3669,8 +3668,8 @@
         </div>
 
         <!-- CATEGORY 04: WEB & UI DESIGN -->
-        <div class="portfolio-category-block reveal" data-category="web-ui" id="category-web-ui">
-          <div class="category-header">
+        <div class="portfolio-category-block" data-category="web-ui" id="category-web-ui">
+          <div class="category-header reveal">
             <div class="category-title-group">
               <span class="category-num">04 / CATEGORY</span>
               <h3 class="category-title" data-en="Web & UI Design" data-th="เว็บ & ดีไซน์ UI">Web & UI Design</h3>
@@ -3820,8 +3819,8 @@
         </div>
 
         <!-- CATEGORY 06: EVENT & COORDINATION -->
-        <div class="portfolio-category-block reveal" data-category="event" id="cat-event">
-          <div class="category-header">
+        <div class="portfolio-category-block" data-category="event" id="cat-event">
+          <div class="category-header reveal">
             <div class="category-title-group">
               <span class="category-num">05 / CATEGORY</span>
               <h3 class="category-title" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event &
@@ -3883,8 +3882,8 @@
         </div>
 
         <!-- CATEGORY 07: PHOTOGRAPHY -->
-        <div class="portfolio-category-block reveal" data-category="photography" id="cat-photography">
-          <div class="category-header">
+        <div class="portfolio-category-block" data-category="photography" id="cat-photography">
+          <div class="category-header reveal">
             <div class="category-title-group">
               <span class="category-num">06 / CATEGORY</span>
               <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
@@ -4212,19 +4211,54 @@
 
     const revealObserver = new IntersectionObserver(revealCallback, {
       root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -60px 0px'
+      threshold: 0.02,
+      rootMargin: '150px 0px 50px 0px'
     });
 
     document.querySelectorAll('.reveal, .reveal-scale, .reveal-left').forEach(el => {
       revealObserver.observe(el);
     });
 
+    // Reveal elements already in or near viewport immediately
+    setTimeout(() => {
+      document.querySelectorAll('.reveal, .reveal-scale, .reveal-left').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 150 && rect.bottom > -50) {
+          el.classList.add('revealed');
+        }
+      });
+    }, 50);
+
+    // Lazy load video sources when entering viewport to save initial bandwidth
+    const lazyVideos = document.querySelectorAll('.portrait video[data-src]');
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            if (video.dataset.src && !video.src) {
+              video.src = video.dataset.src;
+            }
+            observer.unobserve(video);
+          }
+        });
+      }, { rootMargin: '350px 0px' });
+
+      lazyVideos.forEach(v => videoObserver.observe(v));
+    } else {
+      lazyVideos.forEach(v => {
+        if (v.dataset.src) v.src = v.dataset.src;
+      });
+    }
+
     // Smart Hover-to-Play for Motion Graphics video previews
     document.querySelectorAll('.portrait video').forEach(video => {
       const parent = video.closest('.portrait');
       if (parent) {
         parent.addEventListener('mouseenter', () => {
+          if (!video.src && video.dataset.src) {
+            video.src = video.dataset.src;
+          }
           video.play().catch(() => { });
         });
         parent.addEventListener('mouseleave', () => {
@@ -4233,11 +4267,11 @@
       }
     });
 
-    // Apply staggered animation delay to list/grid children
+    // Apply snappy staggered animation delay to list/grid children
     const categoryBlockItems = document.querySelectorAll('.portfolio-category-block');
     categoryBlockItems.forEach((block) => {
       block.querySelectorAll('.portrait').forEach((port, index) => {
-        port.style.transitionDelay = `${index * 0.12}s`;
+        port.style.transitionDelay = `${(index % 4) * 0.05}s`;
       });
     });
 
