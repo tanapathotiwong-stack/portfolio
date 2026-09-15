@@ -2385,6 +2385,19 @@
       padding: 14px;
       cursor: pointer;
       border: none;
+      transform: none !important;
+      transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .submit-btn:hover,
+    .submit-btn:focus,
+    .submit-btn:active {
+      transform: none !important;
+    }
+
+    .submit-btn .btn-arrow,
+    .submit-btn:hover .btn-arrow {
+      transform: none !important;
     }
 
     .form-response {
@@ -4365,7 +4378,7 @@
     updateActiveNav();
 
     // Magnetic CTA Button Pull Hover Effect
-    const magneticElements = document.querySelectorAll('.btn, .nav-cta, .switcher-toggle');
+    const magneticElements = document.querySelectorAll('.btn:not(.submit-btn), .nav-cta, .switcher-toggle');
     magneticElements.forEach(el => {
       let isMoving = false;
       let rect = null;
