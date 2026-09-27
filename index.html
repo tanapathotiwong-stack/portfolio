@@ -1843,6 +1843,221 @@
       }
     }
 
+    /* ---------- CATALOG & EDITORIAL DESIGN SHOWCASE ---------- */
+    .catalog-showcase-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 1. Hero 3D Mockup Card */
+    .catalog-hero-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    }
+
+    .catalog-hero-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(229, 46, 45, 0.5);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4), 0 0 24px rgba(229, 46, 45, 0.15);
+    }
+
+    .catalog-hero-media {
+      position: relative;
+      width: 100%;
+      background: #141416;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(16px, 3vw, 36px);
+      overflow: hidden;
+    }
+
+    .light-theme .catalog-hero-media {
+      background: #E8E8EC;
+    }
+
+    .catalog-hero-media img {
+      width: 100%;
+      max-width: 1080px;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .catalog-hero-card:hover .catalog-hero-media img {
+      transform: scale(1.025);
+    }
+
+    .catalog-hero-footer {
+      padding: 16px 24px;
+      background: var(--panel-bg);
+      border-top: 1px solid var(--panel-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .catalog-hero-caption {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .catalog-badge-pill {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: #E52E2D;
+      background: rgba(229, 46, 45, 0.12);
+      border: 1px solid rgba(229, 46, 45, 0.25);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .catalog-hero-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .catalog-sheet-hint {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* 2. 4 A4 Pages Grid */
+    .catalog-pages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .catalog-pages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .catalog-pages-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .catalog-page-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .catalog-page-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(229, 46, 45, 0.5);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 20px rgba(229, 46, 45, 0.15);
+    }
+
+    .catalog-sheet-frame {
+      position: relative;
+      width: 100%;
+      background: #141416;
+      aspect-ratio: 1 / 1.414;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .light-theme .catalog-sheet-frame {
+      background: #E8E8EC;
+    }
+
+    .catalog-sheet-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .catalog-page-card:hover .catalog-sheet-frame img {
+      transform: scale(1.05);
+    }
+
+    .catalog-sheet-tab {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 3;
+    }
+
+    .catalog-sheet-footer {
+      padding: 14px 16px;
+      background: var(--panel-bg);
+      border-top: 1px solid var(--panel-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .catalog-page-label {
+      font-family: var(--font-display);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+
+    .catalog-page-tag {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
     /* ---------- WEB & UI DESIGN SUB-BAR (HAPPY METAL) ---------- */
     .ui-showcase-container {
       margin-top: 20px;
@@ -3113,16 +3328,20 @@
               <span class="dropdown-idx">03</span>
               <span class="dropdown-text" data-en="Visual Merchandising" data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</span>
             </a>
-            <a href="#category-web-ui" class="dropdown-item" data-cat="web-ui">
+            <a href="#cat-catalog" class="dropdown-item" data-cat="catalog">
               <span class="dropdown-idx">04</span>
+              <span class="dropdown-text" data-en="Catalog Design" data-th="แคตตาล็อกดีไซน์">Catalog Design</span>
+            </a>
+            <a href="#category-web-ui" class="dropdown-item" data-cat="web-ui">
+              <span class="dropdown-idx">05</span>
               <span class="dropdown-text" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI Design</span>
             </a>
             <a href="#cat-event" class="dropdown-item" data-cat="event">
-              <span class="dropdown-idx">05</span>
+              <span class="dropdown-idx">06</span>
               <span class="dropdown-text" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
             </a>
             <a href="#cat-photography" class="dropdown-item" data-cat="photography">
-              <span class="dropdown-idx">06</span>
+              <span class="dropdown-idx">07</span>
               <span class="dropdown-text" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
             </a>
           </div>
@@ -3358,6 +3577,8 @@
           data-th="วิดีโอ & โมชั่นดีไซน์">Video & Motion Design</button>
         <button class="filter-btn" data-filter="merchandising" data-en="Visual Merchandising"
           data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</button>
+        <button class="filter-btn" data-filter="catalog" data-en="Catalog Design"
+          data-th="แคตตาล็อกดีไซน์">Catalog Design</button>
         <button class="filter-btn" data-filter="web-ui" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI
           Design</button>
         <button class="filter-btn" data-filter="event" data-en="Event & Coord" data-th="อีเวนต์ & คอร์ดิเนชั่น">Event &
@@ -3618,6 +3839,11 @@
               <span class="video-badge-icon">▶ Motion 08</span>
               <span class="label">Kitchen Service Commercial — 02-H</span>
             </div>
+            <div class="portrait reveal reveal-scale" data-index="41" role="button" tabindex="0">
+              <video poster="assets/Motion Graphics/poster_kitchen_system.webp" data-src="assets/Motion Graphics/บริการออกแบบและติดตั้งระบบครัวร้านอาหารครบวงจร.mp4" loop muted playsinline preload="none"></video>
+              <span class="video-badge-icon">▶ Motion 09</span>
+              <span class="label" data-en="Kitchen Design & Setup — 02-I" data-th="บริการออกแบบและติดตั้งระบบครัวร้านอาหารครบวงจร — 02-I">บริการออกแบบและติดตั้งระบบครัวร้านอาหารครบวงจร — 02-I</span>
+            </div>
           </div>
 
           <!-- CATEGORY 02 BOTTOM GUIDE -->
@@ -3643,7 +3869,7 @@
           </div>
           <div class="vm-showcase-board reveal reveal-scale">
             <!-- Row 1, Col 1: 3D Render Model -->
-            <div class="vm-cell-render vm-clickable-item" data-index="41" role="button" tabindex="0"
+            <div class="vm-cell-render vm-clickable-item" data-index="42" role="button" tabindex="0"
               title="Click to view full presentation">
               <img src="assets/Visual Merchandising/mo2.webp" alt="โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อม - 3D Render" loading="lazy" decoding="async">
               <span class="vm-zoom-badge">🔍 Zoom</span>
@@ -3664,14 +3890,14 @@
             </div>
 
             <!-- Row 2, Col 1: Store Installation Photo -->
-            <div class="vm-cell-store vm-clickable-item" data-index="41" role="button" tabindex="0"
+            <div class="vm-cell-store vm-clickable-item" data-index="42" role="button" tabindex="0"
               title="Click to view full presentation">
               <img src="assets/Visual Merchandising/sddfdf1645.webp" alt="ติดตั้งจริง ณ หน้าร้าน" loading="lazy" decoding="async">
               <span class="vm-zoom-badge">🔍 Zoom</span>
             </div>
 
             <!-- Row 2, Col 2: 3 Options Render Graphic -->
-            <div class="vm-cell-variants vm-clickable-item" data-index="41" role="button" tabindex="0"
+            <div class="vm-cell-variants vm-clickable-item" data-index="42" role="button" tabindex="0"
               title="Click to view full presentation">
               <img src="assets/Visual Merchandising/mo1.webp" alt="รูปแบบดีไซน์ชั้นวางสินค้า 1, 2, 3" loading="lazy" decoding="async">
               <span class="vm-zoom-badge">🔍 Zoom</span>
@@ -3681,15 +3907,102 @@
           <!-- CATEGORY 03 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="catalog" data-en="Next: Catalog & Editorial →" data-th="หมวดถัดไป: แคตตาล็อกดีไซน์ →">Next: Catalog & Editorial →</button>
+          </div>
+        </div>
+
+        <!-- CATEGORY 04: CATALOG & EDITORIAL DESIGN -->
+        <div class="portfolio-category-block" data-category="catalog" id="cat-catalog">
+          <div class="category-header reveal">
+            <div class="category-title-group">
+              <span class="category-num">04 / CATEGORY</span>
+              <h3 class="category-title" data-en="Catalog & Editorial Design" data-th="แคตตาล็อก & สิ่งพิมพ์">Catalog & Editorial Design</h3>
+            </div>
+            <p class="category-desc"
+              data-en="Product catalogs, sales brochures, corporate lookbooks, and multi-page editorial publications."
+              data-th="การออกแบบรูปเล่มแคตตาล็อก โบรชัวร์สินค้า สิ่งพิมพ์แนะนำผลิตภัณฑ์ และเอกสารการขายระดับองค์กร">Product catalogs, sales brochures, corporate lookbooks, and multi-page editorial publications.</p>
+          </div>
+
+          <!-- CATALOG SHOWCASE CONTAINER -->
+          <div class="catalog-showcase-container">
+            <!-- 1. Hero 3D Perspective Mockup Card -->
+            <div class="catalog-hero-card reveal reveal-scale vm-clickable-item" data-index="43" data-img-idx="0" role="button" tabindex="0" title="Click to view full brochure">
+              <div class="catalog-hero-media">
+                <img src="assets/Catalog/mockup.webp" alt="HOUNÖ Invoq Combi - 4-Page A4 Brochure 3D Mockup" loading="lazy" decoding="async">
+              </div>
+              <div class="catalog-hero-footer">
+                <div class="catalog-hero-caption">
+                  <span class="catalog-badge-pill">3D MOCKUP</span>
+                  <span class="catalog-hero-name" data-en="HOUNÖ Invoq Combi — A4 4-Page Brochure Mockup" data-th="HOUNÖ Invoq Combi — ม็อคอัพรูปเล่มโบรชัวร์ขนาด A4 แบบ 4 หน้า">HOUNÖ Invoq Combi — A4 4-Page Brochure Mockup</span>
+                </div>
+                <span class="catalog-sheet-hint" data-en="Click to open interactive gallery" data-th="คลิกเพื่อเปิดดูรูปเล่มและหน้าทั้งหมด">Click to open interactive gallery</span>
+              </div>
+            </div>
+
+            <!-- 2. 4 A4 Pages Grid -->
+            <div class="catalog-pages-grid">
+              <!-- Page 1: Front Cover -->
+              <div class="catalog-page-card reveal reveal-scale vm-clickable-item" data-index="43" data-img-idx="1" role="button" tabindex="0" title="Click to view Page 1">
+                <div class="catalog-sheet-frame">
+                  <div class="catalog-sheet-tab">PAGE 01</div>
+                  <img src="assets/Catalog/page1.webp" alt="Page 01 - Front Cover & Brand Vision" loading="lazy" decoding="async">
+                </div>
+                <div class="catalog-sheet-footer">
+                  <span class="catalog-page-label" data-en="01. Front Cover & Brand Vision" data-th="01. หน้าปก & แนะนำแบรนด์ HOUNÖ">01. Front Cover & Brand Vision</span>
+                  <span class="catalog-page-tag">Cover</span>
+                </div>
+              </div>
+
+              <!-- Page 2: Product Lineup -->
+              <div class="catalog-page-card reveal reveal-scale vm-clickable-item" data-index="43" data-img-idx="2" role="button" tabindex="0" title="Click to view Page 2">
+                <div class="catalog-sheet-frame">
+                  <div class="catalog-sheet-tab">PAGE 02</div>
+                  <img src="assets/Catalog/page2.webp" alt="Page 02 - Product Lineup & Oven Models" loading="lazy" decoding="async">
+                </div>
+                <div class="catalog-sheet-footer">
+                  <span class="catalog-page-label" data-en="02. Invoq Combi Lineup & Models" data-th="02. รุ่นและไลน์อัพเตาอบ Invoq Combi">02. Invoq Combi Lineup & Models</span>
+                  <span class="catalog-page-tag">Lineup</span>
+                </div>
+              </div>
+
+              <!-- Page 3: Smart Cooking & Specs -->
+              <div class="catalog-page-card reveal reveal-scale vm-clickable-item" data-index="43" data-img-idx="3" role="button" tabindex="0" title="Click to view Page 3">
+                <div class="catalog-sheet-frame">
+                  <div class="catalog-sheet-tab">PAGE 03</div>
+                  <img src="assets/Catalog/page3.webp" alt="Page 03 - SmartTouch Tech & Specifications" loading="lazy" decoding="async">
+                </div>
+                <div class="catalog-sheet-footer">
+                  <span class="catalog-page-label" data-en="03. SmartTouch® & Technical Specs" data-th="03. เทคโนโลยี SmartTouch® & สเปกทางเทคนิค">03. SmartTouch® & Technical Specs</span>
+                  <span class="catalog-page-tag">Tech & Specs</span>
+                </div>
+              </div>
+
+              <!-- Page 4: miniCombi & Accessories -->
+              <div class="catalog-page-card reveal reveal-scale vm-clickable-item" data-index="43" data-img-idx="4" role="button" tabindex="0" title="Click to view Page 4">
+                <div class="catalog-sheet-frame">
+                  <div class="catalog-sheet-tab">PAGE 04</div>
+                  <img src="assets/Catalog/page4.webp" alt="Page 04 - miniCombi & Oven Accessories" loading="lazy" decoding="async">
+                </div>
+                <div class="catalog-sheet-footer">
+                  <span class="catalog-page-label" data-en="04. miniCombi & Accessories" data-th="04. รุ่น miniCombi & อุปกรณ์เสริม">04. miniCombi & Accessories</span>
+                  <span class="catalog-page-tag">Accessories</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORY 04 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="web-ui" data-en="Next: Web & UI Design →" data-th="หมวดถัดไป: เว็บ & UI ดีไซน์ →">Next: Web & UI Design →</button>
           </div>
         </div>
 
-        <!-- CATEGORY 04: WEB & UI DESIGN -->
+        <!-- CATEGORY 05: WEB & UI DESIGN -->
         <div class="portfolio-category-block" data-category="web-ui" id="category-web-ui">
           <div class="category-header reveal">
             <div class="category-title-group">
-              <span class="category-num">04 / CATEGORY</span>
+              <span class="category-num">05 / CATEGORY</span>
               <h3 class="category-title" data-en="Web & UI Design" data-th="เว็บ & ดีไซน์ UI">Web & UI Design</h3>
             </div>
             <p class="category-desc"
@@ -3722,7 +4035,7 @@
             <!-- 4 BROWSER MOCKUP CARDS GRID -->
             <div class="ui-browser-grid">
               <!-- Screen 01: Homepage -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="42" data-img-idx="0"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="0"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3748,7 +4061,7 @@
               </div>
 
               <!-- Screen 02: About Us -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="42" data-img-idx="1"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="1"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3775,7 +4088,7 @@
               </div>
 
               <!-- Screen 03: Product Catalog -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="42" data-img-idx="2"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="2"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3802,7 +4115,7 @@
               </div>
 
               <!-- Screen 04: Channels / Contact -->
-              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="42" data-img-idx="3"
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="3"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
                   <div class="ui-browser-dots">
@@ -3840,7 +4153,7 @@
         <div class="portfolio-category-block" data-category="event" id="cat-event">
           <div class="category-header reveal">
             <div class="category-title-group">
-              <span class="category-num">05 / CATEGORY</span>
+              <span class="category-num">06 / CATEGORY</span>
               <h3 class="category-title" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event &
                 Coordination</h3>
             </div>
@@ -3850,45 +4163,57 @@
               lighting layouts, and spatial event coordination.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="0" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="0" role="button" tabindex="0">
               <img src="assets/event/1  (1).webp" alt="Sevenfive Exhibition & Cooking Demo 01" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 01</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="1" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="1" role="button" tabindex="0">
               <img src="assets/event/1  (2).webp" alt="Sevenfive Exhibition & Cooking Demo 02" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 02</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="2" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="2" role="button" tabindex="0">
               <img src="assets/event/1  (3).webp" alt="Sevenfive Exhibition & Cooking Demo 03" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 03</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="3" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="3" role="button" tabindex="0">
               <img src="assets/event/1  (4).webp" alt="Sevenfive Exhibition & Cooking Demo 04" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 04</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="4" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="4" role="button" tabindex="0">
               <img src="assets/event/1  (5).webp" alt="Sevenfive Exhibition & Cooking Demo 05" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 05</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="5" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="5" role="button" tabindex="0">
               <img src="assets/event/1  (6).webp" alt="Sevenfive Exhibition & Cooking Demo 06" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 06</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="6" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="6" role="button" tabindex="0">
               <img src="assets/event/1  (7).webp" alt="Sevenfive Exhibition & Cooking Demo 07" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 07</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="7" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="7" role="button" tabindex="0">
               <img src="assets/event/1  (8).webp" alt="Sevenfive Exhibition & Cooking Demo 08" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 08</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="8" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="8" role="button" tabindex="0">
               <img src="assets/event/1  (9).webp" alt="Sevenfive Exhibition & Cooking Demo 09" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 09</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="43" data-img-idx="9" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="9" role="button" tabindex="0">
               <img src="assets/event/1  (10).webp" alt="Sevenfive Exhibition & Cooking Demo 10" loading="lazy" decoding="async">
               <span class="label">Event & Coord — 10</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="10" role="button" tabindex="0">
+              <img src="assets/event/1 (11).webp" alt="Sevenfive Exhibition & Cooking Demo 11" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 11</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="11" role="button" tabindex="0">
+              <img src="assets/event/1 (12).webp" alt="Sevenfive Exhibition & Cooking Demo 12" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 12</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="45" data-img-idx="12" role="button" tabindex="0">
+              <img src="assets/event/1 (13).webp" alt="Sevenfive Exhibition & Cooking Demo 13" loading="lazy" decoding="async">
+              <span class="label">Event & Coord — 13</span>
             </div>
           </div>
 
@@ -3903,7 +4228,7 @@
         <div class="portfolio-category-block" data-category="photography" id="cat-photography">
           <div class="category-header reveal">
             <div class="category-title-group">
-              <span class="category-num">06 / CATEGORY</span>
+              <span class="category-num">07 / CATEGORY</span>
               <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
             </div>
             <p class="category-desc"
@@ -3913,39 +4238,39 @@
               photography.</p>
           </div>
           <div class="grid-portraits">
-            <div class="portrait reveal reveal-scale" data-index="44" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
               <img src="assets/Photography/R0009094.webp" alt="Portrait Photography 01" loading="lazy" decoding="async">
               <span class="label">Photography — 01</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="45" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
               <img src="assets/Photography/R0009442.webp" alt="Portrait Photography 02" loading="lazy" decoding="async">
               <span class="label">Photography — 02</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="46" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
               <img src="assets/Photography/R0009444.webp" alt="Portrait Photography 03" loading="lazy" decoding="async">
               <span class="label">Photography — 03</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="47" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
               <img src="assets/Photography/R0009501.webp" alt="Portrait Photography 04" loading="lazy" decoding="async">
               <span class="label">Photography — 04</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="48" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="50" role="button" tabindex="0">
               <img src="assets/Photography/R0009641.webp" alt="Portrait Photography 05" loading="lazy" decoding="async">
               <span class="label">Photography — 05</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="49" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="51" role="button" tabindex="0">
               <img src="assets/Photography/R0009892.webp" alt="Portrait Photography 06" loading="lazy" decoding="async">
               <span class="label">Photography — 06</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="50" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="52" role="button" tabindex="0">
               <img src="assets/Photography/R0002090.webp" alt="Portrait Photography 07" loading="lazy" decoding="async">
               <span class="label">Photography — 07</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="51" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="53" role="button" tabindex="0">
               <img src="assets/Photography/R0002465.webp" alt="Portrait Photography 08" loading="lazy" decoding="async">
               <span class="label">Photography — 08</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="52" role="button" tabindex="0">
+            <div class="portrait reveal reveal-scale" data-index="54" role="button" tabindex="0">
               <img src="assets/Photography/R0002585.webp" alt="Portrait Photography 09" loading="lazy" decoding="async">
               <span class="label">Photography — 09</span>
             </div>
@@ -4808,6 +5133,12 @@
         title: 'Commercial Ads Service — บริการซ่อมบำรุงเครื่องครัว'
       },
       {
+        videoSrc: 'assets/Motion Graphics/บริการออกแบบและติดตั้งระบบครัวร้านอาหารครบวงจร.mp4',
+        poster: 'assets/Motion Graphics/poster_kitchen_system.webp',
+        tag: 'VIDEO & MOTION DESIGN',
+        title: 'บริการออกแบบและติดตั้งระบบครัวร้านอาหารครบวงจร — Kitchen Design & Setup'
+      },
+      {
         image: 'assets/Visual Merchandising/mo2.webp',
         images: [
           'assets/Visual Merchandising/mo2.webp',
@@ -4818,6 +5149,23 @@
         tag: 'VISUAL MERCHANDISING',
         title: 'โปรเจค ออกแบบสำหรับชั้นวางสินค้าช้อนส้อมให้น่าสนใจ',
         desc: 'โปรเจคออกแบบ สำหรับชั้นวางสินค้าช้อนส้อม โดยออกแบบให้มีโครงสร้าง 4 ชั้นวาง พร้อมป้ายหัวชั้น (Header) ระบุชื่อแบรนด์ "ช้อน ส้อม" ที่สื่อสารได้ชัดเจน ออกแบบกราฟิกป้ายลดราคา (-50%) และป้ายแยกซีรีส์สินค้าแต่ละแถว (Windsor, Colton, Candy ฯลฯ) เพื่อให้ลูกค้าเลือกซื้อสินค้าได้ง่ายและรวดเร็ว พร้อมนำไปติดตั้งจริง ณ หน้าร้าน'
+      },
+      {
+        image: 'assets/Catalog/mockup.webp',
+        images: [
+          'assets/Catalog/mockup.webp',
+          'assets/Catalog/page1.webp',
+          'assets/Catalog/page2.webp',
+          'assets/Catalog/page3.webp',
+          'assets/Catalog/page4.webp'
+        ],
+        fullSize: true,
+        tag: 'CATALOG & EDITORIAL DESIGN',
+        title: 'HOUNÖ Invoq Combi — Product Catalog & Sales Brochure',
+        desc: 'การออกแบบรูปเล่มแคตตาล็อกและโบรชัวร์สินค้า HOUNÖ Invoq Combi เตาอบคอมบิระดับพรีเมียม ขนาด A4 4 หน้า จัดวางเลย์เอาต์ตามอัตลักษณ์แบรนด์สากล สื่อสารฟังก์ชันและเทคโนโลยีอัจฉริยะ (SmartTouch®, HybridSteam) นำเสนอข้อมูลสเปกสินค้า (Technical Specifications) และอุปกรณ์เสริม (Accessories) อย่างเป็นระบบ สวยงาม คมชัด และพร้อมสำหรับงานพิมพ์และการตลาดระดับมืออาชีพ',
+        client: 'HOUNÖ / Sevenfive',
+        role: 'Catalog & Editorial Design',
+        year: '2024'
       },
       {
         image: 'assets/Web & ui Design/index.html (1).webp',
@@ -4847,7 +5195,10 @@
           'assets/event/1  (7).webp',
           'assets/event/1  (8).webp',
           'assets/event/1  (9).webp',
-          'assets/event/1  (10).webp'
+          'assets/event/1  (10).webp',
+          'assets/event/1 (11).webp',
+          'assets/event/1 (12).webp',
+          'assets/event/1 (13).webp'
         ],
         tag: 'EVENT & COORDINATION',
         title: 'Exhibition Showcase & Culinary Event Coordination'
@@ -5016,9 +5367,10 @@
       { id: 'cat-graphic', cat: 'graphic', num: '01', shortEn: 'Graphic', shortTh: 'กราฟิก', en: '01 Graphic Design', th: '01 กราฟิกดีไซน์' },
       { id: 'cat-motion', cat: 'motion', num: '02', shortEn: 'Motion', shortTh: 'วิดีโอ', en: '02 Video & Motion', th: '02 วิดีโอ & โมชั่นดีไซน์' },
       { id: 'cat-merchandising', cat: 'merchandising', num: '03', shortEn: 'Merch', shortTh: 'ดิสเพลย์', en: '03 Visual Merch', th: '03 วีซวลเมอร์แชนไดซิ่ง' },
-      { id: 'category-web-ui', cat: 'web-ui', num: '04', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '04 Web & UI Design', th: '04 เว็บ & UI ดีไซน์' },
-      { id: 'cat-event', cat: 'event', num: '05', shortEn: 'Event', shortTh: 'อีเวนต์', en: '05 Event & Coord', th: '05 จัดงานอีเวนต์' },
-      { id: 'cat-photography', cat: 'photography', num: '06', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '06 Photography', th: '06 งานถ่ายภาพ' }
+      { id: 'cat-catalog', cat: 'catalog', num: '04', shortEn: 'Catalog', shortTh: 'แคตตาล็อก', en: '04 Catalog Design', th: '04 แคตตาล็อกดีไซน์' },
+      { id: 'category-web-ui', cat: 'web-ui', num: '05', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '05 Web & UI Design', th: '05 เว็บ & UI ดีไซน์' },
+      { id: 'cat-event', cat: 'event', num: '06', shortEn: 'Event', shortTh: 'อีเวนต์', en: '06 Event & Coord', th: '06 จัดงานอีเวนต์' },
+      { id: 'cat-photography', cat: 'photography', num: '07', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '07 Photography', th: '07 งานถ่ายภาพ' }
     ];
 
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -5302,7 +5654,7 @@
     }, { passive: true });
 
     // Attach click and keydown events to project portraits and interactive showcase items using data-index
-    const portraits = document.querySelectorAll('.portrait[data-index], .vm-clickable-item[data-index]');
+    const portraits = document.querySelectorAll('.portrait[data-index], .vm-clickable-item[data-index], .catalog-hero-card[data-index], .catalog-page-card[data-index]');
     portraits.forEach((portrait) => {
       const idxAttr = portrait.getAttribute('data-index');
       const index = idxAttr !== null ? parseInt(idxAttr, 10) : 0;
