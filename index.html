@@ -1590,7 +1590,7 @@
 
     .modal-image-gallery.full-size-gallery .modal-image-item {
       width: 100%;
-      max-width: 960px;
+      max-width: 1120px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -2159,6 +2159,40 @@
       border-color: var(--accent);
       background: rgba(var(--accent-rgb), 0.08);
       transform: translateY(-1px);
+    }
+
+    .ui-subbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ui-subbar-link.live-link {
+      background: rgba(229, 46, 45, 0.12);
+      border-color: rgba(229, 46, 45, 0.45);
+      color: #ff5f56;
+      font-weight: 700;
+    }
+
+    .ui-subbar-link.live-link:hover {
+      background: #E52E2D;
+      color: #ffffff;
+      border-color: #E52E2D;
+      box-shadow: 0 4px 16px rgba(229, 46, 45, 0.45);
+      transform: translateY(-2px);
+    }
+
+    a.ui-browser-url {
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    a.ui-browser-url:hover {
+      color: var(--ink);
+      border-color: rgba(229, 46, 45, 0.6);
+      background: rgba(229, 46, 45, 0.15);
     }
 
     @media (max-width: 860px) {
@@ -4020,19 +4054,22 @@
                   <span class="ui-subbar-dot">·</span>
                   <span class="ui-subbar-type" data-en="E-Commerce & Web Architecture" data-th="เว็บไซต์ & โครงสร้างแคตตาล็อก">E-Commerce & Web Architecture</span>
                   <span class="ui-subbar-dot">·</span>
-                  <span class="ui-subbar-pages" data-en="4 Core Desktop Templates" data-th="4 หน้าหลัก (Desktop)">4 Core Desktop Templates</span>
+                  <span class="ui-subbar-pages" data-en="6 Core Desktop Templates" data-th="6 หน้าหลัก (Desktop)">6 Core Desktop Templates</span>
                 </div>
                 <h4 class="ui-subbar-title" data-en="Happy Metal — Industrial Hardware & Tools Website" data-th="Happy Metal — เว็บไซต์อุปกรณ์เครื่องมือช่าง & งานเชื่อม">Happy Metal — Industrial Hardware & Tools Website</h4>
               </div>
               <div class="ui-subbar-aside">
-                <p class="ui-subbar-desc" data-en="UI/UX desktop layout structured for clear catalog categorization and industrial brand aesthetic." data-th="ออกแบบ UI/UX เว็บไซต์ Happy Metal เน้นการจัดหมวดหมู่สินค้าให้ค้นหาง่าย ชัดเจน และเป็นระบบ">
-                  UI/UX desktop layout structured for clear catalog categorization and industrial brand aesthetic.
+                <p class="ui-subbar-desc" data-en="UI/UX desktop layout structured for clear catalog categorization, dynamic live search, and industrial brand aesthetic." data-th="ออกแบบ UI/UX เว็บไซต์ Happy Metal เน้นการจัดหมวดหมู่สินค้า ค้นหาด้วยระบบเสิร์ช และอัตลักษณ์แบรนด์งานช่างระดับมืออาชีพ">
+                  UI/UX desktop layout structured for clear catalog categorization, dynamic live search, and industrial brand aesthetic.
                 </p>
-                <a href="#project-happy-metal" class="ui-subbar-link" data-en="Product Graphics ↗" data-th="ดูกราฟิกสินค้า ↗">Product Graphics ↗</a>
+                <div class="ui-subbar-actions">
+                  <a href="https://happy-metal.vercel.app/index.html" target="_blank" rel="noopener noreferrer" class="ui-subbar-link live-link" data-en="Live Website ↗" data-th="เข้าชมเว็บไซต์จริง ↗">Live Website ↗</a>
+                  <a href="#project-happy-metal" class="ui-subbar-link" data-en="Product Graphics ↗" data-th="ดูกราฟิกสินค้า ↗">Product Graphics ↗</a>
+                </div>
               </div>
             </div>
 
-            <!-- 4 BROWSER MOCKUP CARDS GRID -->
+            <!-- 6 BROWSER MOCKUP CARDS GRID -->
             <div class="ui-browser-grid">
               <!-- Screen 01: Homepage -->
               <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="0"
@@ -4043,7 +4080,7 @@
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                   </div>
-                  <div class="ui-browser-url">happymetal.com/index.html</div>
+                  <a href="https://happy-metal.vercel.app/index.html" target="_blank" rel="noopener noreferrer" class="ui-browser-url" title="Open live page in new tab" onclick="event.stopPropagation()">happy-metal.vercel.app/index.html ↗</a>
                   <div class="ui-browser-page-num">01 / HOME</div>
                 </div>
                 <div class="ui-browser-screen">
@@ -4054,8 +4091,8 @@
                   </div>
                 </div>
                 <div class="ui-browser-footer">
-                  <span class="ui-screen-title" data-en="01. Homepage — Hero & Highlights"
-                    data-th="01. Homepage — หน้าแรก & สินค้าไฮไลต์">01. Homepage — หน้าแรก & สินค้าไฮไลต์</span>
+                  <span class="ui-screen-title" data-en="01. Homepage — Hero, Brands & Highlights"
+                    data-th="01. Homepage — หน้าแรก แบรนด์ & สินค้าไฮไลต์">01. Homepage — หน้าแรก แบรนด์ & สินค้าไฮไลต์</span>
                   <span class="ui-screen-badge">Main Page</span>
                 </div>
               </div>
@@ -4069,7 +4106,7 @@
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                   </div>
-                  <div class="ui-browser-url">happymetal.com/about.html</div>
+                  <a href="https://happy-metal.vercel.app/about.html" target="_blank" rel="noopener noreferrer" class="ui-browser-url" title="Open live page in new tab" onclick="event.stopPropagation()">happy-metal.vercel.app/about.html ↗</a>
                   <div class="ui-browser-page-num">02 / ABOUT</div>
                 </div>
                 <div class="ui-browser-screen">
@@ -4080,14 +4117,13 @@
                   </div>
                 </div>
                 <div class="ui-browser-footer">
-                  <span class="ui-screen-title" data-en="02. About Us — Company Profile"
-                    data-th="02. About Us — เกี่ยวกับบริษัท & วิสัยทัศน์">02. About Us — เกี่ยวกับบริษัท &
-                    วิสัยทัศน์</span>
-                  <span class="ui-screen-badge">Story</span>
+                  <span class="ui-screen-title" data-en="02. About Us — Company Profile & Warehouse"
+                    data-th="02. About Us — เกี่ยวกับบริษัท & คลังสินค้ามาตรฐาน">02. About Us — เกี่ยวกับบริษัท & คลังสินค้ามาตรฐาน</span>
+                  <span class="ui-screen-badge">Company</span>
                 </div>
               </div>
 
-              <!-- Screen 03: Product Catalog -->
+              <!-- Screen 03: Our Brands -->
               <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="2"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
@@ -4096,25 +4132,24 @@
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                   </div>
-                  <div class="ui-browser-url">happymetal.com/catalog.html</div>
-                  <div class="ui-browser-page-num">03 / CATALOG</div>
+                  <a href="https://happy-metal.vercel.app/brands.html" target="_blank" rel="noopener noreferrer" class="ui-browser-url" title="Open live page in new tab" onclick="event.stopPropagation()">happy-metal.vercel.app/brands.html ↗</a>
+                  <div class="ui-browser-page-num">03 / BRANDS</div>
                 </div>
                 <div class="ui-browser-screen">
-                  <img src="assets/Web & ui Design/catalog.html (3).webp" alt="Happy Metal - Product Catalog UI Design"
+                  <img src="assets/Web & ui Design/brands.html (3).webp" alt="Happy Metal - Our Brands UI Design"
                     loading="lazy" decoding="async">
                   <div class="ui-card-overlay">
                     <span class="ui-zoom-btn">🔍 View Full Page</span>
                   </div>
                 </div>
                 <div class="ui-browser-footer">
-                  <span class="ui-screen-title" data-en="03. Catalog — Tool Categories & Specs"
-                    data-th="03. Catalog — หมวดหมู่อุปกรณ์ & สเปกสินค้า">03. Catalog — หมวดหมู่อุปกรณ์ &
-                    สเปกสินค้า</span>
-                  <span class="ui-screen-badge">Catalog</span>
+                  <span class="ui-screen-title" data-en="03. Our Brands — 4 Industrial Product Lines"
+                    data-th="03. Our Brands — 4 แบรนด์อุปกรณ์ช่างในเครือ">03. Our Brands — 4 แบรนด์อุปกรณ์ช่างในเครือ</span>
+                  <span class="ui-screen-badge">Brands</span>
                 </div>
               </div>
 
-              <!-- Screen 04: Channels / Contact -->
+              <!-- Screen 04: Product Catalog -->
               <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="3"
                 role="button" tabindex="0" title="Click to view full screen">
                 <div class="ui-browser-bar">
@@ -4123,20 +4158,72 @@
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                   </div>
-                  <div class="ui-browser-url">happymetal.com/channels.html</div>
-                  <div class="ui-browser-page-num">04 / CHANNELS</div>
+                  <a href="https://happy-metal.vercel.app/catalog.html" target="_blank" rel="noopener noreferrer" class="ui-browser-url" title="Open live page in new tab" onclick="event.stopPropagation()">happy-metal.vercel.app/catalog.html ↗</a>
+                  <div class="ui-browser-page-num">04 / CATALOG</div>
                 </div>
                 <div class="ui-browser-screen">
-                  <img src="assets/Web & ui Design/channels.html (4).webp"
-                    alt="Happy Metal - Channels & Contact UI Design" loading="lazy" decoding="async">
+                  <img src="assets/Web & ui Design/catalog.html (4).webp" alt="Happy Metal - Product Catalog UI Design"
+                    loading="lazy" decoding="async">
                   <div class="ui-card-overlay">
                     <span class="ui-zoom-btn">🔍 View Full Page</span>
                   </div>
                 </div>
                 <div class="ui-browser-footer">
-                  <span class="ui-screen-title" data-en="04. Channels — Stores & Contact"
-                    data-th="04. Channels — ช่องทางจัดจำหน่าย & ติดต่อ">04. Channels — ช่องทางจัดจำหน่าย & ติดต่อ</span>
+                  <span class="ui-screen-title" data-en="04. Catalog — Live Search & Product Specs"
+                    data-th="04. Catalog — ระบบค้นหาสินค้า & สเปกอุปกรณ์">04. Catalog — ระบบค้นหาสินค้า & สเปกอุปกรณ์</span>
+                  <span class="ui-screen-badge">Catalog</span>
+                </div>
+              </div>
+
+              <!-- Screen 05: Channels -->
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="4"
+                role="button" tabindex="0" title="Click to view full screen">
+                <div class="ui-browser-bar">
+                  <div class="ui-browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <a href="https://happy-metal.vercel.app/channels.html" target="_blank" rel="noopener noreferrer" class="ui-browser-url" title="Open live page in new tab" onclick="event.stopPropagation()">happy-metal.vercel.app/channels.html ↗</a>
+                  <div class="ui-browser-page-num">05 / CHANNELS</div>
+                </div>
+                <div class="ui-browser-screen">
+                  <img src="assets/Web & ui Design/channels.html (5).webp"
+                    alt="Happy Metal - Channels & Stores UI Design" loading="lazy" decoding="async">
+                  <div class="ui-card-overlay">
+                    <span class="ui-zoom-btn">🔍 View Full Page</span>
+                  </div>
+                </div>
+                <div class="ui-browser-footer">
+                  <span class="ui-screen-title" data-en="05. Channels — Official Online Stores"
+                    data-th="05. Channels — ช่องทางสั่งซื้อออนไลน์ & ข้อมูลติดต่อ">05. Channels — ช่องทางสั่งซื้อออนไลน์ & ข้อมูลติดต่อ</span>
                   <span class="ui-screen-badge">Channels</span>
+                </div>
+              </div>
+
+              <!-- Screen 06: Contact Us -->
+              <div class="ui-browser-card reveal reveal-scale vm-clickable-item" data-index="44" data-img-idx="5"
+                role="button" tabindex="0" title="Click to view full screen">
+                <div class="ui-browser-bar">
+                  <div class="ui-browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <a href="https://happy-metal.vercel.app/contact.html" target="_blank" rel="noopener noreferrer" class="ui-browser-url" title="Open live page in new tab" onclick="event.stopPropagation()">happy-metal.vercel.app/contact.html ↗</a>
+                  <div class="ui-browser-page-num">06 / CONTACT</div>
+                </div>
+                <div class="ui-browser-screen">
+                  <img src="assets/Web & ui Design/contact.html (6).webp"
+                    alt="Happy Metal - Contact Us UI Design" loading="lazy" decoding="async">
+                  <div class="ui-card-overlay">
+                    <span class="ui-zoom-btn">🔍 View Full Page</span>
+                  </div>
+                </div>
+                <div class="ui-browser-footer">
+                  <span class="ui-screen-title" data-en="06. Contact Us — Direct Inquiry & Quotations"
+                    data-th="06. Contact Us — ติดต่อฝ่ายขาย & ขอใบเสนอราคา">06. Contact Us — ติดต่อฝ่ายขาย & ขอใบเสนอราคา</span>
+                  <span class="ui-screen-badge">Contact</span>
                 </div>
               </div>
             </div>
@@ -5172,14 +5259,16 @@
         images: [
           'assets/Web & ui Design/index.html (1).webp',
           'assets/Web & ui Design/about.html (2).webp',
-          'assets/Web & ui Design/catalog.html (3).webp',
-          'assets/Web & ui Design/channels.html (4).webp'
+          'assets/Web & ui Design/brands.html (3).webp',
+          'assets/Web & ui Design/catalog.html (4).webp',
+          'assets/Web & ui Design/channels.html (5).webp',
+          'assets/Web & ui Design/contact.html (6).webp'
         ],
         fullSize: true,
         tag: 'WEB & UI DESIGN',
-        title: 'Happy Metal — เว็บไซต์อุปกรณ์เครื่องมือช่าง',
-        desc: 'โปรเจคออกแบบ UI/UX เว็บไซต์ Happy Metal จัดจำหน่ายอุปกรณ์เครื่องมือช่าง งานเชื่อม และฮาร์ดแวร์อุตสาหกรรม โดยเน้นการจัดวางโครงสร้างข้อมูลสินค้า (Information Architecture) ให้ค้นหาง่าย รวดเร็ว ดีไซน์ทันสมัย ตอบโจทย์ทั้งช่างมืออาชีพและโรงงานอุตสาหกรรม ครอบคลุม 4 หน้าหลัก: Homepage (หน้าแรก), About Us (เกี่ยวกับเรา), Product Catalog (แคตตาล็อกสินค้า) และ Distribution Channels (ช่องทางการจัดจำหน่าย)',
-        client: 'Happy Metal',
+        title: 'Happy Metal — Industrial Hardware & Tools Corporate Website',
+        desc: 'โปรเจคออกแบบและพัฒนา UI/UX เว็บไซต์ Happy Metal ผู้นำเข้าและจัดจำหน่ายอุปกรณ์งานช่าง เครื่องมือช่าง อุปกรณ์งานเชื่อม ลูกล้ออุตสาหกรรม และอุปกรณ์งานกระจกครบวงจร โครงสร้างเว็บไซต์ครอบคลุม 6 หน้าหลัก: 01. Homepage (หน้าแรก แบรนด์ & สินค้าไฮไลต์), 02. About Us (ข้อมูลบริษัท คลังสินค้า & สถิติความเชี่ยวชาญ), 03. Our Brands (4 กลุ่มแบรนด์สินค้าหลัก), 04. Product Catalog (แคตตาล็อกสินค้าพร้อมระบบค้นหาและฟิลเตอร์แยกหมวดหมู่), 05. Distribution Channels (ช่องทางจัดจำหน่ายทางการ & ลิงก์ร้านค้า), และ 06. Contact Us (ข้อมูลสำนักงานใหญ่ แผนที่ & แบบฟอร์มติดต่อสอบถาม)',
+        client: 'Happy Metal Co., Ltd.',
         role: 'UI/UX & Web Design',
         year: '2024'
       },
