@@ -4469,7 +4469,7 @@
   </div>
 
   <!-- PROJECT DETAIL POPUP MODAL -->
-  <div id="projectModal" class="modal" aria-hidden="true">
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-label="Project details" aria-hidden="true" inert>
     <div class="modal-overlay"></div>
     <div class="modal-container">
       <button class="modal-close" aria-label="Close modal">
@@ -5349,12 +5349,49 @@
     const modalYear = document.getElementById('modalYear');
     const modalClose = projectModal.querySelector('.modal-close');
     const modalOverlay = projectModal.querySelector('.modal-overlay');
+    let modalTrigger = null;
+    let previousBodyOverflow = '';
+    const modalBackgroundState = new Map();
+
+    function getModalFocusableElements() {
+      return Array.from(projectModal.querySelectorAll(
+        'a[href], button, input, select, textarea, video[controls], audio[controls], [tabindex]'
+      )).filter(el => !el.disabled && el.tabIndex >= 0 && !el.closest('[inert]') && el.getClientRects().length > 0);
+    }
+
+    projectModal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !projectModal.classList.contains('is-open')) return;
+      const focusable = getModalFocusableElements();
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first) {
+        e.preventDefault();
+        return;
+      }
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
 
 
     // Function to open modal
     function openModal(index, imageIndex) {
       const data = projectData[index];
       if (!data) return;
+      if (!projectModal.classList.contains('is-open')) {
+        modalTrigger = document.activeElement;
+        previousBodyOverflow = document.body.style.overflow;
+        Array.from(document.body.children).forEach(el => {
+          if (el !== projectModal && el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE') {
+            modalBackgroundState.set(el, el.inert);
+            el.inert = true;
+          }
+        });
+      }
 
       const modalMedia = projectModal.querySelector('.modal-media');
 
@@ -5424,15 +5461,27 @@
 
       projectModal.classList.add('is-open');
       projectModal.setAttribute('aria-hidden', 'false');
+      projectModal.inert = false;
+      const isThai = document.documentElement.lang === 'th';
+      projectModal.setAttribute('aria-label', `${isThai ? 'รายละเอียดผลงาน' : 'Project details'}: ${data.title || ''}`);
+      modalClose.setAttribute('aria-label', isThai ? 'ปิดหน้าต่างผลงาน' : 'Close project details');
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      modalClose.focus({ preventScroll: true });
     }
 
     // Function to close modal
     function closeModal() {
+      if (!projectModal.classList.contains('is-open')) return;
       projectModal.classList.remove('is-open');
+      modalBackgroundState.forEach((wasInert, el) => { el.inert = wasInert; });
+      modalBackgroundState.clear();
+      document.body.style.overflow = previousBodyOverflow;
+      if (modalTrigger && modalTrigger.isConnected) {
+        modalTrigger.focus({ preventScroll: true });
+      }
+      modalTrigger = null;
+      projectModal.inert = true;
       projectModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = ''; // Restore background scrolling
-      currentSliderImages = [];
 
       // Stop and clear video playback
       const videos = projectModal.querySelectorAll('video');
@@ -5750,6 +5799,7 @@
 
       // Click event
       portrait.addEventListener('click', () => {
+        portrait.focus({ preventScroll: true });
         const imgIdxAttr = portrait.getAttribute('data-img-idx');
         const imgIdx = imgIdxAttr !== null ? parseInt(imgIdxAttr, 10) : undefined;
         openModal(index, imgIdx);
