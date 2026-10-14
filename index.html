@@ -1302,6 +1302,63 @@
       box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
     }
 
+    /* Quiet gallery cues, visible on touch screens as well as desktop. */
+    .portrait .project-gallery-count {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 100px;
+      background: rgba(18, 18, 20, 0.82);
+      backdrop-filter: blur(8px);
+      color: #F5F4F0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      pointer-events: none;
+    }
+
+    .portrait .project-open-cue {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      background: rgba(18, 18, 20, 0.82);
+      backdrop-filter: blur(8px);
+      color: #F5F4F0;
+      pointer-events: none;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .portrait:has(.project-open-cue) .label {
+      max-width: calc(100% - 76px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .portrait:hover .project-open-cue,
+    .portrait:focus-visible .project-open-cue {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .portrait:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
     /* ---------- CATEGORY FILTER TABS & BLOCKS ---------- */
     .portfolio-filter-tabs {
       display: flex;
@@ -3142,6 +3199,23 @@
       transform: scale(1) translateY(0);
     }
 
+    /* Single artwork: keep the frame close to the image, with room for Close. */
+    .modal.is-single-image .modal-container {
+      width: var(--single-image-frame-width, auto);
+      max-width: min(1200px, calc(100vw - 40px));
+    }
+
+    .modal.is-single-image .modal-single-stage {
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      padding: 64px 16px 16px;
+    }
+
+    .modal.is-single-image .modal-single-item img {
+      max-height: min(78vh, calc(90vh - 82px), calc(100dvh - 124px));
+    }
+
     .modal-close {
       position: absolute;
       top: 14px;
@@ -4578,6 +4652,7 @@
       if (window._isProjectNavReady && typeof updateCategoryNavUI === 'function') {
         updateCategoryNavUI(currentCategoryIndex);
       }
+      if (window._projectHintsReady) updateProjectHintLabels();
     }
 
     const savedLang = localStorage.getItem('selected-lang') || 'en';
@@ -5290,6 +5365,7 @@
           'assets/event/1 (13).webp'
         ],
         tag: 'EVENT & COORDINATION',
+        singleImagePreview: true,
         title: 'Exhibition Showcase & Culinary Event Coordination'
       },
       {
@@ -5353,6 +5429,18 @@
     let previousBodyOverflow = '';
     const modalBackgroundState = new Map();
 
+    function resizeSingleImageFrame() {
+      if (!projectModal.classList.contains('is-single-image')) return;
+      const image = projectModal.querySelector('.modal-single-item img');
+      if (!image || !image.naturalWidth || !image.naturalHeight) return;
+      const maxHeight = Math.max(1, Math.min(window.innerHeight * 0.78, window.innerHeight * 0.9 - 82, window.innerHeight - 124));
+      const imageWidth = Math.min(image.naturalWidth, 1166, window.innerWidth - 74,
+        maxHeight * image.naturalWidth / image.naturalHeight);
+      projectModal.style.setProperty('--single-image-frame-width', `${imageWidth + 34}px`);
+    }
+
+    window.addEventListener('resize', resizeSingleImageFrame, { passive: true });
+
     function getModalFocusableElements() {
       return Array.from(projectModal.querySelectorAll(
         'a[href], button, input, select, textarea, video[controls], audio[controls], [tabindex]'
@@ -5380,8 +5468,13 @@
 
     // Function to open modal
     function openModal(index, imageIndex) {
-      const data = projectData[index];
-      if (!data) return;
+      const project = projectData[index];
+      if (!project) return;
+      const data = project.singleImagePreview ? {
+        ...project,
+        image: project.images?.[imageIndex ?? 0] || project.image,
+        images: undefined
+      } : project;
       if (!projectModal.classList.contains('is-open')) {
         modalTrigger = document.activeElement;
         previousBodyOverflow = document.body.style.overflow;
@@ -5394,6 +5487,10 @@
       }
 
       const modalMedia = projectModal.querySelector('.modal-media');
+
+      const isSingleImage = !(data.images && data.images.length > 1) && !data.videoSrc && !(data.videos && data.videos.length > 0);
+      projectModal.classList.toggle('is-single-image', isSingleImage);
+      projectModal.style.removeProperty('--single-image-frame-width');
 
       if (data.images && data.images.length > 1) {
         const galleryClass = data.fullSize ? 'modal-image-gallery full-size-gallery' : 'modal-image-gallery';
@@ -5442,6 +5539,12 @@
             </div>
           </div>
         `;
+      }
+
+      if (isSingleImage) {
+        const image = modalMedia.querySelector('.modal-single-item img');
+        image.addEventListener('load', resizeSingleImageFrame, { once: true });
+        resizeSingleImageFrame();
       }
 
       if (modalTag) modalTag.textContent = data.tag || '';
@@ -5815,6 +5918,39 @@
         }
       });
     });
+
+    // Derive image counts from the actual gallery, rather than maintaining separate labels.
+    function updateProjectHintLabels() {
+      const isThai = document.documentElement.lang === 'th';
+      document.querySelectorAll('.portrait[data-project-image-count]').forEach(card => {
+        const data = projectData[Number(card.getAttribute('data-index'))];
+        const count = Number(card.getAttribute('data-project-image-count'));
+        const countText = card.querySelector('.project-gallery-count-text');
+        if (countText) countText.textContent = isThai ? `${count} ภาพ` : `${count} images`;
+        card.setAttribute('aria-label', `${data.title}: ${isThai ? `เปิดดูผลงาน ${count} ภาพ` : `Open project, ${count} ${count === 1 ? 'image' : 'images'}`}`);
+      });
+    }
+
+    document.querySelectorAll('.portrait[data-index]').forEach(card => {
+      const data = projectData[Number(card.getAttribute('data-index'))];
+      if (!data || data.videoSrc || (data.videos && data.videos.length)) return;
+      const count = data.singleImagePreview ? 1 : (data.images && data.images.length ? data.images.length : 1);
+      card.setAttribute('data-project-image-count', count);
+      const cue = document.createElement('span');
+      cue.className = 'project-open-cue';
+      cue.setAttribute('aria-hidden', 'true');
+      cue.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+      card.appendChild(cue);
+      if (count > 1) {
+        const badge = document.createElement('span');
+        badge.className = 'project-gallery-count';
+        badge.setAttribute('aria-hidden', 'true');
+        badge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="13" height="13" rx="3"/><path d="M16 20H6a3 3 0 0 1-3-3V8"/></svg><span class="project-gallery-count-text"></span>';
+        card.appendChild(badge);
+      }
+    });
+    window._projectHintsReady = true;
+    updateProjectHintLabels();
 
     // Close listeners
     if (modalClose) modalClose.addEventListener('click', closeModal);
