@@ -1617,6 +1617,60 @@
       transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
     }
 
+    .modal-image-caption {
+      margin: 0;
+      padding: 16px 20px;
+      color: #f5f5f5;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-image-gallery.captioned-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: 28px;
+      padding: 64px 24px 24px;
+      max-height: 85dvh;
+    }
+
+    .captioned-gallery .modal-image-item {
+      min-width: 0;
+      border-radius: 16px;
+    }
+
+    .captioned-gallery .modal-image-stage {
+      height: min(60dvh, 510px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #101012;
+    }
+
+    .captioned-gallery .modal-image-stage img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100%;
+      object-fit: contain !important;
+    }
+
+    .captioned-gallery .modal-image-caption {
+      padding: 14px 20px;
+      font-size: 15px;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      background: #151517;
+    }
+
+    @media (max-width: 560px) {
+      .modal-image-gallery.captioned-gallery {
+        grid-template-columns: 1fr;
+        padding: 64px 16px 20px;
+        gap: 24px;
+      }
+    }
+
     .modal-image-item:hover {
       transform: translateY(-4px);
       border-color: rgba(var(--accent-rgb), 0.4);
@@ -3199,6 +3253,10 @@
       transform: scale(1) translateY(0);
     }
 
+    .modal.is-captioned-gallery .modal-container {
+      width: min(1100px, calc(106dvh + 100px), calc(100vw - 32px));
+    }
+
     /* Single artwork: keep the frame close to the image, with room for Close. */
     .modal.is-single-image .modal-container {
       width: var(--single-image-frame-width, auto);
@@ -3725,25 +3783,37 @@
               <img src="assets/graphic designer/Bigrig/1.webp" alt="Bigrig" loading="eager" fetchpriority="high" decoding="async">
               <span class="label">Bigrig</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
-              <img src="assets/graphic designer/Winsor/Windsor series (1).webp" alt="ช้อนส้อม Windsor Series" loading="eager" fetchpriority="high" decoding="async">
-              <span class="label">ช้อนส้อม Windsor Series</span>
+            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
+              <img src="assets/graphic designer/Lucaris/Lucaris - 1.webp" alt="Lucaris Crystal Glassware" loading="lazy" decoding="async">
+              <span class="label">Lucaris Crystal Glassware</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="4" role="button" tabindex="0">
               <img src="assets/graphic designer/Cambro 50/1.webp" alt="Cambro 50%" loading="lazy" decoding="async">
               <span class="label">Cambro 50%</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
-              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.webp" alt="EPP BOX 50%" loading="lazy" decoding="async">
-              <span class="label">EPP BOX 50%</span>
+            <div class="portrait reveal reveal-scale" data-index="55" role="button" tabindex="0">
+              <img src="assets/graphic designer/FHT/FHT.png" alt="FHT — Food & Hospitality Thailand 2026" loading="lazy" decoding="async">
+              <span class="label">FHT — Food & Hospitality Thailand 2026</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="6" role="button" tabindex="0">
-              <img src="assets/graphic designer/FAST FOOD TRAY/1217FF@2x.webp" alt="Fast Food Tray" loading="lazy" decoding="async">
+              <img src="assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (1).jpg" alt="Fast Food Tray" loading="lazy" decoding="async">
               <span class="label">Fast Food Tray</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
+              <img src="assets/graphic designer/HounoInvitationCard.webp" alt="Houno Combi Day 2026 Invitation Card" loading="lazy" decoding="async">
+              <span class="label">Houno Invitation Card</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="7" role="button" tabindex="0">
               <img src="assets/graphic designer/chef guarantee.webp" alt="Chef Guarantee" loading="lazy" decoding="async">
               <span class="label">Chef Guarantee</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
+              <img src="assets/graphic designer/Monin.webp" alt="Monin Syrup" loading="lazy" decoding="async">
+              <span class="label">Monin Syrup</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
+              <img src="assets/graphic designer/Winsor/Windsor series (1).webp" alt="ช้อนส้อม Windsor Series" loading="eager" fetchpriority="high" decoding="async">
+              <span class="label">ช้อนส้อม Windsor Series</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="8" role="button" tabindex="0">
               <img src="assets/graphic designer/Meat Cutting/1.webp" alt="Meat Cutting" loading="lazy" decoding="async">
@@ -3762,17 +3832,9 @@
               <img src="assets/graphic designer/Ad single post/cutlery-50-off.webp" alt="Cutlery 50% Off" loading="lazy" decoding="async">
               <span class="label">Cutlery 50% Off</span>
             </div>
-            <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
-              <img src="assets/graphic designer/Monin.webp" alt="Monin Syrup" loading="lazy" decoding="async">
-              <span class="label">Monin Syrup</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
-              <img src="assets/graphic designer/HounoInvitationCard.webp" alt="Houno Combi Day 2026 Invitation Card" loading="lazy" decoding="async">
-              <span class="label">Houno Invitation Card</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="14" role="button" tabindex="0">
-              <img src="assets/graphic designer/Lucaris/Lucaris - 1.webp" alt="Lucaris Crystal Glassware" loading="lazy" decoding="async">
-              <span class="label">Lucaris Crystal Glassware</span>
+            <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
+              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.webp" alt="EPP BOX 50%" loading="lazy" decoding="async">
+              <span class="label">EPP BOX 50%</span>
             </div>
           </div>
 
@@ -5092,12 +5154,12 @@
         title: 'EPP BOX 50%'
       },
       {
-        image: 'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.webp',
+        image: 'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (1).jpg',
         images: [
-          'assets/graphic designer/FAST FOOD TRAY/1217FF@2x.webp',
-          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY @2x.webp',
-          'assets/graphic designer/FAST FOOD TRAY/1014FF@2x.webp',
-          'assets/graphic designer/FAST FOOD TRAY/1418FF@2x.webp'
+          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (1).jpg',
+          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (2).jpg',
+          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (3).jpg',
+          'assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (4).jpg'
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Fast Food Tray'
@@ -5412,6 +5474,16 @@
         image: 'assets/Photography/R0002585.webp',
         tag: 'PHOTOGRAPHY',
         title: 'Photography — 09'
+      },
+      {
+        image: 'assets/graphic designer/FHT/FHT.png',
+        images: [
+          'assets/graphic designer/FHT/FHT.png',
+          'assets/graphic designer/FHT/9.png'
+        ],
+        imageCaptions: ['Photo Album', 'Single Post'],
+        tag: 'GRAPHIC DESIGN',
+        title: 'FHT — Food & Hospitality Thailand 2026'
       }
     ];
 
@@ -5490,15 +5562,20 @@
 
       const isSingleImage = !(data.images && data.images.length > 1) && !data.videoSrc && !(data.videos && data.videos.length > 0);
       projectModal.classList.toggle('is-single-image', isSingleImage);
+      projectModal.classList.toggle('is-captioned-gallery', Boolean(data.imageCaptions));
       projectModal.style.removeProperty('--single-image-frame-width');
 
       if (data.images && data.images.length > 1) {
-        const galleryClass = data.fullSize ? 'modal-image-gallery full-size-gallery' : 'modal-image-gallery';
+        const galleryClass = data.fullSize ? 'modal-image-gallery full-size-gallery' :
+          data.imageCaptions ? 'modal-image-gallery captioned-gallery' : 'modal-image-gallery';
         modalMedia.innerHTML = `
           <div class="${galleryClass}">
             ${data.images.map((imgSrc, i) => `
               <div class="modal-image-item" data-item-idx="${i}">
+                ${data.imageCaptions ? '<div class="modal-image-stage">' : ''}
                 <img src="${imgSrc}" alt="${data.title} ${i + 1}" style="width: 100%; height: auto; display: block; object-fit: contain;" loading="lazy" decoding="async">
+                ${data.imageCaptions ? '</div>' : ''}
+                ${data.imageCaptions?.[i] ? `<p class="modal-image-caption">${data.imageCaptions[i]}</p>` : ''}
               </div>
             `).join('')}
           </div>
