@@ -1277,6 +1277,16 @@
       opacity: 0.5;
     }
 
+    /* Give the on-site photos richer color in both the grid and gallery. */
+    #cat-print .portrait img,
+    .modal.is-print-media .modal-media img {
+      filter: saturate(1.2) contrast(1.06) brightness(1.04);
+    }
+
+    #cat-print .portrait::before {
+      background: linear-gradient(to top, rgba(7, 7, 8, 0.28) 0%, rgba(7, 7, 8, 0.03) 30%, transparent 55%);
+    }
+
     .portrait .label {
       position: absolute;
       left: 18px;
@@ -1625,6 +1635,15 @@
       font-weight: 500;
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-image-gallery:not(.captioned-gallery):not(.full-size-gallery) .modal-image-item:has(.modal-image-caption) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-image-gallery:not(.captioned-gallery) .modal-image-caption {
+      margin-top: auto;
     }
 
     .modal-image-gallery.captioned-gallery {
@@ -3498,16 +3517,20 @@
               <span class="dropdown-idx">04</span>
               <span class="dropdown-text" data-en="Catalog Design" data-th="แคตตาล็อกดีไซน์">Catalog Design</span>
             </a>
-            <a href="#category-web-ui" class="dropdown-item" data-cat="web-ui">
+            <a href="#cat-print" class="dropdown-item" data-cat="print">
               <span class="dropdown-idx">05</span>
+              <span class="dropdown-text" data-en="Print & Offline Media" data-th="สื่อสิ่งพิมพ์ & สื่อออฟไลน์">Print & Offline Media</span>
+            </a>
+            <a href="#category-web-ui" class="dropdown-item" data-cat="web-ui">
+              <span class="dropdown-idx">06</span>
               <span class="dropdown-text" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI Design</span>
             </a>
             <a href="#cat-event" class="dropdown-item" data-cat="event">
-              <span class="dropdown-idx">06</span>
+              <span class="dropdown-idx">07</span>
               <span class="dropdown-text" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event & Coordination</span>
             </a>
             <a href="#cat-photography" class="dropdown-item" data-cat="photography">
-              <span class="dropdown-idx">07</span>
+              <span class="dropdown-idx">08</span>
               <span class="dropdown-text" data-en="Photography" data-th="งานถ่ายภาพ">Photography</span>
             </a>
           </div>
@@ -3745,6 +3768,8 @@
           data-th="วีซวลเมอร์แชนไดซิ่ง">Visual Merchandising</button>
         <button class="filter-btn" data-filter="catalog" data-en="Catalog Design"
           data-th="แคตตาล็อกดีไซน์">Catalog Design</button>
+        <button class="filter-btn" data-filter="print" data-en="Print & Offline Media"
+          data-th="สื่อสิ่งพิมพ์ & สื่อออฟไลน์">Print & Offline Media</button>
         <button class="filter-btn" data-filter="web-ui" data-en="Web & UI Design" data-th="เว็บ & UI ดีไซน์">Web & UI
           Design</button>
         <button class="filter-btn" data-filter="event" data-en="Event & Coord" data-th="อีเวนต์ & คอร์ดิเนชั่น">Event &
@@ -3795,17 +3820,21 @@
               <img src="assets/graphic designer/FHT/FHT.png" alt="FHT — Food & Hospitality Thailand 2026" loading="lazy" decoding="async">
               <span class="label">FHT — Food & Hospitality Thailand 2026</span>
             </div>
+            <div class="portrait reveal reveal-scale" data-index="59" role="button" tabindex="0">
+              <img src="assets/graphic designer/high season/high season.webp" alt="High Season Checklist — Sevenfive" loading="lazy" decoding="async">
+              <span class="label">High Season Checklist</span>
+            </div>
             <div class="portrait reveal reveal-scale" data-index="6" role="button" tabindex="0">
               <img src="assets/graphic designer/FAST FOOD TRAY/FAST FOOD TRAY  (1).jpg" alt="Fast Food Tray" loading="lazy" decoding="async">
               <span class="label">Fast Food Tray</span>
             </div>
+            <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
+              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.webp" alt="EPP BOX 50%" loading="lazy" decoding="async">
+              <span class="label">EPP BOX 50%</span>
+            </div>
             <div class="portrait reveal reveal-scale" data-index="13" role="button" tabindex="0">
               <img src="assets/graphic designer/HounoInvitationCard.webp" alt="Houno Combi Day 2026 Invitation Card" loading="lazy" decoding="async">
               <span class="label">Houno Invitation Card</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="7" role="button" tabindex="0">
-              <img src="assets/graphic designer/chef guarantee.webp" alt="Chef Guarantee" loading="lazy" decoding="async">
-              <span class="label">Chef Guarantee</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="12" role="button" tabindex="0">
               <img src="assets/graphic designer/Monin.webp" alt="Monin Syrup" loading="lazy" decoding="async">
@@ -3814,6 +3843,10 @@
             <div class="portrait reveal reveal-scale" data-index="3" role="button" tabindex="0">
               <img src="assets/graphic designer/Winsor/Windsor series (1).webp" alt="ช้อนส้อม Windsor Series" loading="eager" fetchpriority="high" decoding="async">
               <span class="label">ช้อนส้อม Windsor Series</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="7" role="button" tabindex="0">
+              <img src="assets/graphic designer/chef guarantee.webp" alt="Chef Guarantee" loading="lazy" decoding="async">
+              <span class="label">Chef Guarantee</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="8" role="button" tabindex="0">
               <img src="assets/graphic designer/Meat Cutting/1.webp" alt="Meat Cutting" loading="lazy" decoding="async">
@@ -3827,14 +3860,6 @@
               <img src="assets/graphic designer/Ad single post/OBLONG DBL WALL BOWL tablebraft.webp"
                 alt="Oblong Double Wall Bowl" loading="lazy" decoding="async">
               <span class="label">Oblong Double Wall Bowl</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="11" role="button" tabindex="0">
-              <img src="assets/graphic designer/Ad single post/cutlery-50-off.webp" alt="Cutlery 50% Off" loading="lazy" decoding="async">
-              <span class="label">Cutlery 50% Off</span>
-            </div>
-            <div class="portrait reveal reveal-scale" data-index="5" role="button" tabindex="0">
-              <img src="assets/graphic designer/EPP BOX/EPP-BOX-1.webp" alt="EPP BOX 50%" loading="lazy" decoding="async">
-              <span class="label">EPP BOX 50%</span>
             </div>
             <div class="portrait reveal reveal-scale" data-index="56" role="button" tabindex="0">
               <img src="assets/graphic designer/Vanta/A1.png" alt="Vanta Blood Pressure Monitor" loading="lazy" decoding="async">
@@ -4168,15 +4193,104 @@
           <!-- CATEGORY 04 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
+            <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="print" data-en="Next: Print & Offline Media →" data-th="หมวดถัดไป: สื่อสิ่งพิมพ์ & สื่อออฟไลน์ →">Next: Print & Offline Media →</button>
+          </div>
+        </div>
+
+        <!-- CATEGORY 05: PRINT & OFFLINE MEDIA -->
+        <div class="portfolio-category-block" data-category="print" id="cat-print">
+          <div class="category-header reveal">
+            <div class="category-title-group">
+              <span class="category-num">05 / CATEGORY</span>
+              <h3 class="category-title" data-en="Print & Offline Media" data-th="สื่อสิ่งพิมพ์ & สื่อออฟไลน์">Print & Offline Media</h3>
+            </div>
+            <p class="category-desc"
+              data-en="Brand signage, promotional displays, retail graphics, wayfinding, and apparel."
+              data-th="ป้ายอัตลักษณ์แบรนด์ สื่อโปรโมชั่น กราฟิกหน้าร้าน ป้ายบอกทาง และงานเสื้อ">Brand signage, promotional displays, retail graphics, wayfinding, and apparel.</p>
+          </div>
+          <div class="grid-portraits">
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="0" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (1).webp" alt="Brand Signage" loading="lazy" decoding="async">
+              <span class="label" data-en="Brand Signage" data-th="ป้ายอัตลักษณ์แบรนด์">Brand Signage</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="1" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (2).webp" alt="Signage Installation" loading="lazy" decoding="async">
+              <span class="label" data-en="Signage Installation" data-th="การติดตั้งป้าย">Signage Installation</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="2" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (3).webp" alt="Exterior Signage" loading="lazy" decoding="async">
+              <span class="label" data-en="Exterior Signage" data-th="ป้ายหน้าบริษัท">Exterior Signage</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="3" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (4).webp" alt="Promotional Standee" loading="lazy" decoding="async">
+              <span class="label" data-en="Promotional Standee" data-th="สแตนดี้โปรโมชั่น">Promotional Standee</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="4" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (5).webp" alt="In-store Display" loading="lazy" decoding="async">
+              <span class="label" data-en="In-store Display" data-th="สื่อประชาสัมพันธ์หน้าร้าน">In-store Display</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="5" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (6).webp" alt="Counter Display" loading="lazy" decoding="async">
+              <span class="label" data-en="Counter Display" data-th="ป้ายโปรโมชั่นบนเคาน์เตอร์">Counter Display</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="6" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (7).webp" alt="Floor Wayfinding" loading="lazy" decoding="async">
+              <span class="label" data-en="Floor Wayfinding" data-th="สติ๊กเกอร์บอกทางบนพื้น">Floor Wayfinding</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="7" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (8).webp" alt="Directional Signage" loading="lazy" decoding="async">
+              <span class="label" data-en="Directional Signage" data-th="ป้ายบอกทิศทาง">Directional Signage</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="8" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (9).webp" alt="Storefront Graphics" loading="lazy" decoding="async">
+              <span class="label" data-en="Storefront Graphics" data-th="กราฟิกหน้าร้าน">Storefront Graphics</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="9" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (11).webp" alt="Display Signage" loading="lazy" decoding="async">
+              <span class="label" data-en="Display Signage" data-th="ป้ายประกอบการจัดแสดง">Display Signage</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="10" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (12).webp" alt="Promotional Price Tags" loading="lazy" decoding="async">
+              <span class="label" data-en="Promotional Price Tags" data-th="ป้ายราคาโปรโมชั่น">Promotional Price Tags</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="11" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (13).webp" alt="Retail Price Cards" loading="lazy" decoding="async">
+              <span class="label" data-en="Retail Price Cards" data-th="ป้ายราคาหน้าร้าน">Retail Price Cards</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="12" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (14).webp" alt="Product Information" loading="lazy" decoding="async">
+              <span class="label" data-en="Product Information" data-th="ป้ายข้อมูลสินค้า">Product Information</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="13" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (15).webp" alt="QR Code Signage" loading="lazy" decoding="async">
+              <span class="label" data-en="QR Code Signage" data-th="ป้ายคิวอาร์โค้ด">QR Code Signage</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="57" data-img-idx="14" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/75 S (16).webp" alt="Shelf Promotion" loading="lazy" decoding="async">
+              <span class="label" data-en="Shelf Promotion" data-th="ป้ายโปรโมชั่นบนชั้นวาง">Shelf Promotion</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="58" data-img-idx="0" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/OR1 (2).webp" alt="Polo Shirt — Front" loading="lazy" decoding="async">
+              <span class="label" data-en="Polo Shirt — Front" data-th="เสื้อโปโล — ด้านหน้า">Polo Shirt — Front</span>
+            </div>
+            <div class="portrait reveal reveal-scale" data-index="58" data-img-idx="1" role="button" tabindex="0">
+              <img src="assets/Print & Offline Media/OR1 (1).webp" alt="Polo Shirt — Back" loading="lazy" decoding="async">
+              <span class="label" data-en="Polo Shirt — Back" data-th="เสื้อโปโล — ด้านหลัง">Polo Shirt — Back</span>
+            </div>
+          </div>
+
+          <!-- CATEGORY 05 BOTTOM GUIDE -->
+          <div class="category-bottom-guide">
+            <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="web-ui" data-en="Next: Web & UI Design →" data-th="หมวดถัดไป: เว็บ & UI ดีไซน์ →">Next: Web & UI Design →</button>
           </div>
         </div>
 
-        <!-- CATEGORY 05: WEB & UI DESIGN -->
+        <!-- CATEGORY 06: WEB & UI DESIGN -->
         <div class="portfolio-category-block" data-category="web-ui" id="category-web-ui">
           <div class="category-header reveal">
             <div class="category-title-group">
-              <span class="category-num">05 / CATEGORY</span>
+              <span class="category-num">06 / CATEGORY</span>
               <h3 class="category-title" data-en="Web & UI Design" data-th="เว็บ & ดีไซน์ UI">Web & UI Design</h3>
             </div>
             <p class="category-desc"
@@ -4369,18 +4483,18 @@
             </div>
           </div>
 
-          <!-- CATEGORY 05 BOTTOM GUIDE -->
+          <!-- CATEGORY 06 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="event" data-en="Next: Event & Coordination →" data-th="หมวดถัดไป: จัดงานอีเวนต์ →">Next: Event & Coordination →</button>
           </div>
         </div>
 
-        <!-- CATEGORY 06: EVENT & COORDINATION -->
+        <!-- CATEGORY 07: EVENT & COORDINATION -->
         <div class="portfolio-category-block" data-category="event" id="cat-event">
           <div class="category-header reveal">
             <div class="category-title-group">
-              <span class="category-num">06 / CATEGORY</span>
+              <span class="category-num">07 / CATEGORY</span>
               <h3 class="category-title" data-en="Event & Coordination" data-th="จัดงานอีเวนต์ & คอร์ดิเนชั่น">Event &
                 Coordination</h3>
             </div>
@@ -4444,18 +4558,18 @@
             </div>
           </div>
 
-          <!-- CATEGORY 06 BOTTOM GUIDE -->
+          <!-- CATEGORY 07 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <button type="button" class="cat-guide-btn to-next" data-action="next" data-next-cat="photography" data-en="Next: Photography →" data-th="หมวดถัดไป: งานถ่ายภาพ →">Next: Photography →</button>
           </div>
         </div>
 
-        <!-- CATEGORY 07: PHOTOGRAPHY -->
+        <!-- CATEGORY 08: PHOTOGRAPHY -->
         <div class="portfolio-category-block" data-category="photography" id="cat-photography">
           <div class="category-header reveal">
             <div class="category-title-group">
-              <span class="category-num">07 / CATEGORY</span>
+              <span class="category-num">08 / CATEGORY</span>
               <h3 class="category-title" data-en="Photography" data-th="งานถ่ายภาพ">Photography</h3>
             </div>
             <p class="category-desc"
@@ -4503,7 +4617,7 @@
             </div>
           </div>
 
-          <!-- CATEGORY 07 BOTTOM GUIDE -->
+          <!-- CATEGORY 08 BOTTOM GUIDE -->
           <div class="category-bottom-guide">
             <button type="button" class="cat-guide-btn to-top" data-action="top" data-en="↑ Back to categories" data-th="↑ ย้อนกลับไปดูหมวดหมู่อื่นๆ">↑ Back to categories</button>
             <a href="#contact" class="cat-guide-btn to-next" data-en="Get in touch →" data-th="ติดต่อร่วมงาน →">Get in touch →</a>
@@ -5500,6 +5614,59 @@
         ],
         tag: 'GRAPHIC DESIGN',
         title: 'Vanta \u2014 Blood Pressure Monitor'
+      },
+      {
+        image: 'assets/Print & Offline Media/75 S (1).webp',
+        images: [
+          'assets/Print & Offline Media/75 S (1).webp',
+          'assets/Print & Offline Media/75 S (2).webp',
+          'assets/Print & Offline Media/75 S (3).webp',
+          'assets/Print & Offline Media/75 S (4).webp',
+          'assets/Print & Offline Media/75 S (5).webp',
+          'assets/Print & Offline Media/75 S (6).webp',
+          'assets/Print & Offline Media/75 S (7).webp',
+          'assets/Print & Offline Media/75 S (8).webp',
+          'assets/Print & Offline Media/75 S (9).webp',
+          'assets/Print & Offline Media/75 S (11).webp',
+          'assets/Print & Offline Media/75 S (12).webp',
+          'assets/Print & Offline Media/75 S (13).webp',
+          'assets/Print & Offline Media/75 S (14).webp',
+          'assets/Print & Offline Media/75 S (15).webp',
+          'assets/Print & Offline Media/75 S (16).webp'
+        ],
+        tag: 'PRINT & OFFLINE MEDIA',
+        title: 'Sevenfive — Brand Signage & Retail Media',
+        desc: 'ป้ายอัตลักษณ์แบรนด์ Sevenfive สื่อโปรโมชั่นหน้าร้าน สแตนดี้ ป้ายราคา ป้ายคิวอาร์โค้ด และสติ๊กเกอร์บอกทาง พร้อมภาพการติดตั้งและการใช้งานจริง',
+        client: 'Sevenfive'
+      },
+      {
+        image: 'assets/Print & Offline Media/OR1 (2).webp',
+        images: [
+          'assets/Print & Offline Media/OR1 (2).webp',
+          'assets/Print & Offline Media/OR1 (1).webp'
+        ],
+        imageCaptions: ['Front / ด้านหน้า', 'Back / ด้านหลัง'],
+        tag: 'PRINT & OFFLINE MEDIA',
+        title: 'Polo Shirt — Apparel Graphics',
+        desc: 'งานกราฟิกบนเสื้อโปโล โทนสีเขียว ขาว และทอง พร้อมภาพด้านหน้าและด้านหลังของชิ้นงานจริง'
+      },
+      {
+        image: 'assets/graphic designer/high season/high season.webp',
+        images: [
+          'assets/graphic designer/high season/high season.webp',
+          'assets/graphic designer/high season/high season 1.webp',
+          'assets/graphic designer/high season/high season 2.webp',
+          'assets/graphic designer/high season/high season 3.webp',
+          'assets/graphic designer/high season/high season 4.webp',
+          'assets/graphic designer/high season/high season 5.webp',
+          'assets/graphic designer/high season/high season 6.webp',
+          'assets/graphic designer/high season/high season 7.webp'
+        ],
+        imageCaptions: ['Photo Album'],
+        tag: 'GRAPHIC DESIGN',
+        title: 'High Season Checklist — Sevenfive',
+        desc: 'ชุดกราฟิก High Season Checklist สำหรับเตรียมความพร้อมครัวโรงแรมก่อนฤดูกาลท่องเที่ยว พร้อมภาพปกและภาพประกอบในชุดรวม 8 ภาพ',
+        client: 'Sevenfive'
       }
     ];
 
@@ -5577,20 +5744,22 @@
       const modalMedia = projectModal.querySelector('.modal-media');
 
       const isSingleImage = !(data.images && data.images.length > 1) && !data.videoSrc && !(data.videos && data.videos.length > 0);
+      const useCaptionedLayout = data.images?.length > 1 && data.images.every((_, i) => Boolean(data.imageCaptions?.[i]));
       projectModal.classList.toggle('is-single-image', isSingleImage);
-      projectModal.classList.toggle('is-captioned-gallery', Boolean(data.imageCaptions));
+      projectModal.classList.toggle('is-captioned-gallery', useCaptionedLayout);
+      projectModal.classList.toggle('is-print-media', data.tag === 'PRINT & OFFLINE MEDIA');
       projectModal.style.removeProperty('--single-image-frame-width');
 
       if (data.images && data.images.length > 1) {
         const galleryClass = data.fullSize ? 'modal-image-gallery full-size-gallery' :
-          data.imageCaptions ? 'modal-image-gallery captioned-gallery' : 'modal-image-gallery';
+          useCaptionedLayout ? 'modal-image-gallery captioned-gallery' : 'modal-image-gallery';
         modalMedia.innerHTML = `
           <div class="${galleryClass}">
             ${data.images.map((imgSrc, i) => `
               <div class="modal-image-item" data-item-idx="${i}">
-                ${data.imageCaptions ? '<div class="modal-image-stage">' : ''}
+                ${useCaptionedLayout ? '<div class="modal-image-stage">' : ''}
                 <img src="${imgSrc}" alt="${data.title} ${i + 1}" style="width: 100%; height: auto; display: block; object-fit: contain;" loading="lazy" decoding="async">
-                ${data.imageCaptions ? '</div>' : ''}
+                ${useCaptionedLayout ? '</div>' : ''}
                 ${data.imageCaptions?.[i] ? `<p class="modal-image-caption">${data.imageCaptions[i]}</p>` : ''}
               </div>
             `).join('')}
@@ -5702,9 +5871,10 @@
       { id: 'cat-motion', cat: 'motion', num: '02', shortEn: 'Motion', shortTh: 'วิดีโอ', en: '02 Video & Motion', th: '02 วิดีโอ & โมชั่นดีไซน์' },
       { id: 'cat-merchandising', cat: 'merchandising', num: '03', shortEn: 'Merch', shortTh: 'ดิสเพลย์', en: '03 Visual Merch', th: '03 วีซวลเมอร์แชนไดซิ่ง' },
       { id: 'cat-catalog', cat: 'catalog', num: '04', shortEn: 'Catalog', shortTh: 'แคตตาล็อก', en: '04 Catalog Design', th: '04 แคตตาล็อกดีไซน์' },
-      { id: 'category-web-ui', cat: 'web-ui', num: '05', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '05 Web & UI Design', th: '05 เว็บ & UI ดีไซน์' },
-      { id: 'cat-event', cat: 'event', num: '06', shortEn: 'Event', shortTh: 'อีเวนต์', en: '06 Event & Coord', th: '06 จัดงานอีเวนต์' },
-      { id: 'cat-photography', cat: 'photography', num: '07', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '07 Photography', th: '07 งานถ่ายภาพ' }
+      { id: 'cat-print', cat: 'print', num: '05', shortEn: 'Print', shortTh: 'สิ่งพิมพ์', en: '05 Print & Offline Media', th: '05 สิ่งพิมพ์ & สื่อออฟไลน์' },
+      { id: 'category-web-ui', cat: 'web-ui', num: '06', shortEn: 'Web/UI', shortTh: 'เว็บ/UI', en: '06 Web & UI Design', th: '06 เว็บ & UI ดีไซน์' },
+      { id: 'cat-event', cat: 'event', num: '07', shortEn: 'Event', shortTh: 'อีเวนต์', en: '07 Event & Coord', th: '07 จัดงานอีเวนต์' },
+      { id: 'cat-photography', cat: 'photography', num: '08', shortEn: 'Photo', shortTh: 'ภาพถ่าย', en: '08 Photography', th: '08 งานถ่ายภาพ' }
     ];
 
     const filterBtns = document.querySelectorAll('.filter-btn');
